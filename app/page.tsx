@@ -1,5 +1,5 @@
-import React from "react";
-import {Button} from "@/shared/ui/button";
+import React from 'react';
+import { Button } from '@/shared/ui/button';
 
 const HomePage: React.FC = () => {
   return (
@@ -7,6 +7,6 @@ const HomePage: React.FC = () => {
       Page <Button>Button</Button>
     </main>
   );
-}
+};
 
 export default HomePage;
