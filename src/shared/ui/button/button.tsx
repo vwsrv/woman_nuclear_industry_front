@@ -1,6 +1,6 @@
 'use client'
 
-import {typeButtonProps} from "@/src/shared/ui/button/types";
+import {typeButtonProps} from "@/shared/ui/button/types";
 import React from "react";
 import classes from './styles.module.scss'
 
