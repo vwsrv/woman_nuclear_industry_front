@@ -1,3 +1,8 @@
 :root {
   --violet-color: blueviolet;
+  --violet-dark-color: violet;
+}
+
+.test-class {
+  padding: 1rem 2rem;
 }

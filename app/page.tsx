@@ -1,10 +1,10 @@
 import React from 'react';
-import { Button } from '@/shared/ui/button';
+import { TestPage } from '@/pages/test-page';
 
 const HomePage: React.FC = () => {
   return (
     <main>
-      Page <Button>Button</Button>
+      <TestPage />
     </main>
   );
 };
