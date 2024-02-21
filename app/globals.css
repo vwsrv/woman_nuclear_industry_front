@@ -6,3 +6,38 @@
 .test-class {
   padding: 1rem 2rem;
 }
+
+h1 {
+  font-size: 32px;
+  font-weight: 400;
+}
+
+h2.normal {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+h2.bold {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.text-normal {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.text-bold {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.comments {
+  font-size: 12px;
+  font-weight: 400;
+}
