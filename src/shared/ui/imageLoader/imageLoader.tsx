@@ -7,8 +7,12 @@ import Image from 'next/image';
 import { typeImageLoaderProps } from '@/shared/ui/imageLoader/types';
 
 export const ImageLoader: React.FC<typeImageLoaderProps> = props => {
-  const { width = 153, height = 153, imageData = '/test-image-loader.png' } = props;
-  
+  const {
+    width = 153,
+    height = 153,
+    imageData = '/test-image-loader.png'
+  } = props;
+
   const [selectedImage, setSelectedImage] = React.useState<string>(imageData);
 
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
