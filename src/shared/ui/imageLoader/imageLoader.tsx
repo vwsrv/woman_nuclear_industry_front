@@ -7,14 +7,9 @@ import Image from 'next/image';
 import { typeImageLoaderProps } from '@/shared/ui/imageLoader/types';
 
 export const ImageLoader: React.FC<typeImageLoaderProps> = props => {
-  const {
-    width = 153,
-    height = 153,
-  } = props;
-
-  const [selectedImage, setSelectedImage] = React.useState<string>(
-    '/test-image-loader.png'
-  );
+  const { width = 153, height = 153, imageData = '/test-image-loader.png' } = props;
+  
+  const [selectedImage, setSelectedImage] = React.useState<string>(imageData);
 
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     if (!evt.target.files) return;
@@ -22,7 +17,7 @@ export const ImageLoader: React.FC<typeImageLoaderProps> = props => {
   };
 
   return (
-    <div className={cn(classes['image-loader'])} style={{width, height}}>
+    <div className={cn(classes['image-loader'])} style={{ width, height }}>
       <Image
         fill={true}
         src={selectedImage}
