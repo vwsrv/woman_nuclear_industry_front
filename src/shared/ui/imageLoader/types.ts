@@ -1,10 +1,11 @@
-import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
+import { InputHTMLAttributes, DetailedHTMLProps } from 'react';
 
 export interface typeImageLoaderProps
   extends DetailedHTMLProps<
-    ButtonHTMLAttributes<HTMLButtonElement>,
-    HTMLButtonElement
+  InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
   > {
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
 }
+

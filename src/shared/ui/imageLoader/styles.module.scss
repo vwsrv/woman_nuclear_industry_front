@@ -1,6 +1,4 @@
 .image-loader {
-  width: 153px;
-  height: 153px;
   position: relative;
 
   .image-loader__photo {
@@ -23,7 +21,8 @@
     right: 15px;
     top: 15px;
     border-radius: 8px;
-    background: #0A0A0A99 url('../../../../public/image-loader-button-pencil.svg') center no-repeat;
+    background: #0a0a0a99
+      url('../../../../public/image-loader-button-pencil.svg') center no-repeat;
     transition: all 0.3s;
   }
   .image-loader__button:hover {
