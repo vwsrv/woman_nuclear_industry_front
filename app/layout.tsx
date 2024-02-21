@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import './global.css';
+import './globals.css';
 import React from 'react';
 import '../src/shared/fonts/fonts.css';
 
