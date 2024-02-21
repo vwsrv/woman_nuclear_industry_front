@@ -2,6 +2,7 @@
 
 import { Button } from '@/shared/ui/button';
 import React from 'react';
+import { ImageLoader } from './../../shared/ui/imageLoader/imageLoader';
 
 export const TestPage: React.FC = () => {
   return (
@@ -15,6 +16,7 @@ export const TestPage: React.FC = () => {
         >
           Test button
         </Button>
+        <ImageLoader />
       </div>
     </div>
   );
