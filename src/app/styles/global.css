@@ -1,0 +1,58 @@
+@import url('./fonts/fonts.css');
+
+:root {
+  --violet-color: blueviolet;
+  --violet-dark-color: violet;
+  --font-inter: 'Inter';
+  --font-montserrat: 'Montserrat-Regular';
+  --font-montserrat-bold: 'Montserrat-Bold';
+}
+
+.test-class {
+  padding: 1rem 2rem;
+}
+
+body {
+  font-family: var(--font-inter);
+}
+
+h1,
+h2 {
+  font-family: var(--font-montserrat);
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 40px;
+  letter-spacing: 0em;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h2.bold {
+  font-family: var(--font-montserrat-bold);
+  font-weight: 700;
+}
+
+h3 {
+  font-family: var(--font-montserrat-bold);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0em;
+}
+
+p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: 0em;
+}
+
+p.bold {
+  font-weight: 700;
+}
+
+p.comment {
+  font-size: 12px;
+}
