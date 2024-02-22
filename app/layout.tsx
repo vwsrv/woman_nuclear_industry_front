@@ -1,25 +1,13 @@
 import React from 'react';
-import { Inter, Montserrat } from 'next/font/google';
 import '../src/app/styles/global.css';
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap'
-});
-
-const montserrat = Montserrat({
-  subsets: ['latin', 'cyrillic'],
-  variable: '--font-montserrat',
-  display: 'swap'
-});
+import { inter, montserrat } from '@/app/fonts/fonts';
 
 const RootLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
   return (
-    <html lang="ru">
+    <html lang="ru" className={`${montserrat.variable} ${inter.variable}`}>
       <body>{children}</body>
     </html>
   );
 };
 
-export default RootLayout;
+export default RootLayout
