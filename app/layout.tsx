@@ -10,4 +10,4 @@ const RootLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
   );
 };
 
-export default RootLayout
+export default RootLayout;
