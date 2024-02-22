@@ -1,0 +1,40 @@
+.textarea__container {
+  padding: 2px 10px 2px 10px;
+  min-width: 51.25%;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.05) inset;
+  border-radius: 8px;
+  border: none;
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 1440px) {
+  .textarea__container {
+    min-width: 738px;
+  }
+}
+
+.textarea__label {
+  font-size: 12px;
+  line-height: 28px;
+  font-weight: 400;
+  color: var(--grey-dark-color)
+}
+
+.textarea__span {
+  color: var(--red-color);
+}
+
+.textarea {
+  display: block;
+  border: none;
+  outline: none;
+  resize: none;
+  overflow: hidden;
+  font-size: 16px;
+  line-height: 1.75;
+  font-weight: 400;
+  color: var(--black-color);
+  background-color: var(--white-color);
+}
