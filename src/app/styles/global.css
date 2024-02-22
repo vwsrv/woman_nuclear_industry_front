@@ -1,11 +1,6 @@
-@import url('./fonts/fonts.css');
-
 :root {
   --violet-color: blueviolet;
   --violet-dark-color: violet;
-  --font-inter: 'Inter';
-  --font-montserrat: 'Montserrat-Regular';
-  --font-montserrat-bold: 'Montserrat-Bold';
 }
 
 .test-class {
@@ -30,12 +25,10 @@ h2 {
 }
 
 h2.bold {
-  font-family: var(--font-montserrat-bold);
   font-weight: 700;
 }
 
 h3 {
-  font-family: var(--font-montserrat-bold);
   font-size: 20px;
   font-weight: 700;
   line-height: 24px;
