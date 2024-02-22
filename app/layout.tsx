@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter, Montserrat } from 'next/font/google';
-import './globals.css';
+import '../src/app/styles/global.css';
 import React from 'react';
 
 const inter = Inter({
