@@ -1,16 +1,19 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Montserrat } from 'next/font/google';
 import './globals.css';
 import React from 'react';
-import '../src/shared/fonts/fonts.css';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap'
+});
 
-const fontFamilies = {
-  montserratRegular: 'Montserrat-Regular, sans-serif',
-  montserratBold: 'Montserrat-Bold, sans-serif',
-  inter: 'Inter, sans-serif'
-};
+const montserrat = Montserrat({
+  subsets: ['latin', 'cyrillic'],
+  variable: '--font-montserrat',
+  display: 'swap'
+});
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -21,33 +24,6 @@ const RootLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
   return (
     <html lang="ru">
       <body className={inter.className}>{children}</body>
-      <h1 style={{ fontFamily: fontFamilies.montserratRegular }}>
-        Montserrat Regular 32
-      </h1>
-      <h2
-        className="h2.normal"
-        style={{ fontFamily: fontFamilies.montserratRegular }}
-      >
-        Montserrat Regular 24
-      </h2>
-      <h2
-        className="h2.bold"
-        style={{ fontFamily: fontFamilies.montserratBold }}
-      >
-        Montserrat Bold 24
-      </h2>
-      <h3 style={{ fontFamily: fontFamilies.montserratBold }}>
-        Montserrat Bold 20
-      </h3>
-      <p className="text-normal" style={{ fontFamily: fontFamilies.inter }}>
-        Inter Regular 16
-      </p>
-      <p className="text-bold" style={{ fontFamily: fontFamilies.inter }}>
-        Inter Regular 16
-      </p>
-      <p className="comments" style={{ fontFamily: fontFamilies.inter }}>
-        Inter Regular 16
-      </p>
     </html>
   );
 };
