@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 const RootLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
   return (
     <html lang="ru">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.variable} ${montserrat.variable}`}>{children}</body>
     </html>
   );
 };
