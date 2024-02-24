@@ -1,0 +1,21 @@
+.button {
+  width: 892px;
+  max-width: 892px;
+  border: 1px solid rgba(177, 177, 177, 1);
+  border-radius: 8px;
+  padding: 20px 15px;
+  background-color: rgba(255, 255, 255, 1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &:not(:disabled):hover {
+    cursor: pointer;
+  }
+  &.open {
+    border-color: rgba(9, 132, 203, 1);
+  }
+}
+
+.title {
+    margin: 0;
+}
