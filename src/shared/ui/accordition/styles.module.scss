@@ -1,5 +1,5 @@
 .button {
-  width: 892px;
+  width: 100%;
   max-width: 892px;
   border: 1px solid rgba(177, 177, 177, 1);
   border-radius: 8px;
@@ -10,6 +10,7 @@
   align-items: center;
   &:not(:disabled):hover {
     cursor: pointer;
+    border-color: rgba(9, 132, 203, 1);
   }
   &.open {
     border-color: rgba(9, 132, 203, 1);

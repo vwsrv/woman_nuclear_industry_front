@@ -9,7 +9,7 @@ import minus from '@/shared/images/for-accordition/minus.svg';
 import plus from '@/shared/images/for-accordition/plus.svg';
 
 export const Accordition: React.FC<TypeAccorditionProps> = props => {
-  const { title, children, onClick } = props;
+  const { title, children } = props;
 
   const [isOpen, setIsOpen] = useState(false);
   return (
@@ -18,17 +18,16 @@ export const Accordition: React.FC<TypeAccorditionProps> = props => {
         className={cn(classes.button, { [classes.open]: isOpen })}
         onClick={() => {
           setIsOpen(!isOpen);
-          onClick();
         }}
       >
         <h2 className={cn(classes.title)}>{title}</h2>
         <Image
           src={isOpen ? minus : plus}
-          alt={isOpen ? 'minus' : 'plus'}
+          alt={isOpen ? 'Минус' : 'Плюс'}
           className={cn(classes.icon)}
         />
       </button>
-      {children}
+      {isOpen && children}
     </div>
   );
 };

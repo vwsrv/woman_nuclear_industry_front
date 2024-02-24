@@ -5,7 +5,7 @@ export interface TypeAccorditionProps
     ButtonHTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
   > {
-  children: React.ReactNode;
+  children: React.ReactNode | JSX.Element;
   title: string;
-  onClick: () => void;
+  onClick?: () => void;
 }
