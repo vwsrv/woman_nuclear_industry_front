@@ -20,8 +20,8 @@ export const Accordion: React.FC<AccordionPropsType> = ({
             className={cn(classes.button, { [classes.open]: isOpen })}
             onClick={() => {
               setPropsState(prev => {
-                return prev.map(item => {
-                  if (item.children === children && item.title === title) {
+                return prev.map((item, stateIndex) => {
+                  if (stateIndex === index) {
                     return {
                       ...item,
                       isOpen: !isOpen
@@ -39,11 +39,7 @@ export const Accordion: React.FC<AccordionPropsType> = ({
               className={cn(classes.icon)}
             />
           </button>
-          {isOpen && (
-            <div className={cn(classes.content)}>
-              <p>{children}</p>
-            </div>
-          )}
+          {isOpen && <div className={cn(classes.content)}>{children}</div>}
         </div>
       ))}
     </>
