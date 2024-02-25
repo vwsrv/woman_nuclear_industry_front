@@ -4,16 +4,19 @@
   border: 1px solid rgba(177, 177, 177, 1);
   border-radius: 8px;
   padding: 20px 15px;
+  margin-bottom: 20px;
   background-color: rgba(255, 255, 255, 1);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 20px;
   &:not(:disabled):hover {
     cursor: pointer;
     border-color: rgba(9, 132, 203, 1);
   }
   &.open {
     border-color: rgba(9, 132, 203, 1);
+    margin-bottom: 0;
   }
 }
 

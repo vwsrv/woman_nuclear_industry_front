@@ -1,11 +1,16 @@
+import { inter } from '@/app/fonts/fonts';
 import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 
-export interface TypeAccordionProps
+export interface AccordionProps
   extends DetailedHTMLProps<
     ButtonHTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
   > {
   children: React.ReactNode | JSX.Element;
   title: string;
-  onClick: () => void;
+  isOpen: boolean;
 }
+
+export type AccordionPropsType = {
+  props: AccordionProps[];
+};
