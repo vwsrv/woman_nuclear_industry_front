@@ -4,15 +4,10 @@ import React from 'react';
 import classes from './styles.module.scss';
 import cn from 'classnames';
 import Image from 'next/image';
-import { typeImageLoaderProps } from '@/shared/ui/imageLoader/types';
+import { typeImageLoaderProps } from '@/shared/ui/image-loader/types';
 
 export const ImageLoader: React.FC<typeImageLoaderProps> = props => {
-  const {
-    width = 153,
-    height = 153,
-    setImageData,
-    ImageData,
-  } = props;
+  const { width = 153, height = 153, setImageData, ImageData } = props;
 
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     if (!evt.target.files) return;

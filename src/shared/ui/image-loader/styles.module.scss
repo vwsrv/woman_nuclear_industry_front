@@ -5,6 +5,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 8px;
   }
 
   .image-loader__input {
@@ -22,7 +23,7 @@
     top: 15px;
     border-radius: 8px;
     background: #0a0a0a99
-      url('../../../../public/image-loader-button-pencil.svg') center no-repeat;
+      url('./images/image-loader-button-pencil.svg') center no-repeat;
     transition: all 0.3s;
   }
   .image-loader__button:hover {
