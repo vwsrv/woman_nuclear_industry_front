@@ -10,21 +10,20 @@ export const ImageLoader: React.FC<typeImageLoaderProps> = props => {
   const {
     width = 153,
     height = 153,
-    imageData = '/test-image-loader.png'
+    setImageData,
+    ImageData,
   } = props;
-
-  const [selectedImage, setSelectedImage] = React.useState<string>(imageData);
 
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     if (!evt.target.files) return;
-    setSelectedImage(URL.createObjectURL(evt.target.files[0]));
+    setImageData(URL.createObjectURL(evt.target.files[0]));
   };
 
   return (
     <div className={cn(classes['image-loader'])} style={{ width, height }}>
       <Image
         fill={true}
-        src={selectedImage}
+        src={ImageData}
         className={cn(classes['image-loader__photo'])}
         alt="картинка"
       />

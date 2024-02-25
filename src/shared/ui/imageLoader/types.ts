@@ -1,3 +1,4 @@
+import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import { InputHTMLAttributes, DetailedHTMLProps } from 'react';
 
 export interface typeImageLoaderProps
@@ -7,5 +8,6 @@ export interface typeImageLoaderProps
   > {
   width?: number;
   height?: number;
-  imageData?: string;
+  setImageData: React.Dispatch<React.SetStateAction<string>>,
+  ImageData: string | StaticImport,
 }
