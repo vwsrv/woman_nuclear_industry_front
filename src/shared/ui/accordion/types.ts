@@ -7,5 +7,5 @@ export interface TypeAccordionProps
   > {
   children: React.ReactNode | JSX.Element;
   title: string;
-  onClick?: () => void;
+  onClick: () => void;
 }
