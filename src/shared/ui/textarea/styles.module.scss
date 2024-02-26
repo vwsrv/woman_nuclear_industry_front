@@ -20,14 +20,18 @@
   position: absolute;
   top: 20px;
   left: 15px;
-  font-size: 12px;
+  font-size: 16px;
   line-height: 28px;
   font-weight: 400;
   color: var(--grey-dark-color);
-  transition: top 0.5s ease, left 0.5s ease;
+  transition:
+    top 0.5s ease,
+    left 0.5s ease,
+    font-size 0.5s ease;
   &.onValue {
     top: 0;
     left: 10px;
+    font-size: 14px;
   }
 }
 
@@ -36,7 +40,7 @@
 }
 
 .textarea {
-  padding-left: 60px;
+  padding-left: 72px;
   max-height: 28px;
   border: none;
   outline: none;
