@@ -1,13 +1,20 @@
 'use client';
-import { ProfileMenu } from '@/shared/ui/ProfileMenu';
-import { Button } from '@/shared/ui/button';
-import { arrayPropsProfileMenu } from '@/shared/ui/ProfileMenu';
-import React from 'react';
 
+import { Button } from '@/shared/ui/button';
+import React from 'react';
 export const TestPage: React.FC = () => {
   return (
     <div>
-      <ProfileMenu titleProps={arrayPropsProfileMenu} />
+      <h1>Test page</h1>
+      <div>
+        <Button
+          disabled={false}
+          className="test-class"
+          onClick={() => console.log('Test click')}
+        >
+          Test button
+        </Button>
+      </div>
     </div>
   );
 };
