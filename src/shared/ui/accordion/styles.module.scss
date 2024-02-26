@@ -24,8 +24,28 @@
   margin: 0;
 }
 
+@mixin animate($animation, $duration, $method, $times) {
+  animation: $animation $duration $method $times;
+}
+
+@mixin keyframes($name) {
+  @keyframes #{$name} {
+    @content;
+  }
+}
 .content {
   padding: 24px 30px 24px 0;
   width: 100%;
   max-width: 862px;
+  @include keyframes(opening) {
+    0% {
+      opacity: 0;
+      max-height: 0;
+    }
+    100% {
+      opacity: 1;
+      max-height: 1000px;
+    }
+  }
+  @include animate(opening, 0.4s, ease-in, 1);
 }
