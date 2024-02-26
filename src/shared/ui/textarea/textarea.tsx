@@ -9,8 +9,7 @@ export const Textarea: React.FC<typeTextareaProps> = ({
   className,
   label,
   value,
-  setValue,
-  required
+  setValue
 }) => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
@@ -38,9 +37,7 @@ export const Textarea: React.FC<typeTextareaProps> = ({
         htmlFor="textarea"
       >
         {label}
-        {required && (
-          <span className={cn(className, classes.textarea__span)}>*</span>
-        )}
+        <span className={cn(className, classes.textarea__star)}> *</span>
       </label>
       <textarea
         ref={textareaRef}
@@ -48,11 +45,10 @@ export const Textarea: React.FC<typeTextareaProps> = ({
         id="textarea"
         value={value}
         autoComplete="off"
-        onChange={e => {
+        onChange={(e) => {
           setValue(e.target.value);
           autoResize();
         }}
-        required={required}
       />
     </div>
   );

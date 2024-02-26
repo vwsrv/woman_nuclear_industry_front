@@ -13,5 +13,4 @@ export interface typeTextareaProps
   label: string;
   value: string;
   setValue: Dispatch<SetStateAction<string>>;
-  required: boolean;
 }

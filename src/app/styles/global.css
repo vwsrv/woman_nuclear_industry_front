@@ -1,6 +1,10 @@
 :root {
   --violet-color: blueviolet;
   --violet-dark-color: violet;
+  --red-color: rgba(255, 78, 78, 1);
+  --grey-dark-color: rgba(177, 177, 177, 1);
+  --black-color: rgba(2, 2, 2, 1);
+  --white-color: rgba(255, 255, 255, 1);
 }
 
 .test-class {

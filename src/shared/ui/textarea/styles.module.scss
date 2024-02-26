@@ -1,7 +1,7 @@
 .textarea__container {
   padding: 2px 10px 2px 10px;
   min-width: 51.25%;
-  background: rgba(255, 255, 255, 1);
+  background: var(--white-color);
   box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.05) inset;
   border-radius: 8px;
   border: none;
@@ -22,12 +22,11 @@
   color: var(--grey-dark-color);
 }
 
-.textarea__span {
+.textarea__star {
   color: var(--red-color);
 }
 
 .textarea {
-  display: block;
   border: none;
   outline: none;
   resize: none;
