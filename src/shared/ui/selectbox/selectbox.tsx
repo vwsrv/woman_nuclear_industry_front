@@ -14,7 +14,7 @@ export const SelectBox: React.FC<typeSelectBoxProps> = props => {
     className,
     ...otherProps
   } = props;
-  
+
   return (
     <select
       disabled={disabled}
