@@ -14,22 +14,23 @@ export const Textarea: React.FC<typeTextareaProps> = ({
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
   const autoResize = (): void => {
-    if (textareaRef.current && textareaRef.current.value && textareaRef.current.value !== '') {
-      textareaRef.current.style.height = 'auto';
-      textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
-    } else {
-      if (textareaRef.current) {
-        textareaRef.current.style.height = '';
-        textareaRef.current.scrollTop = 0;
-      }
+    if (textareaRef.current) {
+      textareaRef.current.rows = 1;
+      textareaRef.current.style.height = '';
+      const lineHeight = parseInt(window.getComputedStyle(textareaRef.current).lineHeight);
+      const scrollHeight = textareaRef.current.scrollHeight;
+      const rows = Math.ceil(scrollHeight / lineHeight);
+      textareaRef.current.rows = rows;
     }
   };
 
   const handleFocus = (): void => {
-    if (textareaRef.current && textareaRef.current.value && textareaRef.current.value !== '') {
-      textareaRef.current.scrollTop = (textareaRef.current.scrollHeight - textareaRef.current.clientHeight) / 2;
+    if (textareaRef.current) {
+      textareaRef.current.scrollTop =
+        (textareaRef.current.scrollHeight - textareaRef.current.clientHeight) /
+        2;
     }
-  }
+  };
 
   useEffect(() => {
     autoResize();
@@ -42,9 +43,15 @@ export const Textarea: React.FC<typeTextareaProps> = ({
   }, []);
 
   return (
-    <div className={cn(className, classes.textareaContainer, { [classes.noValue]: !value })}>
+    <div
+      className={cn(className, classes.textareaContainer, {
+        [classes.noValue]: !value
+      })}
+    >
       <label
-        className={cn(className, classes.textareaLabel, { [classes.onValue]: value })}
+        className={cn(className, classes.textareaLabel, {
+          [classes.onValue]: value
+        })}
         htmlFor="textarea"
       >
         {label}
@@ -52,7 +59,9 @@ export const Textarea: React.FC<typeTextareaProps> = ({
       </label>
       <textarea
         ref={textareaRef}
-        className={cn(className, classes.textarea, { [classes.onValue]: value })}
+        className={cn(className, classes.textarea, {
+          [classes.onValue]: value
+        })}
         id="textarea"
         value={value}
         autoComplete="off"
