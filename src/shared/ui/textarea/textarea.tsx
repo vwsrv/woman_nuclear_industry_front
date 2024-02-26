@@ -31,13 +31,13 @@ export const Textarea: React.FC<typeTextareaProps> = ({
   }, []);
 
   return (
-    <div className={cn(className, classes.textarea__container)}>
+    <div className={cn(className, classes.textareaContainer)}>
       <label
-        className={cn(className, classes.textarea__label)}
+        className={cn(className, classes.textareaLabel)}
         htmlFor="textarea"
       >
         {label}
-        <span className={cn(className, classes.textarea__star)}> *</span>
+        <span className={cn(className, classes.textareaStar)}> *</span>
       </label>
       <textarea
         ref={textareaRef}
