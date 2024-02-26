@@ -42,7 +42,6 @@ export const TestPage: React.FC = () => {
           label="Адрес:"
           value={textareaValue}
           setValue={setTextareaValue}
-          required={true}
         />
       </div>
     </div>

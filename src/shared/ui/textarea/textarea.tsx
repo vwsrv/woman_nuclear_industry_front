@@ -14,11 +14,22 @@ export const Textarea: React.FC<typeTextareaProps> = ({
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
   const autoResize = (): void => {
-    if (textareaRef.current) {
+    if (textareaRef.current && textareaRef.current.value && textareaRef.current.value !== '') {
       textareaRef.current.style.height = 'auto';
       textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+    } else {
+      if (textareaRef.current) {
+        textareaRef.current.style.height = '';
+        textareaRef.current.scrollTop = 0;
+      }
     }
   };
+
+  const handleFocus = (): void => {
+    if (textareaRef.current && textareaRef.current.value && textareaRef.current.value !== '') {
+      textareaRef.current.scrollTop = (textareaRef.current.scrollHeight - textareaRef.current.clientHeight) / 2;
+    }
+  }
 
   useEffect(() => {
     autoResize();
@@ -31,9 +42,9 @@ export const Textarea: React.FC<typeTextareaProps> = ({
   }, []);
 
   return (
-    <div className={cn(className, classes.textareaContainer)}>
+    <div className={cn(className, classes.textareaContainer, { [classes.noValue]: !value })}>
       <label
-        className={cn(className, classes.textareaLabel)}
+        className={cn(className, classes.textareaLabel, { [classes.onValue]: value })}
         htmlFor="textarea"
       >
         {label}
@@ -41,11 +52,12 @@ export const Textarea: React.FC<typeTextareaProps> = ({
       </label>
       <textarea
         ref={textareaRef}
-        className={cn(className, classes.textarea)}
+        className={cn(className, classes.textarea, { [classes.onValue]: value })}
         id="textarea"
         value={value}
         autoComplete="off"
-        onChange={(e) => {
+        onFocus={handleFocus}
+        onChange={e => {
           setValue(e.target.value);
           autoResize();
         }}

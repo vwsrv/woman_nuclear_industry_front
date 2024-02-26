@@ -11,6 +11,6 @@ export interface typeTextareaProps
     HTMLTextAreaElement
   > {
   label: string;
-  value: string;
+  value: string | undefined;
   setValue: Dispatch<SetStateAction<string>>;
 }
