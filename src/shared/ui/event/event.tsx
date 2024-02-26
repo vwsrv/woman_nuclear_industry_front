@@ -2,6 +2,7 @@
 
 import { typeEventProps } from '@/shared/ui/event/types';
 import React from 'react';
+import Link from 'next/link';
 import classes from './styles.module.scss';
 import cn from 'classnames';
 import Image from 'next/image';
@@ -16,11 +17,12 @@ export const Event: React.FC<typeEventProps> = props => {
     imageUrl,
     title,
     date,
-    evntType,
+    eventType,
+    linkUrl,
   } = props;
 
   return (
-    <div className={cn(className, classes.event_container)}>
+    <Link className={cn(className, classes.event_container)} href={linkUrl}>
       <Image 
         className={cn(classes.event__image)}
         src={imageUrl ? imageUrl : EventImage}
@@ -46,10 +48,10 @@ export const Event: React.FC<typeEventProps> = props => {
             width={28}
             height={28}
           />
-          <p className={cn(classes.event__type)}>{evntType}</p>
+          <p className={cn(classes.event__type)}>{eventType}</p>
         </div>
         <h3 className={cn(classes.event__title)}>{title}</h3>
       </div>
-    </div>
+    </Link>
   );
 };

@@ -8,5 +8,6 @@ export interface typeEventProps
     imageUrl?: string,
     title: string,
     date?: number | string,
-    evntType?: string,
+    eventType?: string,
+    linkUrl: string,
 }
