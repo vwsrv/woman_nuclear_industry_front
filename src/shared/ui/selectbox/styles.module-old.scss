@@ -1,0 +1,79 @@
+.selectbox {
+  font-family: var(--font-inter);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: 0em;
+  max-width: 259px;
+  position: relative;
+  cursor: pointer;
+  margin: auto;
+  display: flex;
+  background-repeat: no-repeat;
+  background-position: calc(100% - 25px);
+  appearance: none;
+  border-radius: 8px;
+  border-color: transparent;
+  color: white;
+  padding-left: 30px;
+  height: 44px;
+
+  &.button {
+
+  }
+
+
+  &.violet {
+    background-color: var(--violet-color);
+    color: var(--white-color);
+
+    &:not(:disabled):hover {
+      opacity: 0.9;
+    }
+
+    & .options {
+      color: var(--violet-color);
+    }
+  }
+
+  &.white {
+    border: 1px solid var(--blue-color);
+    background-color: var(--white-color);
+    color: var(--blue-color);
+    background-image: url('../../images/arrow-down--black.svg');
+  }
+
+  &.blue {
+    background-color: var(--blue-color);
+
+    &:not(:disabled):hover {
+      background-color: var(--blue-dark-color);
+      transition: 0.3s;
+    }
+
+    & option {
+      color: var(--blue-color);
+    }
+  }
+
+  &::-ms-expand {
+    background-color: var(--violet-color);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:disabled {
+    cursor: default;
+    background-color: var(--overlay-color);
+  }
+}
+
+.options {
+  background-color: white;
+
+  &:nth-child(1) {
+    display: none;
+  }
+}
