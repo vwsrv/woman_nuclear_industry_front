@@ -84,6 +84,7 @@ export const SelectBox: React.FC<typeSelectBoxProps> = props => {
         {options.map((option, index) => (
           <a
             key={index}
+            href={option.link}
             className={cn(classes.option, classes[variant], {
               [classes.selected]: option.label === selectedOption,
               [classes.hover]: index === selectedIndex && isOpen

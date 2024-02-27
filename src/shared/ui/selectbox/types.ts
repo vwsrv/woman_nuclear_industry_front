@@ -1,9 +1,9 @@
 import { SelectHTMLAttributes, DetailedHTMLProps } from 'react';
 
 export interface Option {
-  name: string;
   value: string;
   label: string;
+  link: string;
 }
 
 export interface typeSelectBoxProps
