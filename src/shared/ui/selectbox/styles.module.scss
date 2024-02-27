@@ -1,10 +1,11 @@
 .selectbox {
   position: relative;
   cursor: pointer;
-  font-family: var(--font-inter);
   height: 44px;
   border-radius: 8px;
   max-width: 259px;
+  z-index: 1;
+  transition: 0.3s;
 
   &::after {
     content: url('../../images/arrow-down--white.svg');
@@ -27,7 +28,6 @@
 
   &:hover {
     transition: 0.3s;
-    opacity: 0.9;
   }
 
   &:focus {
@@ -36,6 +36,10 @@
 
   &.violet {
     background-color: var(--violet-color);
+
+    &:hover {
+      background-color: rgb(135, 99, 202);
+    }
   }
 
   &.blue {
@@ -84,7 +88,6 @@
   max-width: 100%;
   width: 100%;
   border-radius: 8px;
-  transition: 0.3s;
 
   &.violet {
     border: 1px solid var(--violet-color);
