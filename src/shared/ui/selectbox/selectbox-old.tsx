@@ -18,17 +18,21 @@ export const SelectBox: React.FC<typeSelectBoxProps> = props => {
 
   useEffect(() => {
     const optionElements = document.querySelectorAll('#selectbox option');
-    optionElements.forEach((optionElement) => {
-        const curText = optionElement.textContent || "";
-        optionElement.setAttribute('title', curText);
-        const trimMultiplier = 10;
-        const computedStyle = getComputedStyle(optionElement.parentElement as Element);
-        const lengthToShortenTo = Math.round(parseInt(computedStyle.maxWidth || "0", 10) / trimMultiplier);
-        if (curText.length > lengthToShortenTo) {
-            optionElement.textContent = `${curText.substring(0, lengthToShortenTo)}...`;
-        }
+    optionElements.forEach(optionElement => {
+      const curText = optionElement.textContent || '';
+      optionElement.setAttribute('title', curText);
+      const trimMultiplier = 10;
+      const computedStyle = getComputedStyle(
+        optionElement.parentElement as Element
+      );
+      const lengthToShortenTo = Math.round(
+        parseInt(computedStyle.maxWidth || '0', 10) / trimMultiplier
+      );
+      if (curText.length > lengthToShortenTo) {
+        optionElement.textContent = `${curText.substring(0, lengthToShortenTo)}...`;
+      }
     });
-}, []);
+  }, []);
 
   return (
     <select
@@ -36,13 +40,14 @@ export const SelectBox: React.FC<typeSelectBoxProps> = props => {
       className={cn(className, classes.selectbox, classes[variant], {
         ...otherProps
       })}
-      id='selectbox'
+      id="selectbox"
     >
       <option
         className={cn(className, classes.options, classes[variant], {
           ...otherProps
         })}
-      >{name}
+      >
+        {name}
       </option>
       {options.map((option, index) => (
         <option

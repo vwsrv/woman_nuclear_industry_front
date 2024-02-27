@@ -1,5 +1,5 @@
 .selectbox {
-    transition: .3s;
+  transition: 0.3s;
   position: relative;
   cursor: pointer;
   font-family: var(--font-inter);
@@ -17,7 +17,7 @@
   }
 
   &:hover {
-    transition: .3s;
+    transition: 0.3s;
     opacity: 0.9;
   }
 
@@ -66,12 +66,11 @@
     border-radius: 8px;
 
     &.violet {
-        border: 1px solid var(--violet-color);
-
+      border: 1px solid var(--violet-color);
     }
 
     &.blue {
-        border: 1px solid var(--blue-color);
+      border: 1px solid var(--blue-color);
     }
 
     a {
@@ -88,7 +87,7 @@
       &.violet {
         color: var(--violet-color);
       }
-  
+
       &.blue {
         color: var(--blue-color);
       }

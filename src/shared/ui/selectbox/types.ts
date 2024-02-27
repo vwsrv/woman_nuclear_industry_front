@@ -1,7 +1,7 @@
 import { SelectHTMLAttributes, DetailedHTMLProps } from 'react';
 
 export interface Option {
-  name: string,
+  name: string;
   value: string;
   label: string;
 }

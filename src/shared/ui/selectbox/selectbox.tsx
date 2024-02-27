@@ -43,19 +43,16 @@ export const SelectBox: React.FC<typeSelectBoxProps> = props => {
       })}
       onClick={toggleDropdown}
     >
-      <button className={cn(classes[variant], classes.button)}>
-        {name}
-      </button>
+      <button className={cn(classes[variant], classes.button)}>{name}</button>
       <div
         className={cn(classes.options, classes[variant], {
           [classes.enabled]: isOpen
         })}
       >
         {options.map((option, index) => (
-          <a
-            key={index}
-            className={cn(classes[variant])}
-          >{option.label}</a>
+          <a key={index} className={cn(classes[variant])}>
+            {option.label}
+          </a>
         ))}
       </div>
     </div>
