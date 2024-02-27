@@ -17,6 +17,7 @@ export const SelectBox: React.FC<typeSelectBoxProps> = props => {
   } = props;
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [selectedOption, setSelectedOption] = useState<string>(name);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -27,6 +28,11 @@ export const SelectBox: React.FC<typeSelectBoxProps> = props => {
     if (!target.closest(`.${classes.options}`)) {
       setIsOpen(false);
     }
+  };
+
+  const handleOptionClick = (optionLabel: string) => {
+    setSelectedOption(optionLabel);
+    setIsOpen(false);
   };
 
   useEffect(() => {
@@ -43,14 +49,20 @@ export const SelectBox: React.FC<typeSelectBoxProps> = props => {
       })}
       onClick={toggleDropdown}
     >
-      <button className={cn(classes[variant], classes.button)}>{name}</button>
+      <button className={cn(classes[variant], classes.button)}>
+        {selectedOption}
+      </button>
       <div
         className={cn(classes.options, classes[variant], {
           [classes.enabled]: isOpen
         })}
       >
         {options.map((option, index) => (
-          <a key={index} className={cn(classes[variant])}>
+          <a
+            key={index}
+            className={cn(classes[variant])}
+            onClick={() => handleOptionClick(option.label)}
+          >
             {option.label}
           </a>
         ))}
