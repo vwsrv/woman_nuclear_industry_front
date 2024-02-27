@@ -3,10 +3,6 @@
   --violet-dark-color: violet;
 }
 
-.test-class {
-  padding: 1rem 2rem;
-}
-
 body {
   font-family: var(--font-inter);
 }

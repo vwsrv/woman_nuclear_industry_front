@@ -14,7 +14,7 @@
   cursor: pointer;
   min-width: 136px;
   min-height: 44px;
-  transition: .3s;
+  transition: 0.3s;
 
   &:not(:disabled):active {
     transform: translateY(1px);
@@ -33,7 +33,7 @@
     background-color: var(--violet-color);
 
     &:not(:disabled):hover {
-      background-color: rgb(135, 99, 202)
+      background-color: rgb(135, 99, 202);
     }
   }
 
@@ -43,7 +43,7 @@
   }
 
   &:not(:disabled):hover {
-    transition: .3s;
+    transition: 0.3s;
   }
 
   &:disabled {
