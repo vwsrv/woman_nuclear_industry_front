@@ -7,7 +7,7 @@ import React, { useState, useEffect } from 'react';
 
 export const SelectBox: React.FC<typeSelectBoxProps> = props => {
   const {
-    variant = 'blue',
+    variant = 'white',
     name,
     options,
     value,
@@ -18,6 +18,7 @@ export const SelectBox: React.FC<typeSelectBoxProps> = props => {
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedOption, setSelectedOption] = useState<string>(name);
+  const [selectedIndex, setSelectedIndex] = useState<number>(-1);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -35,6 +36,26 @@ export const SelectBox: React.FC<typeSelectBoxProps> = props => {
     setIsOpen(false);
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === 'ArrowDown') {
+      setSelectedIndex(prevIndex =>
+        prevIndex < options.length - 1 ? prevIndex + 1 : prevIndex
+      );
+      if (options[selectedIndex + 1]) {
+        setSelectedOption(options[selectedIndex + 1].label);
+      }
+    } else if (event.key === 'ArrowUp') {
+      setSelectedIndex(prevIndex =>
+        prevIndex > 0 ? prevIndex - 1 : prevIndex
+      );
+      if (options[selectedIndex - 1]) {
+        setSelectedOption(options[selectedIndex - 1].label);
+      }
+    } else if (event.key === 'Enter' && selectedIndex !== -1) {
+      handleOptionClick(options[selectedIndex].label);
+    }
+  };
+
   useEffect(() => {
     document.addEventListener('click', handleClickOutside);
     return () => {
@@ -45,9 +66,12 @@ export const SelectBox: React.FC<typeSelectBoxProps> = props => {
   return (
     <div
       className={cn(className, classes.selectbox, classes[variant], {
+        [classes.enabled]: isOpen,
         ...otherProps
       })}
       onClick={toggleDropdown}
+      onKeyDown={handleKeyDown}
+      tabIndex={0}
     >
       <button className={cn(classes[variant], classes.button)}>
         {selectedOption}
@@ -60,7 +84,10 @@ export const SelectBox: React.FC<typeSelectBoxProps> = props => {
         {options.map((option, index) => (
           <a
             key={index}
-            className={cn(classes[variant])}
+            className={cn(classes.option, classes[variant], {
+              [classes.selected]: option.label === selectedOption,
+              [classes.hover]: index === selectedIndex && isOpen
+            })}
             onClick={() => handleOptionClick(option.label)}
           >
             {option.label}
