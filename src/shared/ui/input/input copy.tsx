@@ -15,40 +15,28 @@ export const Input: React.FC<typeInputProps> = props => {
     value = '',
     // setValue,
     type = 'text',
-    placeholder = '',
     // name = '',
     ...otherProps
   } = props;
 
   const [inputValue, setInputValue] = useState(value);
-  const [isActive, setIsActive] = useState(false); // useState<boolean>(false)
+  // const [isActive, setIsActive] = useState(false); 
 
-  // Вариант 1.1
-  // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) : void => {
-  //   setInputValue(e.target.value);
-  //   if (e.target.value !== '') {
-  //     setIsActive(true);
-  //   } else {
-  //     setIsActive(false);
-  //   }
-  // }
+  // // Вариант 1.2
+  // const handleChange = (text: string): void => {
+  //   setInputValue(text);
 
-  // Вариант 1.2
-  const handleChange = (text: string): void => {
-    setInputValue(text);
-    text !== '' ? setIsActive(true) : setIsActive(false);
-  };
+  //   text !== '' ? setIsActive(true) : setIsActive(false);
+  // };
 
-  // Вариант 1
-  useEffect(() => {
-    value !== '' ? setIsActive(true) : setIsActive(false);
-  }, [value]);
+  // useEffect(() => {
+  //   value !== '' ? setIsActive(true) : setIsActive(false);
+  // }, [value]);
 
   return (
     <label className={cn(className, classes.form__item, classes[variant])}>
-      
-      {/* {(variant === 'standart' && label !== '') && (
-      // {(label !== null && label !== undefined && label !== '') && (
+      {/*       
+      {label !== null && label !== undefined && label !== '' && (
         <span
           className={cn(
             className,
@@ -66,11 +54,12 @@ export const Input: React.FC<typeInputProps> = props => {
         required={required}
         className={cn(className, classes.input, classes[variant])}
         value={inputValue}
-        // onChange={handleChange} // Вариант 1.1
-        onChange={e => handleChange(e.target.value)} // Вариант 1.2
+        // onChange={handleChange}
+        onChange={e => handleChange(e.target.value)}
         // name = {name}
         {...otherProps}
-      /> */}
+      />
+      */}
 
       <input
         disabled={disabled}
@@ -81,12 +70,9 @@ export const Input: React.FC<typeInputProps> = props => {
           classes[variant]
           )}
         value={inputValue}
-        onChange={e => handleChange(e.target.value)} // Вариант 1.2
-        placeholder = {placeholder}
-        {...otherProps}
       />
 
-      {(variant === 'standart' && label !== '') && (
+      {variant === 'standart' && (
         <span
           className={cn(
             className,
@@ -97,7 +83,6 @@ export const Input: React.FC<typeInputProps> = props => {
           {label}
         </span>
       )}
-
     </label>
   );
 };

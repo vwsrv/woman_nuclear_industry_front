@@ -22,7 +22,7 @@ export const TestPage: React.FC = () => {
         style={{
           padding: '20px',
           display: 'flex',
-          flexDirection: 'column',
+          flexDirection: 'column'
           // backgroundColor: '#f99'
           // justifyContent: 'center',
         }}
@@ -36,10 +36,10 @@ export const TestPage: React.FC = () => {
           }}
         >
           <Input
-            placeholder='Поиск'
-            variant='search'
+            placeholder="Поиск"
+            variant="search"
             required={false}
-            label=''
+            label=""
             // value = ''
             // className="test-class"
             // disabled={false}
@@ -56,10 +56,10 @@ export const TestPage: React.FC = () => {
           }}
         >
           <Input
-            placeholder='Поиск'
-            variant='search_in-category'
+            placeholder="Поиск"
+            variant="search_in-category"
             required={false}
-            label=''
+            label=""
             // value = ''
             // className="test-class"
             // disabled={false}
@@ -76,7 +76,7 @@ export const TestPage: React.FC = () => {
           }}
         >
           <Input
-            label='Ваше имя и фамилия:'
+            label="Ваше имя и фамилия:"
             required={false}
             // value = ''
             // className="test-class"
@@ -93,9 +93,9 @@ export const TestPage: React.FC = () => {
           }}
         >
           <Input
-            label='Ваше имя и фамилия:'
+            label="Ваше имя и фамилия:"
             required={true}
-            value='sdf'
+            value="sdf"
             // className="test-class"
             // disabled={true}
           />
