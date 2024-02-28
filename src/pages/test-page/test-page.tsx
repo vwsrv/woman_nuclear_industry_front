@@ -3,7 +3,6 @@
 import { Button } from '@/shared/ui/button';
 import { SelectBox } from '@/shared/ui/selectbox';
 import React from 'react';
-
 const selectBoxExample = [
   { value: '0', label: 'Биология', link: '#' },
   { value: '1', label: 'Химия', link: '#' },
