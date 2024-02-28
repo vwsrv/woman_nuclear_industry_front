@@ -7,7 +7,7 @@ import React, { useState, useEffect } from 'react';
 
 export const SelectBox: React.FC<typeSelectBoxProps> = props => {
   const {
-    variant = 'white',
+    variant = 'white-number',
     name,
     options,
     value,

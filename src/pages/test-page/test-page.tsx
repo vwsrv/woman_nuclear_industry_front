@@ -10,6 +10,13 @@ const selectBoxExample = [
   { value: '3', label: 'СПЕЦНОМИНАЦИЯ: ЖЕНЩИНЫ-УЧЕНЫЕ АРКТИКИ', link: '#' }
 ];
 
+const selectBoxNumbers = [
+  { value: '0', label: '1' },
+  { value: '1', label: '2' },
+  { value: '2', label: '3' },
+  { value: '3', label: '4' }
+];
+
 const onClick = () => {
   console.log('Button is clicked');
 };
@@ -19,7 +26,8 @@ export const TestPage: React.FC = () => {
     <div>
       <h1>Test page</h1>
       <div>
-        <SelectBox options={selectBoxExample} name="Выберите категорию" />
+        <SelectBox options={selectBoxNumbers} name="00" />
+        <SelectBox options={selectBoxExample} variant='violet' name="Выберите категорию" />
         <Button onClick={onClick}>Добавить</Button>
       </div>
     </div>

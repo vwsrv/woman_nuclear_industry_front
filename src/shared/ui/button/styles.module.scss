@@ -33,7 +33,7 @@
     background-color: var(--violet-color);
 
     &:not(:disabled):hover {
-      background-color: rgb(135, 99, 202);
+      background-color: var(--violet-hover);;
     }
   }
 
