@@ -20,7 +20,7 @@ export const Input: React.FC<typeInputProps> = props => {
   } = props;
 
   const [inputValue, setInputValue] = useState(value);
-  // const [isActive, setIsActive] = useState(false); 
+  // const [isActive, setIsActive] = useState(false);
 
   // // Вариант 1.2
   // const handleChange = (text: string): void => {
@@ -64,21 +64,15 @@ export const Input: React.FC<typeInputProps> = props => {
       <input
         disabled={disabled}
         required={required}
-        className={cn(
-          className, 
-          classes.input, 
-          classes[variant]
-          )}
+        className={cn(className, classes.input, classes[variant])}
         value={inputValue}
       />
 
       {variant === 'standart' && (
         <span
-          className={cn(
-            className,
-            classes.label, 
-            {[classes.required]: required}
-            )}
+          className={cn(className, classes.label, {
+            [classes.required]: required
+          })}
         >
           {label}
         </span>

@@ -46,7 +46,6 @@ export const Input: React.FC<typeInputProps> = props => {
 
   return (
     <label className={cn(className, classes.form__item, classes[variant])}>
-      
       {/* {(variant === 'standart' && label !== '') && (
       // {(label !== null && label !== undefined && label !== '') && (
         <span
@@ -75,29 +74,22 @@ export const Input: React.FC<typeInputProps> = props => {
       <input
         disabled={disabled}
         required={required}
-        className={cn(
-          className, 
-          classes.input, 
-          classes[variant]
-          )}
+        className={cn(className, classes.input, classes[variant])}
         value={inputValue}
         onChange={e => handleChange(e.target.value)} // Вариант 1.2
-        placeholder = {placeholder}
+        placeholder={placeholder}
         {...otherProps}
       />
 
-      {(variant === 'standart' && label !== '') && (
+      {variant === 'standart' && label !== '' && (
         <span
-          className={cn(
-            className,
-            classes.label, 
-            {[classes.required]: required}
-            )}
+          className={cn(className, classes.label, {
+            [classes.required]: required
+          })}
         >
           {label}
         </span>
       )}
-
     </label>
   );
 };
