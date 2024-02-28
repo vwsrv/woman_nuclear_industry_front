@@ -1,7 +1,7 @@
 'use client';
 
 import { typeInputProps } from '@/shared/ui/input/types';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import classes from './styles.module.scss';
 import cn from 'classnames';
 
@@ -13,58 +13,65 @@ export const Input: React.FC<typeInputProps> = props => {
     label,
     className,
     value = '',
+    type = 'text',
     // name = '',
     ...otherProps
   } = props;
 
-  console.log('label', label);
-  // console.log('required 2', required);
-
-  // { variant ? classes[variant] : ''} 
-  // { variant ? classes[variant] : '' }
-
-  const [ inputValue, setInputValue ] = useState(value);
-  const [ isActive, setIsActive ] = useState(false);
+  const [inputValue, setInputValue] = useState(value);
+  const [isActive, setIsActive] = useState(false); // useState<boolean>(false)
   
-  const inputRef = React.useRef<HTMLInputElement | null>(null);
+  // Вариант 1.1
+  // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) : void => {
+  //   setInputValue(e.target.value);
+  //   if (e.target.value !== '') {
+  //     setIsActive(true);
+  //   } else {
+  //     setIsActive(false);
+  //   }
+  // }
 
-  // let inputIsFilled: boolean = React.useRef(true);
-  // // let inputIsFilled: boolean = true;
+  // Вариант 1.2
+  const handleChange = (text: string) : void => {
+    setInputValue(text);
 
-  // React.useEffect(() => {
-  //   (inputValue !== '') ? 
-  //     inputIsFilled.current = true :
-  //     inputIsFilled.current = false
-  // }, [ inputValue ]);
+    text !== '' ? setIsActive(true) : setIsActive(false);
+  }
 
+  useEffect(() => {
+    value !== '' ? setIsActive(true) : setIsActive(false);
+  }, [ value ]);
+
+  
   return (
-    <div className={cn( className, classes.input__container, classes[variant] )}>
-      <label className={cn( className, classes.input__label )}>
+    // <div className={cn(className, classes.input__container, classes[variant])}>
+      <label className={cn(className, classes.form__item, classes[variant])}>
 
-        { 
-        (label !== null && label !== undefined && label !== '') && 
-        <span className={cn( className, classes.input__heading, {[classes.required]: required},
-          // {[classes.zzzzz]: inputIsFilled}
-          // classes.filled
-          {[classes.focus]: isActive}
-        )}>
-          {label}
-        </span>
-        }
+        {label !== null && label !== undefined && label !== '' && (
+          <span className={cn(className, classes.label,
+              { [classes.required]: required },
+              { [classes.active]: isActive }
+            )}
+          >
+            {label}
+          </span>
+        )}
 
         <input
-          disabled = {disabled}
-          required = {required}
-          className = {cn(className, classes.input, { [classes.circle]: disabled })}
-          onChange = {evt => { setInputValue(evt.target.value) }}
-          onFocus={() => setIsActive(true)}
-          onBlur={() => setIsActive(false)}
-          value = {inputValue}
+          disabled={disabled}
+          required={required}
+          className={cn(className, classes.input, classes[variant])}
+          value={inputValue}
+          // onChange={handleChange}
+          onChange={(e) => handleChange(e.target.value)}
           // name = {name}
           {...otherProps}
         />
 
+
+        {/* <input type="text" placeholder="" className={cn(className, classes.input)} />
+        <span className={cn(className, classes.input__header)}> {label} </span> */}
       </label>
-    </div>
+    // </div>
   );
 };
