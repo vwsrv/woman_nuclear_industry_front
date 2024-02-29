@@ -13,13 +13,16 @@ export const Textarea: React.FC<typeTextareaProps> = ({
 }) => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
-  const [focus, setFocus]: [boolean, Dispatch<SetStateAction<boolean>>] = useState(false);
+  const [focus, setFocus]: [boolean, Dispatch<SetStateAction<boolean>>] =
+    useState(false);
 
   const autoResize = (): void => {
     if (textareaRef.current) {
       textareaRef.current.rows = 1;
       textareaRef.current.style.height = '';
-      const lineHeight = parseInt(window.getComputedStyle(textareaRef.current).lineHeight);
+      const lineHeight = parseInt(
+        window.getComputedStyle(textareaRef.current).lineHeight
+      );
       const scrollHeight = textareaRef.current.scrollHeight;
       const rows = Math.ceil(scrollHeight / lineHeight);
       textareaRef.current.rows = rows;
@@ -27,14 +30,14 @@ export const Textarea: React.FC<typeTextareaProps> = ({
   };
 
   const handleFocus = (): void => {
-    setFocus(true)
+    setFocus(true);
   };
 
   const handleBlur = (): void => {
     if (!value || value === '') {
-      setFocus(false)
+      setFocus(false);
     }
-  }
+  };
 
   useEffect(() => {
     autoResize();
