@@ -28,7 +28,7 @@
     top 0.5s ease,
     left 0.5s ease,
     font-size 0.5s ease;
-  &.onValue {
+  &.onFocus {
     top: 0;
     left: 10px;
     font-size: 14px;
@@ -40,7 +40,6 @@
 }
 
 .textarea {
-  padding-left: 72px;
   max-height: 28px;
   border: none;
   outline: none;
@@ -51,10 +50,8 @@
   font-weight: 400;
   color: var(--black-color);
   background-color: var(--white-color);
-  transition: padding-left 0.5s ease;
-  &.onValue {
+  &.onFocus {
     max-height: none;
     padding-top: 20px;
-    padding-left: 0;
   }
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useRef, useState, useEffect, Dispatch, SetStateAction } from 'react';
 import { typeTextareaProps } from '@/shared/ui/textarea/types';
 import classes from './styles.module.scss';
 import cn from 'classnames';
@@ -12,6 +12,8 @@ export const Textarea: React.FC<typeTextareaProps> = ({
   setValue
 }) => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
+
+  const [focus, setFocus]: [boolean, Dispatch<SetStateAction<boolean>>] = useState(false);
 
   const autoResize = (): void => {
     if (textareaRef.current) {
@@ -25,12 +27,14 @@ export const Textarea: React.FC<typeTextareaProps> = ({
   };
 
   const handleFocus = (): void => {
-    if (textareaRef.current) {
-      textareaRef.current.scrollTop =
-        (textareaRef.current.scrollHeight - textareaRef.current.clientHeight) /
-        2;
-    }
+    setFocus(true)
   };
+
+  const handleBlur = (): void => {
+    if (!value || value === '') {
+      setFocus(false)
+    }
+  }
 
   useEffect(() => {
     autoResize();
@@ -50,7 +54,7 @@ export const Textarea: React.FC<typeTextareaProps> = ({
     >
       <label
         className={cn(className, classes.textareaLabel, {
-          [classes.onValue]: value
+          [classes.onFocus]: focus || value !== ''
         })}
         htmlFor="textarea"
       >
@@ -60,12 +64,13 @@ export const Textarea: React.FC<typeTextareaProps> = ({
       <textarea
         ref={textareaRef}
         className={cn(className, classes.textarea, {
-          [classes.onValue]: value
+          [classes.onFocus]: focus || value !== ''
         })}
         id="textarea"
         value={value}
         autoComplete="off"
         onFocus={handleFocus}
+        onBlur={handleBlur}
         onChange={e => {
           setValue(e.target.value);
           autoResize();
