@@ -21,7 +21,14 @@ export const Input: React.FC<typeInputProps> = props => {
   } = props;
 
   const [inputValue, setInputValue] = useState(value);
-  const [isActive, setIsActive] = useState(false); // useState<boolean>(false)
+  
+  // Вариант 1
+  // const [isActive, setIsActive] = useState(false); // useState<boolean>(false)
+    
+  // // Вариант 1
+  // useEffect(() => {
+  //   value !== '' ? setIsActive(true) : setIsActive(false);
+  // }, [value]);
 
   // Вариант 1.1
   // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) : void => {
@@ -33,20 +40,21 @@ export const Input: React.FC<typeInputProps> = props => {
   //   }
   // }
 
-  // Вариант 1.2
+  // // Вариант 1.2
+  // const handleChange = (text: string): void => {
+  //   setInputValue(text);
+  //   text !== '' ? setIsActive(true) : setIsActive(false);
+  // };
+
+  // Вариант 2
   const handleChange = (text: string): void => {
     setInputValue(text);
-    text !== '' ? setIsActive(true) : setIsActive(false);
   };
-
-  // Вариант 1
-  useEffect(() => {
-    value !== '' ? setIsActive(true) : setIsActive(false);
-  }, [value]);
 
   return (
     <label className={cn(className, classes.form__item, classes[variant])}>
-      {/* {(variant === 'standart' && label !== '') && (
+      {/* Вариант 1.
+      {(variant === 'standart' && label !== '') && (
       // {(label !== null && label !== undefined && label !== '') && (
         <span
           className={cn(
@@ -71,6 +79,7 @@ export const Input: React.FC<typeInputProps> = props => {
         {...otherProps}
       /> */}
 
+      {/* Вариант 2 */}
       <input
         disabled={disabled}
         required={required}

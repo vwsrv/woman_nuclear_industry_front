@@ -1,58 +1,76 @@
+/**
+ * Вариант 2.
+**************************************************/
 .form__item {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-
   border-radius: 8px;
   box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.1) inset;
-  background-color: #fff;
 }
 
 .input {
   width: 100%;
-  padding: 1rem 1.2rem;
-  // border: 1px solid #dadce0;
-  border-radius: 4px;
-  font-size: 1rem;
-  // outline-color: transparent;
+  font-size: 16px;
+  line-height: 1.75;
+  font-weight: 400;
+  background-color: transparent;
   border: none;
   outline: none;
-  background-color: transparent;
+  padding: 22px 10px 14px 10px;
 
-  // &:focus {
-  //     border: 1px solid #1ca34d;
-  // }
+  &.search,
+  &.search_in-category {
+    background-image: url('./images/search-icon.svg');
+    background-repeat: no-repeat;
+    background-position: center right 14px;
+    background-size: 24px 24px;
+    padding: 8px 52px 8px 24px;
+  }
+
+  &.search_in-category {
+    padding-left: 30px;
+  }
 
   &::placeholder {
-    color: #b1b1b1;
+    color: var(--grey-dark-color);
     opacity: 1;
   }
 
   &:not(:placeholder-shown) + span,
   &:focus + span {
-    transform: translateX(10px) translateY(-25px);
-    font-size: 0.75rem;
-    padding: 0 6px;
-  }
-
-  &:not(:focus) + span {
-    color: #b1b1b1;
+    transform: translateX(10px) translateY(2px);
+    font-size: 12px;
+    padding: 0px;
   }
 }
 
 .label {
   position: absolute;
   left: 0;
-  padding-left: 1.2rem;
-  font-size: 1rem;
-  color: #b1b1b1;
+  top: 0;
+  padding: 18px 0 0 16px;
+
+  font-size: 16px;
+  line-height: 1.75;
+  font-weight: 400;
+  color: var(--grey-dark-color);
+
   pointer-events: none;
-  transition: 0.6s;
-  background-color: rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+
+  &.required {
+    &::after {
+      content: ' *';
+      color: var(--red-color);
+    }
+  }
 }
 
-/****************************************************/
+/**
+ * Вариант 1.
+**************************************************/
 
 // .form__item {
 //   // <label>
@@ -105,7 +123,7 @@
 //   &.required {
 //     &::after {
 //       content: ' *';
-//       color: red;
+//       color: var(--red-color);
 //     }
 //   }
 
