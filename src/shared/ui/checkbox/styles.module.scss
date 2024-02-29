@@ -5,14 +5,14 @@
   .checkbox {
     -webkit-appearance: none;
     appearance: none;
-    color: #fff;
+    color: var(--white-color);
     margin: 0;
     width: 28px;
     height: 28px;
     border-radius: 8px;
     display: grid;
     place-content: center;
-    background-color: rgb(177, 177, 177);
+    background-color: var(--grey-dark-color);
   }
 
   .checkbox::before {
@@ -21,12 +21,16 @@
     height: 16px;
     transform: scale(0);
     transition: 0.08s transform linear;
-    box-shadow: inset 16px 16px rgb(255, 255, 255);
+    box-shadow: inset 16px 16px var(--white-color);
     border-radius: 50%;
   }
 
   .checkbox:checked::before {
     transform: scale(1);
+  }
+
+  .checkbox:focus {
+    outline-style: none;
   }
 
   .span {
