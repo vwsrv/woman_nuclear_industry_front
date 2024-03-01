@@ -27,13 +27,12 @@ export const TestPage: React.FC = () => {
           // justifyContent: 'center',
         }}
       >
-
         <div style={{ margin: '0 0 20px' }}>
           <Input
             label="Ваше имя и фамилия:"
             required={false}
             placeholder="sdfsdfdsfsdf"
-            variant='topside'
+            variant="topside"
             // value = ''
             // className="test-class"
             // disabled={true}
@@ -49,7 +48,6 @@ export const TestPage: React.FC = () => {
             // disabled={true}
           />
         </div>
-
       </div>
     </div>
   );
