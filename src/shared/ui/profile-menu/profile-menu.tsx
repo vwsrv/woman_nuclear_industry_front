@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { typeProfileMenuProps } from '@/shared/ui/ProfileMenu/types';
+import { typeProfileMenuProps } from '@/shared/ui/profile-menu/types';
 import Link from 'next/link';
 import classes from './styles.module.scss';
 import cn from 'classnames';
