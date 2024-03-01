@@ -19,6 +19,7 @@ export const TestPage: React.FC = () => {
 
       <div
         style={{
+          maxWidth: '440px',
           padding: '20px',
           display: 'flex',
           flexDirection: 'column'
@@ -26,71 +27,20 @@ export const TestPage: React.FC = () => {
           // justifyContent: 'center',
         }}
       >
-        <div
-          style={{
-            backgroundColor: '#fff',
-            maxWidth: '804px',
-            margin: '0 0 20px',
-            padding: '5px'
-          }}
-        >
-          <Input
-            placeholder="Поиск"
-            variant="search"
-            required={false}
-            label=""
-            // value = ''
-            // className="test-class"
-            // disabled={false}
-            // defaultValue="Текст в поле ввода"
-          />
-        </div>
 
-        <div
-          style={{
-            backgroundColor: '#fff',
-            maxWidth: '566px',
-            margin: '0 0 20px',
-            padding: '5px'
-          }}
-        >
-          <Input
-            placeholder="Поиск"
-            variant="search_in-category"
-            required={false}
-            label=""
-            // value = ''
-            // className="test-class"
-            // disabled={false}
-            // defaultValue="Текст в поле ввода"
-          />
-        </div>
-
-        <div
-          style={{
-            backgroundColor: '#fff',
-            maxWidth: '440px',
-            margin: '0 0 20px',
-            padding: '5px'
-          }}
-        >
+        <div style={{ margin: '0 0 20px' }}>
           <Input
             label="Ваше имя и фамилия:"
             required={false}
+            placeholder="sdfsdfdsfsdf"
+            variant='topside'
             // value = ''
             // className="test-class"
             // disabled={true}
           />
         </div>
 
-        <div
-          style={{
-            backgroundColor: '#fff',
-            maxWidth: '440px',
-            margin: '0 0 20px',
-            padding: '5px'
-          }}
-        >
+        <div style={{ margin: '0 0 20px' }}>
           <Input
             label="Ваше имя и фамилия:"
             required={true}
@@ -99,6 +49,7 @@ export const TestPage: React.FC = () => {
             // disabled={true}
           />
         </div>
+
       </div>
     </div>
   );

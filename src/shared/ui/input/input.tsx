@@ -7,94 +7,59 @@ import cn from 'classnames';
 
 export const Input: React.FC<typeInputProps> = props => {
   const {
-    variant = 'standart', // Значение по умолчанию
-    required = false,
-    disabled,
+    variant = 'inline', // Значение по умолчанию
     label,
     className,
     value = '',
     // setValue,
+    // disabled,
+    required = false,
     type = 'text',
     placeholder = '',
-    // name = '',
     ...otherProps
   } = props;
 
   const [inputValue, setInputValue] = useState(value);
-  
-  // Вариант 1
-  // const [isActive, setIsActive] = useState(false); // useState<boolean>(false)
-    
-  // // Вариант 1
+
+  // useState, useEffect, строка в handleChange и класс с isActive/setIsActive не нужны, все работает и без них.
+  // Если оставлять "variant", можно будет адаптировать этот код.
+  // const [isActive, setIsActive] = useState(false); 
+
   // useEffect(() => {
   //   value !== '' ? setIsActive(true) : setIsActive(false);
   // }, [value]);
 
-  // Вариант 1.1
-  // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) : void => {
-  //   setInputValue(e.target.value);
-  //   if (e.target.value !== '') {
-  //     setIsActive(true);
-  //   } else {
-  //     setIsActive(false);
-  //   }
-  // }
-
-  // // Вариант 1.2
-  // const handleChange = (text: string): void => {
-  //   setInputValue(text);
-  //   text !== '' ? setIsActive(true) : setIsActive(false);
-  // };
-
-  // Вариант 2
   const handleChange = (text: string): void => {
     setInputValue(text);
+    // text !== '' ? setIsActive(true) : setIsActive(false);
   };
-
+  
   return (
     <label className={cn(className, classes.form__item, classes[variant])}>
-      {/* Вариант 1.
-      {(variant === 'standart' && label !== '') && (
-      // {(label !== null && label !== undefined && label !== '') && (
-        <span
-          className={cn(
-            className,
-            classes.label,
-            { [classes.required]: required },
-            { [classes.active]: isActive }
-          )}
-        >
-          {label}
-        </span>
-      )}
-
       <input
-        disabled={disabled}
+        // disabled={disabled}
         required={required}
-        className={cn(className, classes.input, classes[variant])}
+        className={cn(
+          className, 
+          classes.input
+        )}
         value={inputValue}
-        // onChange={handleChange} // Вариант 1.1
-        onChange={e => handleChange(e.target.value)} // Вариант 1.2
-        // name = {name}
-        {...otherProps}
-      /> */}
-
-      {/* Вариант 2 */}
-      <input
-        disabled={disabled}
-        required={required}
-        className={cn(className, classes.input, classes[variant])}
-        value={inputValue}
-        onChange={e => handleChange(e.target.value)} // Вариант 1.2
-        placeholder={placeholder}
+        onChange={e => handleChange(e.target.value)}
+        placeholder={placeholder} // скрывается через css
+        // placeholder='' // принудительное обнуление, чтобы не перекрывал label(span)
+        // placeholder={ variant === 'inline' ? '' : placeholder}
         {...otherProps}
       />
 
-      {variant === 'standart' && label !== '' && (
+      {/* {(variant !== 'topside' && label !== undefined && label !== '') && ( */}
+      {(label !== undefined && label !== '') && (
         <span
-          className={cn(className, classes.label, {
-            [classes.required]: required
-          })}
+          className={cn(
+            className, 
+            classes.label,
+            { [classes.required]: required }, 
+            // { [classes.active]: isActive }
+          )}
         >
           {label}
         </span>

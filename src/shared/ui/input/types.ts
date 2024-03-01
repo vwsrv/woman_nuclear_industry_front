@@ -10,13 +10,13 @@ export interface typeInputProps
     InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement
   > {
-  variant?: 'search' | 'search_in-category' | 'standart';
+  variant?: 'inline' | 'topside';
   label?: string;
   required?: boolean;
-  value?: string;
-  name?: string;
   iconRight?: string;
   iconLeft?: string;
+  // name?: string;
   // type?: string;
+  value?: string;
   // setValue: Dispatch<SetStateAction<string>>;
 }
