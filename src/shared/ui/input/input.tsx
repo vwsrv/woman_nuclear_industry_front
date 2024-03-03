@@ -22,11 +22,11 @@ export const Input: React.FC<typeInputProps> = props => {
   // Можно сделать трансформацию и без участия placeholder, но его в любом случае придется обнулять или удалять у элемента.
 
   const [inputValue, setInputValue] = useState(value);
-  
+
   const handleChange = (text: string): void => {
     setInputValue(text);
   };
-  
+
   return (
     <label className={cn(className, classes.form__item)}>
       <input
@@ -35,14 +35,16 @@ export const Input: React.FC<typeInputProps> = props => {
         required={required}
         value={inputValue}
         onChange={e => handleChange(e.target.value)}
-        placeholder='' // Всегда обнуляется + скрыт через css
-        className={cn( className,  classes.input )}
+        placeholder="" // Всегда обнуляется + скрыт через css
+        className={cn(className, classes.input)}
         {...otherProps}
       />
 
       {label !== undefined && label !== '' && (
         <span
-          className={cn( className, classes.label, { [classes.required]: required } )}
+          className={cn(className, classes.label, {
+            [classes.required]: required
+          })}
         >
           {label}
         </span>
