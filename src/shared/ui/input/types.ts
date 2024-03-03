@@ -10,13 +10,10 @@ export interface typeInputProps
     InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement
   > {
-  variant?: 'inline' | 'topside';
   label?: string;
   required?: boolean;
-  iconRight?: string;
-  iconLeft?: string;
-  // name?: string;
-  // type?: string;
   value?: string;
   // setValue: Dispatch<SetStateAction<string>>;
+  name?: string;
+  type?: 'text' | 'email' | 'tel' | 'password' | 'date' | 'url' | 'number';
 }
