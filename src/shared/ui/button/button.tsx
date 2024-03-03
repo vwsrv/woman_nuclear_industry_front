@@ -17,7 +17,7 @@ export const Button: React.FC<typeButtonProps> = props => {
   return (
     <button
       disabled={disabled}
-      className={cn(className, classes.button, classes[variant], {})}
+      className={cn(className, classes.button, classes[variant])}
       {...otherProps}
     >
       {children}
