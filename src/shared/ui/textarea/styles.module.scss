@@ -1,6 +1,6 @@
 .textareaContainer {
   padding: 2px 10px 2px 10px;
-  min-width: 49.86%;
+  min-width: 411px;
   min-height: 60px;
   background: var(--white-color);
   box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.05) inset;
@@ -9,10 +9,10 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   transition: min-width 0.5s ease;
-  &.noValue {
-    justify-content: center;
-    min-width: 28.54%;
+  &.onValue {
+    min-width: 718px;
   }
 }
 

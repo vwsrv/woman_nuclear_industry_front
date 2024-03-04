@@ -52,7 +52,7 @@ export const Textarea: React.FC<typeTextareaProps> = ({
   return (
     <div
       className={cn(className, classes.textareaContainer, {
-        [classes.noValue]: !value
+        [classes.onValue]: value
       })}
     >
       <label
