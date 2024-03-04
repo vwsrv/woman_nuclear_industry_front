@@ -31,10 +31,8 @@ export const TestPage: React.FC = () => {
           <Input
             label="Ваше имя и фамилия:"
             required={false}
-            // placeholder="sdfsdfdsfsdf"
             name="name"
-            type="text"
-            // variant="topside"
+            type="password"
             // value = ''
             // className="test-class"
             // disabled={true}
@@ -45,7 +43,7 @@ export const TestPage: React.FC = () => {
           <Input
             label="Обязательное поле:"
             required={true}
-            // value="sdf"
+            value="sdf"
             name="requeridField"
             type="text"
             // className="test-class"

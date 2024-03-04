@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import classes from './styles.module.scss';
 import cn from 'classnames';
 
-export const Input: React.FC<typeInputProps> = props => {
+export const Input: React.FC<Omit<typeInputProps, 'placeholder'>> = props => {
   const {
     name,
     label,
@@ -14,12 +14,8 @@ export const Input: React.FC<typeInputProps> = props => {
     // setValue,
     required = false,
     type = 'text',
-    placeholder = '',
     ...otherProps
   } = props;
-
-  // Атрибут placeholder необходим для трансформации label. Если не будет работать в Хром - поставить значение "пробел".
-  // Можно сделать трансформацию и без участия placeholder, но его в любом случае придется обнулять или удалять у элемента.
 
   const [inputValue, setInputValue] = useState(value);
 
@@ -35,8 +31,8 @@ export const Input: React.FC<typeInputProps> = props => {
         required={required}
         value={inputValue}
         onChange={e => handleChange(e.target.value)}
-        placeholder="" // Всегда обнуляется + скрыт через css
         className={cn(className, classes.input)}
+        placeholder="" // пустой атрибут необходим для трансформации label(span)
         {...otherProps}
       />
 
