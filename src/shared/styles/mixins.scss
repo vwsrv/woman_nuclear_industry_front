@@ -1,0 +1,14 @@
+@mixin mp-null {
+  margin: 0;
+  padding: 0;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+}
