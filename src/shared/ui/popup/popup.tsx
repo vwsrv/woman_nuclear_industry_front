@@ -1,7 +1,6 @@
 'use-client';
 
 import React from 'react';
-('react');
 import ReactDOM from 'react-dom';
 import classes from './styles.module.scss';
 import { PopupOptions } from './types';
@@ -15,6 +14,7 @@ export const Popup: React.FC<PopupOptions> = props => {
     title,
     children,
     actions,
+    className,
     ...otherProps
   } = props;
 
@@ -26,19 +26,27 @@ export const Popup: React.FC<PopupOptions> = props => {
     }
   };
 
-  return ReactDOM.createPortal(
-    <div className={cn(classes.overlay)} onClick={handleClickByOverlay}>
-      <div className={cn(classes.popup)}>
-        <div className={cn(classes.popupContainer)}>
-          <h2>{title}</h2>
-          <button
-            className={cn(classes.popupButton)}
-            aria-label="Закрыть"
-            onClick={onClose}
-          ></button>
-        </div>
-      </div>
-    </div>,
-    document.body
-  );
+  return isOpen
+    ? ReactDOM.createPortal(
+        <div className={cn(classes.overlay)} onClick={handleClickByOverlay}>
+          <div className={cn(classes.popup)}>
+            <div className={cn(classes.popupContainer)}>
+              <div className={cn(classes.popupHeading)}>
+                <h2 className="bold">{title}</h2>
+                <button
+                  className={cn(classes.popupButton)}
+                  aria-label="Закрыть"
+                  onClick={onClose}
+                />
+              </div>
+              <div className={cn(classes.popupContent)}>
+                <div></div>
+                <div></div>
+              </div>
+            </div>
+          </div>
+        </div>,
+        document.body
+      )
+    : null;
 };
