@@ -7,7 +7,7 @@
   transition: 0.3s;
 
   &::after {
-    content: url('../../images/arrow-down--white.svg');
+    content: url('../../images/for-selectbox/arrow-down--white.svg');
     position: absolute;
     top: 50%;
     right: 25px;
@@ -19,7 +19,7 @@
     border: 1px solid var(--black-color);
 
     &::after {
-      content: url('../../images/arrow-down--black.svg');
+      content: url('../../images/for-selectbox/arrow-down--black.svg');
       right: 27px;
     }
   }
@@ -29,7 +29,7 @@
     box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.3);
 
     &::after {
-      content: url('../../images/arrow-down--black.svg');
+      content: url('../../images/for-selectbox//arrow-down--black.svg');
       right: 27px;
     }
   }
