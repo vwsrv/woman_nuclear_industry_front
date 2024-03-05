@@ -10,7 +10,13 @@ export const PersonCard: React.FC<typePersonCardProps> = props => {
 
   return (
     <div className={cn(classes.container)}>
-      <Image src={imageUrl} alt={name} width={277} height={287} />
+      <Image
+        width={278}
+        height={287}
+        className={cn(classes.image)}
+        src={imageUrl}
+        alt={name}
+      />
       <div className={cn(classes.buttonContainer)}>
         {typeof handler === 'function' ? (
           <button className={cn(classes.button)} onClick={handler}>

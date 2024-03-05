@@ -5,6 +5,7 @@
   max-width: 278px;
   width: 100%;
   transition: all ease-in 0.2s;
+  min-height: 491px;
   &:not(:disabled):hover {
     transform: scale(1.1);
     .buttonContainer {
@@ -29,12 +30,20 @@
   background-color: rgba(217, 217, 217, 0.5);
 }
 
+.image {
+  object-fit: cover;
+  object-position: top;
+  border-radius: 8px 8px 0 0;
+}
+
 .button {
   background-color: rgba(255, 255, 255, 1);
   text-decoration: none;
   color: var(--black-color);
   padding: 8px 30px;
   border-radius: 8px;
+  border: none;
+  cursor: pointer;
 }
 .buttonText {
   margin: 0;
