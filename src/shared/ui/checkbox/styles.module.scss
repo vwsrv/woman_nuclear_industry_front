@@ -13,24 +13,30 @@
     display: grid;
     place-content: center;
     background-color: var(--grey-dark-color);
+    transition: 0.15s background-color linear;
   }
 
   .checkbox::before {
     content: '';
     width: 16px;
     height: 16px;
-    transform: scale(0);
-    transition: 0.08s transform linear;
+    opacity: 0;
+    transition: 0.11s opacity linear;
     box-shadow: inset 16px 16px var(--white-color);
     border-radius: 50%;
   }
 
   .checkbox:checked::before {
-    transform: scale(1);
+    opacity: 1;
   }
 
-  .checkbox:focus {
-    outline-style: none;
+  .checkbox:focus-visible {
+    outline: 6px solid var(--overlay-color);
+    outline-offset: 0;
+  }
+
+  .checkbox:hover {
+    background-color: var(--overlay-2-color);
   }
 
   .span {
