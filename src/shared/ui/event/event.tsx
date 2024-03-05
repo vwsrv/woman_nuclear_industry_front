@@ -6,9 +6,9 @@ import Link from 'next/link';
 import classes from './styles.module.scss';
 import cn from 'classnames';
 import Image from 'next/image';
-import EventImage from './images/image_event.png';
-import CalendarIcon from './images/calendar_icon.svg';
-import EventIcon from './images/event_icon.svg';
+import EventImage from '@/shared/ui/event/images/image_event.png';
+import CalendarIcon from '@/shared/ui/event/images/calendar_icon.svg';
+import EventIcon from '@/shared/ui/event/images/event_icon.svg';
 
 
 export const Event: React.FC<typeEventProps> = props => {
@@ -22,35 +22,35 @@ export const Event: React.FC<typeEventProps> = props => {
   } = props;
 
   return (
-    <Link className={cn(className, classes.event_container)} href={linkUrl}>
+    <Link className={cn(className, classes.container)} href={linkUrl}>
       <Image 
-        className={cn(classes.event__image)}
+        className={cn(classes.image)}
         src={imageUrl ? imageUrl : EventImage}
         alt='фото мероприятия'
         width={431}
         height={450} 
       />
-      <div className={cn(classes.event__data)}>
-        <div className={cn(classes.event__info)}>
+      <div className={cn(classes.data)}>
+        <div className={cn(classes.info)}>
           <Image 
-            className={cn(classes.event__icon, classes.event__icon_calendar)}
+            className={cn(classes.icon, classes.calendar)}
             src={CalendarIcon}
             alt='calendar'
             width={28}
             height={28} 
           />
-          <p className={cn(classes.event__date)}>{date}</p>
+          <p className={cn(classes.date)}>{date}</p>
 
           <Image 
-            className={cn(classes.event__icon, classes.event__icon_event)}
+            className={cn(classes.icon, classes.event)}
             src={EventIcon}
             alt='event'
             width={28}
             height={28}
           />
-          <p className={cn(classes.event__type)}>{eventType}</p>
+          <p className={cn(classes.type)}>{eventType}</p>
         </div>
-        <h3 className={cn(classes.event__title)}>{title}</h3>
+        <h3 className={cn(classes.title)}>{title}</h3>
       </div>
     </Link>
   );

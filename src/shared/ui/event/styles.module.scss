@@ -1,4 +1,4 @@
-.event_container {
+.container {
   max-width: 431px;
   height: 450px;
   border-radius: 8px;
@@ -8,15 +8,16 @@
   padding: 0;
   background-repeat: no-repeat;
   background-position: center;
+  text-decoration: none;
 }
 
-.event__image {
+.image {
   max-width: 431px;
   z-index: 0;
   position: absolute;
 }
 
-.event__data {
+.data {
   display: flex;
   position: relative;
   flex-direction: column;
@@ -29,7 +30,7 @@
   background-color: var(--overlay-2-color);
 }
 
-.event__info {
+.info {
   display: flex;
   position: relative;
   flex-direction: row;
@@ -46,31 +47,31 @@
   }
 }
 
-.event__icon {
+.icon {
   background-color: var(--white-color);
   background-color: transparent;
   margin-right: 10px;
 }
 
-.event__icon_calendar {
+.calendar {
   border: 1px;
 }
 
-.event__icon_event {
+.event {
   margin-left: 20px;
 }
 
-.event__type {
+.type {
   min-width: 83px;
   height: 28px;
 }
 
-.event__date {
+.date {
   width: 146px;
   height: 28px;
 }
 
-.event__title {
+.title {
   width: 330px;
   height: 48px;
   margin: 20px auto 35px 20px;
