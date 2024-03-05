@@ -1,2 +1,1 @@
-export { ProfileMenu } from './ProfileMenu';
-export { arrayPropsProfileMenu } from './constants';
+export { ProfileMenu } from './profile-menu';
