@@ -1,8 +1,9 @@
-import { StaticImport } from 'next/dist/shared/lib/get-img-props';
-import { ReactNode } from 'react';
+import { StaticImageData } from 'next/dist/shared/lib/get-img-props';
+import { ReactNode, DetailedHTMLProps, HTMLAttributes } from 'react';
 
-export type typeHighlightProps = {
+export interface IHighlightProps
+  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   title: string;
-  content: ReactNode;
-  bgImage: StaticImport;
-};
+  children: ReactNode;
+  bgImage: StaticImageData;
+}

@@ -1,23 +1,24 @@
 'use client';
 
-import { typeHighlightProps } from '@/shared/ui/highlight/types';
+import { IHighlightProps } from '@/shared/ui/highlight/types';
 import React from 'react';
 import classes from './styles.module.scss';
 import cn from 'classnames';
-import Image from 'next/image';
 
-export const Highlight: React.FC<typeHighlightProps> = ({
+export const Highlight: React.FC<IHighlightProps> = ({
   title,
-  content,
+  children,
   bgImage
 }) => {
   return (
-    <div className={cn(classes.highlight)}>
-      <div className={cn(classes.content)}>
+    <div
+      className={cn(classes.highlight)}
+      style={{ backgroundImage: `url(${bgImage.src})` }}
+    >
+      <div className={cn(classes.children)}>
         <h2 className={cn(classes.title)}>{title}</h2>
-        {content}
+        {children}
       </div>
-      <Image className={cn(classes.bgImage)} src={bgImage} alt="bgImage" />
     </div>
   );
 };
