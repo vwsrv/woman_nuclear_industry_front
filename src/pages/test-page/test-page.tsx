@@ -7,11 +7,7 @@ export const TestPage: React.FC = () => {
     <div>
       <h1>Test page</h1>
       <div>
-        <Button
-          disabled={false}
-          className="test-class"
-          onClick={() => console.log('Test click')}
-        >
+        <Button disabled={false} className="test-class">
           Test button
         </Button>
       </div>
