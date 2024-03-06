@@ -40,8 +40,7 @@ export const Popup: React.FC<PopupOptions> = props => {
                 />
               </div>
               <div className={cn(classes.popupContent)}>
-                <div></div>
-                <div></div>
+                {children}
               </div>
             </div>
           </div>
