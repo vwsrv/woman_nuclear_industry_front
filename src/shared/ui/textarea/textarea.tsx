@@ -65,11 +65,16 @@ export const Textarea: React.FC<typeTextareaProps> = ({
       }}
     >
       <label
-        className={cn(className, classes.textareaLabel, {
-          [classes.onFocus]: focus || value !== ''
-        }, {
-          [classes.required]: required
-        })}
+        className={cn(
+          className,
+          classes.textareaLabel,
+          {
+            [classes.onFocus]: focus || value !== ''
+          },
+          {
+            [classes.required]: required
+          }
+        )}
         htmlFor="textarea"
       >
         {label}
