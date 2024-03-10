@@ -3,16 +3,13 @@
   cursor: pointer;
   height: 44px;
   border-radius: 8px;
-  max-width: 259px;
   transition: 0.3s;
+  width: fit-content;
+  max-width: 259px;
 
   &::after {
     content: url('../../images/for-selectbox/arrow-down--white.svg');
-    position: absolute;
-    top: 50%;
-    right: 25px;
-    width: 20px;
-    transform: translateY(-50%);
+    margin-right: 25px;
   }
 
   &.white {
@@ -20,17 +17,14 @@
 
     &::after {
       content: url('../../images/for-selectbox/arrow-down--black.svg');
-      right: 27px;
     }
   }
 
   &.white-number {
-    max-width: 107px;
     box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.3);
 
     &::after {
       content: url('../../images/for-selectbox//arrow-down--black.svg');
-      right: 27px;
     }
   }
 
@@ -60,12 +54,13 @@
 }
 
 .button {
+  padding: 0;
   font-family: var(--font-inter);
   font-size: 16px;
   font-weight: 400;
   line-height: 28px;
   letter-spacing: 0em;
-  padding-left: 30px;
+  margin: 0 10px 0 30px;
   text-align: left;
   cursor: pointer;
   overflow: hidden;
@@ -76,22 +71,16 @@
   color: var(--white-color);
   border: none;
   background: none;
-  width: 85%;
   height: 100%;
+  max-width: 68.3%;
 
   &.white {
     color: var(--black-color);
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    border-radius: 0;
   }
 
   &.white-number {
-    padding-left: 35px;
     color: var(--black-color);
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    border-radius: 0;
+    border-radius: 8px 8px 0 0;
   }
 }
 

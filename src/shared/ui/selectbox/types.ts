@@ -1,17 +1,14 @@
-import { SelectHTMLAttributes, DetailedHTMLProps } from 'react';
+import { SelectHTMLAttributes, ChangeEventHandler } from 'react';
 
 export interface Option {
   value: string;
   label: string;
-  link?: string;
 }
 
 export interface typeSelectBoxProps
-  extends DetailedHTMLProps<
-    SelectHTMLAttributes<HTMLSelectElement>,
-    HTMLSelectElement
-  > {
+  extends Omit<SelectHTMLAttributes<HTMLSelectElement>, 'onChange'> {
   variant?: 'violet' | 'white' | 'blue';
-  name: string;
   options: Option[];
+  onChange?: ChangeEventHandler<HTMLSelectElement> &
+    ((selectedValue: string) => void);
 }

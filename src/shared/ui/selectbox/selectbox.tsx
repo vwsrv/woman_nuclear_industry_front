@@ -7,18 +7,19 @@ import React, { useState, useEffect } from 'react';
 
 export const SelectBox: React.FC<typeSelectBoxProps> = props => {
   const {
-    variant = 'white-number',
+    variant = 'violet',
     name,
     options,
     value,
     disabled,
     className,
+    onChange,
     ...otherProps
   } = props;
 
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [selectedOption, setSelectedOption] = useState<string>(name);
-  const [selectedIndex, setSelectedIndex] = useState<number>(-1);
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState(name);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -34,6 +35,9 @@ export const SelectBox: React.FC<typeSelectBoxProps> = props => {
   const handleOptionClick = (optionLabel: string) => {
     setSelectedOption(optionLabel);
     setIsOpen(false);
+    if (onChange) { 
+      onChange(optionLabel);
+    }
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -84,7 +88,6 @@ export const SelectBox: React.FC<typeSelectBoxProps> = props => {
         {options.map((option, index) => (
           <a
             key={index}
-            href={option.link}
             className={cn(classes.option, classes[variant], {
               [classes.selected]: option.label === selectedOption,
               [classes.hover]: index === selectedIndex && isOpen
