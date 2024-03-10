@@ -35,7 +35,7 @@ export const SelectBox: React.FC<typeSelectBoxProps> = props => {
   const handleOptionClick = (optionLabel: string) => {
     setSelectedOption(optionLabel);
     setIsOpen(false);
-    if (onChange) { 
+    if (onChange) {
       onChange(optionLabel);
     }
   };
