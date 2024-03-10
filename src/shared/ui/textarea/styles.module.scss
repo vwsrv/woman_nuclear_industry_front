@@ -1,25 +1,31 @@
-.textareaContainer {
-  padding: 2px 10px 2px 10px;
-  min-width: 411px;
-  min-height: 60px;
-  background: var(--white-color);
+.textareaWrapper {
+  margin: 0;
+  padding: 0;
+  max-width: 431px;
+  min-height: 64px;
   box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.05) inset;
   border-radius: 8px;
   border: none;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   transition: min-width 0.5s ease;
+  cursor: text;
+  background-color: transparent;
+
+  &.onFocus {
+    background-color: var(--white-color);
+  }
+
   &.onValue {
-    min-width: 718px;
+    max-width: none;
   }
 }
 
 .textareaLabel {
+  margin: 0;
+  padding: 0 10px;
   position: absolute;
-  top: 20px;
-  left: 15px;
+  top: 50%;
+  left: 6px;
   font-size: 16px;
   line-height: 28px;
   font-weight: 400;
@@ -27,31 +33,40 @@
   transition:
     top 0.5s ease,
     left 0.5s ease,
-    font-size 0.5s ease;
+    font-size 0.5s ease,
+    transform 0.5s ease;
+  transform: translate(-50%, -50%) translateX(50%);
+  z-index: 2;
+
   &.onFocus {
     top: 0;
-    left: 10px;
+    left: 0;
     font-size: 14px;
+    transform: none;
+  }
+
+  &::after {
+    content: '*';
+    color: var(--red-color);
+    margin: 0;
+    padding-left: 5px;
   }
 }
 
-.textareaStar {
-  color: var(--red-color);
-}
-
 .textarea {
-  max-height: 28px;
+  margin: 22px 10px 0 10px;
+  padding: 0;
+  width: calc(100% - 20px);
+  min-height: 100%;
   border: none;
   outline: none;
   resize: none;
   overflow: hidden;
   font-size: 16px;
-  line-height: 1.75;
   font-weight: 400;
   color: var(--black-color);
-  background-color: var(--white-color);
-  &.onFocus {
-    max-height: none;
-    padding-top: 20px;
+
+  &.moreTwoRows {
+    line-height: 1.75;
   }
 }
