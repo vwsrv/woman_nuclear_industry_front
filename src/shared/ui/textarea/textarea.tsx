@@ -11,7 +11,8 @@ export const Textarea: React.FC<typeTextareaProps> = ({
   value,
   setValue,
   focus,
-  setFocus
+  setFocus,
+  required
 }) => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
 
@@ -66,6 +67,8 @@ export const Textarea: React.FC<typeTextareaProps> = ({
       <label
         className={cn(className, classes.textareaLabel, {
           [classes.onFocus]: focus || value !== ''
+        }, {
+          [classes.required]: required
         })}
         htmlFor="textarea"
       >

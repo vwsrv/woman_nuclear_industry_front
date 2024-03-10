@@ -45,11 +45,13 @@
     transform: none;
   }
 
-  &::after {
-    content: '*';
-    color: var(--red-color);
-    margin: 0;
-    padding-left: 5px;
+  &.required {
+    &::after {
+      content: '*';
+      color: var(--red-color);
+      margin: 0;
+      padding-left: 5px;
+    }
   }
 }
 
