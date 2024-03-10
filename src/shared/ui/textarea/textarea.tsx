@@ -81,11 +81,18 @@ export const Textarea: React.FC<typeTextareaProps> = ({
       </label>
       <textarea
         ref={textareaRef}
-        className={cn(className, classes.textarea, {
-          [classes.moreTwoRows]:
-            (textareaRef.current && textareaRef.current.rows >= 2) ||
-            value !== ''
-        })}
+        className={cn(
+          className,
+          classes.textarea,
+          {
+            [classes.onFocus]: focus || value !== ''
+          },
+          {
+            [classes.moreTwoRows]:
+              (textareaRef.current && textareaRef.current.rows >= 2) ||
+              value !== ''
+          }
+        )}
         id="textarea"
         value={value}
         autoComplete="off"
@@ -95,6 +102,7 @@ export const Textarea: React.FC<typeTextareaProps> = ({
           setValue(e.target.value);
           autoResize();
         }}
+        required={required}
       />
     </div>
   );

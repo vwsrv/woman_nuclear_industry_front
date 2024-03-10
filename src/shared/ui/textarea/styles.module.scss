@@ -67,6 +67,11 @@
   font-size: 16px;
   font-weight: 400;
   color: var(--black-color);
+  background-color: transparent;
+
+  &.onFocus {
+    background-color: var(--white-color);
+  }
 
   &.moreTwoRows {
     line-height: 1.75;
