@@ -5,7 +5,11 @@ import React from 'react';
 import { ContactMap } from '@/shared/ui/contact-map';
 
 export const TestPage: React.FC = () => {
-  const coords = [59.961656, 30.29801];
+  const coords = {
+    latitude:55.826655,
+    longitude: 37.427372
+  }
+
   return (
     <div>
       <h1>Test page</h1>
