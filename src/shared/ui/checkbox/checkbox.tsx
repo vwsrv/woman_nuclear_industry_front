@@ -1,7 +1,7 @@
 'use client';
 
 import { FC } from 'react';
-import { ITypeCheckboxProps } from './types';
+import { ICheckboxProps } from './types';
 import classes from './styles.module.scss';
 import cn from 'classnames';
 
@@ -12,12 +12,11 @@ import cn from 'classnames';
     setIsChecked(evt.target.checked);
 };*/
 
-export const Checkbox: FC<ITypeCheckboxProps> = props => {
+export const Checkbox: FC<ICheckboxProps> = props => {
   const {
     id,
     className,
     checked,
-    label,
     textSize = 'm',
     onChange,
     children,
