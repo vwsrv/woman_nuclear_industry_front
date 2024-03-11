@@ -6,6 +6,7 @@ import { NewsProps } from './types';
 import Link from 'next/link';
 import Image from 'next/image';
 import calendar from './images/calendar.svg';
+import { months } from './constants/months';
 
 export const News: React.FC<NewsProps> = props => {
   const { imageUrl, date, title, link } = props;
@@ -13,8 +14,9 @@ export const News: React.FC<NewsProps> = props => {
     <Link href={link} className={cn(classes.news)}>
       <div className={cn(classes.news__image)}>
         <Image
-          src={imageUrl}
-          alt="Изображение новости"
+          src={imageUrl ? imageUrl : "https://imgholder.ru/600x400/8493a8/adb9ca&text=Нет+изображения&font=kelson"}
+          alt={title}
+          style={{ objectFit: 'cover' }}
           width={308}
           height={209}
         ></Image>
@@ -22,14 +24,11 @@ export const News: React.FC<NewsProps> = props => {
       <div className={cn(classes.news__content)}>
         <div className={cn(classes.news__content_containerDate)}>
           <div>
-            <Image
-              src={calendar}
-              alt="Изображение календаря"
-              width={28}
-              height={28}
-            />
+            <Image src={calendar} alt="" width={28} height={28} />
           </div>
-          <p className={cn(classes.news__content_date)}>{date}</p>
+          <p
+            className={cn(classes.news__content_date)}
+          >{`${date.getDate()} ${months[date.getMonth()]}, ${date.getHours()}:${date.getMinutes() < 10 ? `0${date.getMinutes()}` : date.getMinutes()}`}</p>
         </div>
         <h1 className={cn(classes.news__content_title)}>{title}</h1>
       </div>
