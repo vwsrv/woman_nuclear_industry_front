@@ -1,7 +1,6 @@
 import { HTMLAttributes, DetailedHTMLProps } from 'react';
 
 export interface typeProfileMenuPropsTitle {
-  id: number;
   title: string;
   link: string;
 }
@@ -11,5 +10,5 @@ export interface typeProfileMenuProps
     HTMLAttributes<HTMLUListElement>,
     HTMLUListElement
   > {
-  titleProps: typeProfileMenuPropsTitle[];
+  menuItems: typeProfileMenuPropsTitle[];
 }
