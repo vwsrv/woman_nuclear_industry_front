@@ -20,20 +20,19 @@ export const Checkbox: FC<ICheckboxProps> = props => {
     textSize = 'm',
     onChange,
     children,
+    value,
     ...otherProps
   } = props;
 
   return (
-    <label
-      htmlFor={id}
-      className={cn(className, classes.label, {
-        [classes.active]: checked
-      })}
-    >
+    <label htmlFor={id} className={cn(className, classes.label)}>
       <input
-        className={cn(classes.checkbox)}
+        className={cn(classes.checkbox, {
+          [classes.checked]: checked
+        })}
         type="checkbox"
         id={id}
+        value={id}
         checked={checked}
         onChange={onChange}
         {...otherProps}

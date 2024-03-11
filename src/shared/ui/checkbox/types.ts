@@ -2,7 +2,7 @@ import { ChangeEventHandler, DetailedHTMLProps, InputHTMLAttributes, ReactNode }
 
 export interface ICheckboxProps extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
   textSize?: 'm' | 'l';
-  checked: boolean;
+  checked: boolean | undefined;
   children?: ReactNode;
   onChange: ChangeEventHandler<HTMLInputElement> | undefined;
 }
