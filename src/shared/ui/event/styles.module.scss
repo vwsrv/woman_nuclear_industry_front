@@ -34,7 +34,7 @@
   display: flex;
   position: relative;
   flex-direction: row;
-  margin: 20px auto 0 28px;
+  margin: 20px 28px 0 28px;
   justify-content: left;
 
   p {
@@ -44,6 +44,7 @@
     height: 28px;
     margin: 0;
     padding: 0;
+    white-space: nowrap;
   }
 }
 
@@ -62,12 +63,14 @@
 }
 
 .type {
-  min-width: 83px;
+  width: 146px;
   height: 28px;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .date {
-  width: 146px;
+  width: 164px;
   height: 28px;
 }
 
@@ -77,8 +80,11 @@
   margin: 20px auto 35px 20px;
   justify-self: left;
   color: var(--white-color);
+  font-family: var(--font-inter);
   background-color: transparent;
   text-overflow: ellipsis;
   overflow: hidden;
-  font-family: var(--font-inter);
+  display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }

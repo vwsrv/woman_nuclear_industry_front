@@ -5,7 +5,7 @@ import React from 'react';
 
 export const TestPage: React.FC = () => {
   return (
-   <div>
+    <div>
       <h1>Test page</h1>
       <div>
         <Button
@@ -13,10 +13,9 @@ export const TestPage: React.FC = () => {
           className="test-class"
           onClick={() => console.log('Test click')}
         >
-        Test button
+          Test button
         </Button>
       </div>
     </div>
-   
-  )
+  );
 };
