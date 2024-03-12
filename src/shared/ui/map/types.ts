@@ -1,9 +1,9 @@
 import { DetailedHTMLProps, HTMLAttributes } from 'react';
 
-export interface yandexMapProps
+export interface mapProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  location: {
-    latitude: number;
-    longitude: number;
+  coordinats: {
+    lat: number;
+    lng: number;
   };
 }

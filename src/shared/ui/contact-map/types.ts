@@ -1,9 +1,12 @@
+import { DetailedHTMLProps, HTMLAttributes } from 'react';
+
 interface coordinats {
-  latitude: number;
-  longitude: number;
+  lat: number;
+  lng: number;
 }
 
-export interface contactMapProps {
+export interface contactMapProps
+  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   address: string;
   buisnessHours: string;
   email: string;

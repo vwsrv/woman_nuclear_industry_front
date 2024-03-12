@@ -1,0 +1,14 @@
+.map {
+  width: 100%;
+  min-height: 517px;
+}
+
+.mapMarker {
+  width: 3rem;
+  height: 3rem;
+  position: relative;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
