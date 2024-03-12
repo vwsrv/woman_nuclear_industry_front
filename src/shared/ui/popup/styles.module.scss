@@ -1,27 +1,43 @@
 .overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: fixed;
   width: 100vw;
   height: 100vh;
   top: 0;
-  right: 0;
+  left: 0;
   background-color: var(--overlay-2-color);
-  overflow: auto;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s ease,
+    visibility 0s linear 0.3s;
 
-  .popup {
-    display: flex;
-    flex-direction: column;
-    z-index: 1;
-    background-color: var(--white-color);
-    position: fixed;
-    border-radius: 8px;
-    width: 75vw;
-    max-width: 1216px;
-    max-height: 75vh;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    overflow: auto;
+  &.active {
+    opacity: 1;
+    visibility: visible;
     transition: opacity 0.3s ease;
+  }
+}
+
+.popup {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  z-index: 1;
+  background-color: var(--white-color);
+  border-radius: 8px;
+  width: 75vw;
+  max-width: 1216px;
+  max-height: 75vh;
+  overflow: auto;
+  transform: scale(0.8);
+  transition: transform 0.3s ease;
+
+  &.active {
+    transform: scale(1);
+    transition: transform 0.3s ease;
   }
 
   .popupContainer {
@@ -63,6 +79,12 @@
       background-position: top;
       width: 43px;
       height: 40px;
+      transition: 0.3s;
+
+      &:hover {
+        opacity: 0.7;
+        transition: 0.3s;
+      }
     }
   }
 }
