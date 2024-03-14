@@ -17,6 +17,12 @@
   outline: none;
   padding: 22px 10px 14px 10px;
 
+  color: var(--grey-dark-color);
+
+  &:focus {
+    color: var(--black-color);
+  }
+
   &::placeholder {
     opacity: 0;
   }

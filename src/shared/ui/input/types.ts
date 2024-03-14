@@ -1,8 +1,8 @@
 import {
   DetailedHTMLProps,
-  InputHTMLAttributes
-  // Dispatch,
-  // SetStateAction
+  InputHTMLAttributes,
+  Dispatch,
+  SetStateAction
 } from 'react';
 
 export interface typeInputProps
@@ -11,9 +11,9 @@ export interface typeInputProps
     HTMLInputElement
   > {
   label?: string;
-  required?: boolean;
+  // required?: boolean;
   value?: string;
-  // setValue: Dispatch<SetStateAction<string>>;
+  setValue: Dispatch<SetStateAction<string>>;
   name?: string;
   type?: 'text' | 'email' | 'tel' | 'password' | 'date' | 'url' | 'number';
 }

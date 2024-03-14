@@ -11,16 +11,17 @@ export const Input: React.FC<Omit<typeInputProps, 'placeholder'>> = props => {
     label,
     className,
     value = '',
-    // setValue,
-    required = false,
+    setValue,
+    // required = false,
+    required,
     type = 'text',
     ...otherProps
   } = props;
 
-  const [inputValue, setInputValue] = useState(value);
+  // const [inputValue, setInputValue] = useState(value);
 
   const handleChange = (text: string): void => {
-    setInputValue(text);
+    setValue(text);
   };
 
   return (
@@ -29,7 +30,9 @@ export const Input: React.FC<Omit<typeInputProps, 'placeholder'>> = props => {
         name={name}
         type={type}
         required={required}
-        value={inputValue}
+        // value={inputValue}
+        // onChange={e => handleChange(e.target.value)}
+        value={value}
         onChange={e => handleChange(e.target.value)}
         className={cn(className, classes.input)}
         placeholder="" // пустой атрибут необходим для трансформации label(span)

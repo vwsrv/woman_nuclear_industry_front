@@ -4,6 +4,9 @@ import { Button } from '@/shared/ui/button';
 import { Input } from '@/shared/ui/input';
 import React from 'react';
 export const TestPage: React.FC = () => {
+
+  const [value, setValue] = React.useState('ssdf');
+
   return (
     <div>
       <h1>Test page</h1>
@@ -32,7 +35,8 @@ export const TestPage: React.FC = () => {
             label="Ваше имя и фамилия:"
             required={false}
             name="name"
-            type="password"
+            type="text"
+            setValue={setValue}
             // value = ''
             // className="test-class"
             // disabled={true}
@@ -43,7 +47,8 @@ export const TestPage: React.FC = () => {
           <Input
             label="Обязательное поле:"
             required={true}
-            value="sdf"
+            value={value}
+            setValue={setValue}
             name="requeridField"
             type="text"
             // className="test-class"
