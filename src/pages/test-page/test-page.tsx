@@ -4,7 +4,6 @@ import { Button } from '@/shared/ui/button';
 import { Input } from '@/shared/ui/input';
 import React from 'react';
 export const TestPage: React.FC = () => {
-
   const [value, setValue] = React.useState('ssdf');
 
   return (
