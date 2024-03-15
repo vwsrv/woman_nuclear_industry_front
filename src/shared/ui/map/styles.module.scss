@@ -5,11 +5,17 @@
 }
 
 .mapMarker {
-  width: 3rem;
-  height: 3rem;
   position: relative;
   transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
   align-items: center;
+  mask-image: linear-gradient(to bottom, black, transparent),
+    linear-gradient(to top, transparent, black 20%);
+  mask-position: 0 100%;
+  mask-size: 100% 200%;
+  transition: mask-position 0.3s ease-out;
+  &:hover {
+    mask-position: 0 0%;
+  }
 }

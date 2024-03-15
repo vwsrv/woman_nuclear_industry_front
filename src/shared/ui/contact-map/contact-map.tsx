@@ -20,7 +20,7 @@ export const ContactMap: React.FC<contactMapProps> = ({
   coordinats
 }) => {
   return (
-    <div className={cn(className, classes.contactMap)}>
+    <address className={cn(className, classes.contactMap)}>
       <div className={cn(className, classes.contactMapWrapper)}>
         <p className={cn(className, classes.contactMapAddress)}>{address}</p>
         <p className={cn(className, classes.contactMapHours)}>
@@ -36,6 +36,6 @@ export const ContactMap: React.FC<contactMapProps> = ({
       </div>
       <YandexMapLoader />
       <Map className="map" coordinats={coordinats} />
-    </div>
+    </address>
   );
 };
