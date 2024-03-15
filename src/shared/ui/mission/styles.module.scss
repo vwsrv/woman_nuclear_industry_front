@@ -1,0 +1,52 @@
+.mission {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 60px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-size: 295px;
+  color: var(--black-color);
+}
+
+.title {
+  margin-bottom: 12px;
+  font-size: 32px;
+  margin-top: 0;
+}
+
+.text {
+  max-width: 646px;
+  margin-bottom: 60px;
+  margin-top: 0;
+}
+
+.counter {
+  width: 100%;
+  max-width: 1094px;
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 50px;
+  margin: 0;
+  padding: 0;
+}
+
+.counterValue {
+  font-family: var(--font-montserrat);
+  font-size: 32px;
+  line-height: 1.25;
+  margin: 0;
+  margin-bottom: 8px;
+}
+
+.counterLabel {
+  line-height: 1.75;
+  margin: 0;
+}
