@@ -5,6 +5,12 @@
   align-items: center;
   border-radius: 8px;
   box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.1) inset;
+
+  &.active .label,
+  &:focus-within .label {
+    font-size: 12px;
+    transform: translate(-8px, -14px);
+  }
 }
 
 .input {
@@ -21,17 +27,6 @@
 
   &:focus {
     color: var(--black-color);
-  }
-
-  &::placeholder {
-    opacity: 0;
-  }
-
-  &:not(:placeholder-shown) + span,
-  &:focus + span {
-    transform: translateX(10px) translateY(2px);
-    padding: 0px;
-    font-size: 12px;
   }
 }
 

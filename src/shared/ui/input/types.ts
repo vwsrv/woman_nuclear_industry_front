@@ -1,8 +1,7 @@
 import {
   DetailedHTMLProps,
   InputHTMLAttributes,
-  Dispatch,
-  SetStateAction
+  ChangeEventHandler
 } from 'react';
 
 export interface typeInputProps
@@ -11,9 +10,8 @@ export interface typeInputProps
     HTMLInputElement
   > {
   label?: string;
-  // required?: boolean;
   value?: string;
-  setValue: Dispatch<SetStateAction<string>>;
-  name?: string;
-  type?: 'text' | 'email' | 'tel' | 'password' | 'date' | 'url' | 'number';
+  onChange: ChangeEventHandler<HTMLInputElement>;
+  name: string;
+  type?: 'text' | 'email' | 'tel' | 'password' | 'url' | 'number';
 }
