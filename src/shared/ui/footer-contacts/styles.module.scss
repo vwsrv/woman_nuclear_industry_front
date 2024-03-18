@@ -1,0 +1,24 @@
+.container {
+  max-width: 241px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+
+  p {
+    color: var(--black-color);
+    font-family: var(--font-inter);
+    background-color: transparent;
+    min-height: 84px;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.email {
+  max-width: 241px;
+  min-height: 22px;
+  cursor: pointer;
+  color: var(--blue-color);
+  font-family: var(--font-inter);
+  margin-top: 20px;
+}
