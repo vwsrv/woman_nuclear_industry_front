@@ -30,31 +30,29 @@
 }
 
 .searchSubmit {
-  // background-image: url('./images/search-icon-grey.svg');
-  background-image: url('./images/search-icon-black.svg');
-  opacity: 0.299;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  flex-basis: 24px;
+  flex-shrink: 0;
+  background-color: transparent;
+  background-image: url('./images/search-icon.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 24px 24px;
-  border: none;
-  outline: none;
-  background-color: transparent;
   width: 28px;
   height: 28px;
   // width: 24px;
   // height: 24px;
   // padding: 2px 0;
-  cursor: pointer;
-  flex-basis: 24px;
-  flex-shrink: 0;
+  opacity: 0.3;
+  transition: 0.3s;
 
   &:hover {
-    // background-image: url('./images/search-icon-black.svg');
     opacity: 1;
   }
 
   &:active {
-    // background-image: url('./images/search-icon-grey.svg');
-    opacity: 0.299;
+    opacity: 0.3;
   }
 }
