@@ -1,9 +1,10 @@
 'use-client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import classes from './styles.module.scss';
 import { PopupOptions } from './types';
 import cn from 'classnames';
+import ReactDOM from 'react-dom';
 
 export const Popup: React.FC<PopupOptions> = props => {
   const {
@@ -25,24 +26,34 @@ export const Popup: React.FC<PopupOptions> = props => {
     }
   };
 
-  return (
-    <div
-      className={cn(classes.overlay, { [classes.active]: isOpen })}
-      onClick={handleClickByOverlay}
-    >
-      <div className={cn(classes.popup, { [classes.active]: isOpen })}>
-        <div className={cn(classes.popupContainer)}>
-          <div className={cn(classes.popupHeading)}>
-            <h2 className="bold">{title}</h2>
-            <button
-              className={cn(classes.popupButton)}
-              aria-label="Закрыть"
-              onClick={onClose}
-            />
+  const [isMounted, setIsMounted] = useState<boolean>(true);
+  useEffect(() => {
+    if (isMounted) {
+      setIsMounted(true);
+    }
+  }, [isMounted]);
+
+  return isMounted
+    ? ReactDOM.createPortal(
+        <div
+          className={cn(classes.overlay, { [classes.active]: isOpen })}
+          onClick={handleClickByOverlay}
+        >
+          <div className={cn(classes.popup, { [classes.active]: isOpen })}>
+            <div className={cn(classes.popupContainer)}>
+              <div className={cn(classes.popupHeading)}>
+                <h2 className="bold">{title}</h2>
+                <button
+                  className={cn(classes.popupButton)}
+                  aria-label="Закрыть"
+                  onClick={onClose}
+                />
+              </div>
+              <div className={cn(classes.popupContent)}>{children}</div>
+            </div>
           </div>
-          <div className={cn(classes.popupContent)}>{children}</div>
-        </div>
-      </div>
-    </div>
-  );
+        </div>,
+        document.body
+      )
+    : null;
 };

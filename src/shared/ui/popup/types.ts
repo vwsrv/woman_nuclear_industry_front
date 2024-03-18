@@ -12,4 +12,5 @@ export interface PopupOptions
   title: string;
   children: ReactNode;
   actions?: ReactNode[];
+  isMounted: boolean;
 }
