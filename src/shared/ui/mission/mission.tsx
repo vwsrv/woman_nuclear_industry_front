@@ -5,17 +5,9 @@ import React from 'react';
 import classes from './styles.module.scss';
 import cn from 'classnames';
 
-export const Mission: React.FC<IMissionProps> = ({
-  title,
-  text,
-  counters,
-  bgImage
-}) => {
+export const Mission: React.FC<IMissionProps> = ({ title, text, counters }) => {
   return (
-    <div
-      className={cn(classes.mission)}
-      style={{ backgroundImage: `url(${bgImage.src})` }}
-    >
+    <div className={cn(classes.mission)}>
       <h2 className={cn(classes.title)}>{title}</h2>
       <p className={cn(classes.text)}>{text}</p>
       <ul className={cn(classes.counter)}>
