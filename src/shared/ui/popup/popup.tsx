@@ -28,10 +28,8 @@ export const Popup: React.FC<PopupOptions> = props => {
 
   const [isMounted, setIsMounted] = useState<boolean>(true);
   useEffect(() => {
-    if (isMounted) {
-      setIsMounted(true);
-    }
-  }, [isMounted]);
+    setIsMounted(true);
+  }, []);
 
   return isMounted
     ? ReactDOM.createPortal(
