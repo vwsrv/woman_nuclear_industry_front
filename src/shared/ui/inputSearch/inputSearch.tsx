@@ -24,9 +24,9 @@ export const InputSearch: React.FC<typeInputSearchProps> = props => {
   // };
 
   return (
-    <div className={cn(className, classes.searchContainer)}>
+    <div className={cn(classes.searchContainer)}>
       <input
-        className={cn(className, classes.searchInput)}
+        className={cn(classes.searchInput)}
         value={value}
         onChange={onChange}
         name={name}
@@ -34,7 +34,7 @@ export const InputSearch: React.FC<typeInputSearchProps> = props => {
         type="text"
         {...otherProps}
       />
-      <button className={cn(className, classes.searchSubmit)} type="submit" />
+      <button className={cn(classes.searchSubmit)} type="submit" />
     </div>
   );
 };
