@@ -36,26 +36,21 @@
   flex-direction: row;
   margin: 20px 28px 0 28px;
   justify-content: left;
+}
 
-  p {
-    color: var(--white-color);
-    font-family: var(--font-inter);
-    background-color: transparent;
-    height: 28px;
-    margin: 0;
-    padding: 0;
-    white-space: nowrap;
-  }
+.text {
+  color: var(--white-color);
+  background-color: transparent;
+  height: 28px;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
 }
 
 .icon {
   background-color: var(--white-color);
   background-color: transparent;
   margin-right: 10px;
-}
-
-.calendar {
-  border: 1px;
 }
 
 .event {
@@ -80,7 +75,6 @@
   margin: 20px auto 35px 20px;
   justify-self: left;
   color: var(--white-color);
-  font-family: var(--font-inter);
   background-color: transparent;
   text-overflow: ellipsis;
   overflow: hidden;

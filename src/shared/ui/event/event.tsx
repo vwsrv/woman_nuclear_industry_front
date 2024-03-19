@@ -47,7 +47,7 @@ export const Event: React.FC<typeEventProps> = props => {
             width={28}
             height={28}
           />
-          <p className={cn(classes.date)}>{eventDate}</p>
+          <p className={cn(classes.date, classes.text)}>{eventDate}</p>
 
           {eventType 
             ? <Image
@@ -59,7 +59,7 @@ export const Event: React.FC<typeEventProps> = props => {
               />
             : ''
           }
-          <p className={cn(classes.type)}>{eventType}</p>
+          <p className={cn(classes.type, classes.text)}>{eventType}</p>
         </div>
         <h3 className={cn(classes.title)}>{title}</h3>
       </div>
