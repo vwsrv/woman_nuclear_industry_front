@@ -2,23 +2,22 @@
   max-width: 241px;
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
+}
 
-  p {
-    color: var(--black-color);
-    font-family: var(--font-inter);
-    background-color: transparent;
-    min-height: 84px;
-    margin: 0;
-    padding: 0;
-  }
+.address {
+  color: var(--black-color);
+  font-style: normal;
+  margin: 0;
+  padding: 0 0 20px 0;
 }
 
 .email {
-  max-width: 241px;
-  min-height: 22px;
-  cursor: pointer;
   color: var(--blue-color);
-  font-family: var(--font-inter);
-  margin-top: 20px;
+  font-style: normal;
+
+  &:hover {
+    cursor: pointer;
+    transition: all ease-in 3ms;
+    color: var(--black-color);
+  }
 }

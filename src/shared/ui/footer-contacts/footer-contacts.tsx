@@ -10,11 +10,11 @@ export const FooterContacts: React.FC<typeFooterContactsProps> = props => {
   const { className, address, email } = props;
 
   return (
-    <div className={cn(className, classes.container)}>
+    <address className={cn(className, classes.container)}>
       <p className={cn(classes.address)}>{address}</p>
       <Link className={cn(classes.email)} href={`mailto:${email}`}>
         {email}
       </Link>
-    </div>
+    </address>
   );
 };
