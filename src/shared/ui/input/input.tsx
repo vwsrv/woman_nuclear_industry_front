@@ -16,7 +16,7 @@ export const Input: React.FC<Omit<typeInputProps, 'placeholder'>> = props => {
     type = 'text',
     ...otherProps
   } = props;
-  // Cтандартный пропс 'placeholder' удален.
+  // Cтандартный пропс 'placeholder' удален, чтобы не мешал.
 
   // При создании компонента передаем в пропсах 'value' и 'handleChange'. Они могут выглядеть примерно так:
   // const [value, setValue] = React.useState<string>('sdfsdf11');
@@ -33,7 +33,7 @@ export const Input: React.FC<Omit<typeInputProps, 'placeholder'>> = props => {
 
   return (
     <label
-      className={cn(className, classes.form__item, {
+      className={cn(classes.form__item, {
         [classes.active]: value || isActive
       })}
     >
@@ -43,13 +43,13 @@ export const Input: React.FC<Omit<typeInputProps, 'placeholder'>> = props => {
         required={required}
         value={value}
         onChange={onChange}
-        className={cn(className, classes.input)}
+        className={cn(classes.input)}
         {...otherProps}
       />
 
       {label !== undefined && label !== '' && (
         <span
-          className={cn(className, classes.label, {
+          className={cn(classes.label, {
             [classes.required]: required
           })}
         >

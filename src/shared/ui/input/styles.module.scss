@@ -11,6 +11,10 @@
     font-size: 12px;
     transform: translate(-8px, -14px);
   }
+
+  // &:focus-within .input {
+  //   color: var(--black-color);
+  // }
 }
 
 .input {
@@ -22,7 +26,6 @@
   border: none;
   outline: none;
   padding: 22px 10px 14px 10px;
-
   color: var(--grey-dark-color);
 
   &:focus {
@@ -36,7 +39,6 @@
   top: 0;
   padding: 18px 0 0 16px;
   transition: 0.3s;
-
   font-size: 16px;
   line-height: 1.75;
   font-weight: 400;
