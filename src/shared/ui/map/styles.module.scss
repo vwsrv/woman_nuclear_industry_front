@@ -15,6 +15,8 @@
   mask-position: 0 100%;
   mask-size: 100% 200%;
   transition: mask-position 0.3s ease-out;
+  cursor: pointer;
+
   &:hover {
     mask-position: 0 0%;
   }

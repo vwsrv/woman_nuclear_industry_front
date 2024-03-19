@@ -13,7 +13,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .contactMapAddress {
@@ -23,14 +23,14 @@
 }
 
 .contactMapHours {
-  margin: 0;
+  margin-bottom: 16px;
   padding: 0;
   max-width: max-content;
   white-space: pre-line;
 }
 
 .contactMapEmail {
-  margin-top: 16px;
+  margin: 0;
   padding: 0;
   max-width: max-content;
   color: var(--blue-color);

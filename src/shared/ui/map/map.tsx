@@ -14,7 +14,8 @@ const {
   YMapDefaultSchemeLayer,
   YMapDefaultFeaturesLayer,
   YMapControls,
-  YMapMarker
+  YMapMarker,
+  YMapListener
 } = reactify.module(ymaps3);
 const { YMapZoomControl, YMapGeolocationControl } = reactify.module(
   await ymaps3.import('@yandex/ymaps3-controls@0.0.1')
@@ -31,6 +32,8 @@ export const Map: React.FC<mapProps> = ({ className, coordinats }) => {
       className={cn(className, classes.map)}
       location={location}
       mode="vector"
+      behaviors={['drag']} // отключение события прокрутки карты колесом мыши
+      copyrights={false}
     >
       <YMapDefaultSchemeLayer />
       <YMapDefaultFeaturesLayer />
