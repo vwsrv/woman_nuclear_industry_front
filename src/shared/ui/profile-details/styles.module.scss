@@ -1,0 +1,33 @@
+.profileDetails {
+  display: grid;
+  grid-template-columns: 1fr 1.54fr;
+  column-gap: 30px;
+}
+
+.profileCard {
+  overflow: hidden;
+
+  .profilePhoto {
+    object-fit: cover;
+    margin-bottom: 16px;
+    min-height: 543px;
+    max-width: 431px;
+  }
+
+  .profileDescription {
+    margin: 0 0 0 20px;
+    padding: 0;
+  }
+}
+
+.profileAbout {
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: 850px;
+
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    background: transparent;
+  }
+}
