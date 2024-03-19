@@ -1,0 +1,41 @@
+.button {
+  position: relative;
+  border-color: transparent;
+  background-color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all ease-in 2ms;
+
+  &:not(:disabled):active {
+    transform: translateY(1px);
+  }
+
+  &.violet {
+    background-color: var(--violet-color);
+    color: white;
+
+    &:not(:disabled):hover {
+      background-color: violet;
+    }
+  }
+
+  &:disabled {
+    background-color: darkgray;
+    color: lightgray;
+    cursor: default;
+  }
+
+  &.circle {
+    &:after {
+      position: absolute;
+      content: '';
+      display: block;
+      background-color: red;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      left: calc(100% + 5px);
+      bottom: 100%;
+    }
+  }
+}

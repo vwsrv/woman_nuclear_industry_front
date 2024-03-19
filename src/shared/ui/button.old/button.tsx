@@ -1,6 +1,6 @@
 'use client';
 
-import { typeButtonProps } from '@/shared/ui/button/types';
+import { typeButtonProps } from '@/shared/ui/button.old/types';
 import React from 'react';
 import classes from './styles.module.scss';
 import cn from 'classnames';
@@ -14,10 +14,14 @@ export const Button: React.FC<typeButtonProps> = props => {
     ...otherProps
   } = props;
 
+  console.log(disabled);
+
   return (
     <button
       disabled={disabled}
-      className={cn(className, classes.button, classes[variant])}
+      className={cn(className, classes.button, classes[variant], {
+        [classes.circle]: disabled
+      })}
       {...otherProps}
     >
       {children}
