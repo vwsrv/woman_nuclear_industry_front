@@ -29,7 +29,7 @@ export const HeaderMenuLink: React.FC<headerMenuLinkProps> = ({
           className={cn(className, classes.headerMenuLinkWrapper)}
           onClick={visable}
         >
-          <span
+          <button
             className={cn(
               className,
               classes.headerMenuLink,
@@ -38,7 +38,7 @@ export const HeaderMenuLink: React.FC<headerMenuLinkProps> = ({
           >
             {link.title}
             <Image src={arrow} alt="Стрелка вниз" />
-          </span>
+          </button>
           {link.children && (
             <ul
               className={cn(className, classes.headerMenuLinksChildren, {
