@@ -9,5 +9,5 @@ export interface typeSelectBoxProps
   extends Omit<SelectHTMLAttributes<HTMLSelectElement>, 'onChange'> {
   variant?: 'violet' | 'white' | 'blue';
   dataList: Option[];
-  setValue: ((selectedValue: string) => void);
+  setValue: (selectedValue: string) => void;
 }

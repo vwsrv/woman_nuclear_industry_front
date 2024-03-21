@@ -15,7 +15,7 @@ export const SelectBox: React.FC<typeSelectBoxProps> = props => {
   } = props;
 
   const [isOpen, setIsOpen] = useState(false);
-  
+
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
@@ -41,9 +41,7 @@ export const SelectBox: React.FC<typeSelectBoxProps> = props => {
       onKeyDown={handleKeyDown}
       tabIndex={0}
     >
-      <button className={cn(classes[variant], classes.button)}>
-        {value}
-      </button>
+      <button className={cn(classes[variant], classes.button)}>{value}</button>
       <div
         className={cn(classes.options, classes[variant], {
           [classes.enabled]: isOpen
@@ -53,7 +51,7 @@ export const SelectBox: React.FC<typeSelectBoxProps> = props => {
           <button
             key={index}
             className={cn(classes.option, classes[variant])}
-            onClick={() => handleSelect(option.label)} 
+            onClick={() => handleSelect(option.label)}
           >
             {option.label}
           </button>
