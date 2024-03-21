@@ -3,73 +3,37 @@
 import { typeSelectBoxProps } from './types';
 import classes from './styles.module.scss';
 import cn from 'classnames';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 export const SelectBox: React.FC<typeSelectBoxProps> = props => {
   const {
     variant = 'violet',
-    name,
-    options,
+    dataList,
     value,
-    disabled,
-    className,
-    onChange,
+    setValue,
     ...otherProps
   } = props;
 
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(name);
-  const [selectedIndex, setSelectedIndex] = useState(-1);
-
+  
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleClickOutside = (event: MouseEvent) => {
-    const target = event.target as HTMLElement;
-    if (!target.closest(`.${classes.options}`)) {
-      setIsOpen(false);
-    }
-  };
-
-  const handleOptionClick = (optionLabel: string) => {
-    setSelectedOption(optionLabel);
-    setIsOpen(false);
-    if (onChange) {
-      onChange(optionLabel);
-    }
-  };
-
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    if (event.key === 'ArrowDown') {
-      setSelectedIndex(prevIndex =>
-        prevIndex < options.length - 1 ? prevIndex + 1 : prevIndex
-      );
-      if (options[selectedIndex + 1]) {
-        setSelectedOption(options[selectedIndex + 1].label);
-      }
-    } else if (event.key === 'ArrowUp') {
-      setSelectedIndex(prevIndex =>
-        prevIndex > 0 ? prevIndex - 1 : prevIndex
-      );
-      if (options[selectedIndex - 1]) {
-        setSelectedOption(options[selectedIndex - 1].label);
-      }
-    } else if (event.key === 'Enter' && selectedIndex !== -1) {
-      handleOptionClick(options[selectedIndex].label);
+    if (event.key === 'Tab') {
+      setIsOpen(true);
     }
   };
 
-  useEffect(() => {
-    document.addEventListener('click', handleClickOutside);
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-    };
-  }, [isOpen]);
+  const handleSelect = (newValue: string) => {
+    setValue(newValue);
+    setIsOpen(false);
+  };
 
   return (
     <div
-      className={cn(className, classes.selectbox, classes[variant], {
+      className={cn(classes.selectbox, classes[variant], {
         [classes.enabled]: isOpen,
         ...otherProps
       })}
@@ -78,24 +42,21 @@ export const SelectBox: React.FC<typeSelectBoxProps> = props => {
       tabIndex={0}
     >
       <button className={cn(classes[variant], classes.button)}>
-        {selectedOption}
+        {value}
       </button>
       <div
         className={cn(classes.options, classes[variant], {
           [classes.enabled]: isOpen
         })}
       >
-        {options.map((option, index) => (
-          <a
+        {dataList.map((option, index) => (
+          <button
             key={index}
-            className={cn(classes.option, classes[variant], {
-              [classes.selected]: option.label === selectedOption,
-              [classes.hover]: index === selectedIndex && isOpen
-            })}
-            onClick={() => handleOptionClick(option.label)}
+            className={cn(classes.option, classes[variant])}
+            onClick={() => handleSelect(option.label)} 
           >
             {option.label}
-          </a>
+          </button>
         ))}
       </div>
     </div>

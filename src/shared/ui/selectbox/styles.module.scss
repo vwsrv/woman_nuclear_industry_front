@@ -8,8 +8,11 @@
   max-width: 259px;
 
   &::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-25px, 70%);
     content: url('../../images/for-selectbox/arrow-down--white.svg');
-    margin-right: 25px;
   }
 
   &.white {
@@ -32,10 +35,6 @@
     transition: 0.3s;
   }
 
-  &:focus {
-    outline: none;
-  }
-
   &.violet {
     background-color: var(--violet-color);
 
@@ -54,15 +53,9 @@
 }
 
 .button {
-  padding: 0;
-  font-family: var(--font-inter);
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 28px;
-  letter-spacing: 0em;
-  margin: 0 10px 0 30px;
-  text-align: left;
   cursor: pointer;
+  padding: 0 55px 0 30px;
+  text-align: left;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -72,7 +65,7 @@
   border: none;
   background: none;
   height: 100%;
-  max-width: 68.3%;
+  width: 100%;
 
   &.white {
     color: var(--black-color);
@@ -113,46 +106,43 @@
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
   }
 
-  a {
-    border-radius: 8px;
-    text-decoration: none;
-    display: block;
-    padding: 10px 15px 10px;
-
-    &:hover {
-      background-color: var(--grey-color);
-    }
-
-    &.violet {
-      color: var(--violet-color);
-    }
-
-    &.blue {
-      color: var(--blue-color);
-    }
-
-    &.white {
-      color: var(--black-color);
-    }
-
-    &.white-number {
-      color: var(--black-color);
-      text-align: center;
-    }
-  }
-
   &.enabled {
     display: flex;
     flex-direction: column;
   }
 }
 
-.selectbox.white-number.enabled {
-  border-radius: 8px 8px 0 0;
+.option {
+  border-radius: 8px;
+  border: none;
+  background: none;
+  text-decoration: none;
+  display: block;
+  padding: 10px 15px 10px;
+  text-align: left;
+
+  &:hover {
+    background-color: var(--grey-color);
+  }
+
+  &.violet {
+    color: var(--violet-color);
+  }
+
+  &.blue {
+    color: var(--blue-color);
+  }
+
+  &.white {
+    color: var(--black-color);
+  }
+
+  &.white-number {
+    color: var(--black-color);
+    text-align: center;
+  }
 }
 
-.options.enabled a:hover,
-.options.enabled a.selected,
-.options.enabled a.selectedOpen {
-  background-color: var(--grey-color);
+.selectbox.white-number.enabled {
+  border-radius: 8px 8px 0 0;
 }
