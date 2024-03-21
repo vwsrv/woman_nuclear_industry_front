@@ -11,7 +11,7 @@ export interface typeAccordionItem
 }
 
 export interface typeAccordionProps {
-  props: typeAccordionItem[];
+  contentList: typeAccordionItem[];
 }
 
 export interface typeAccordionItemWithState extends typeAccordionItem {
