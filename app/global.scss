@@ -1,0 +1,18 @@
+:root {
+  --black-color: rgba(2, 2, 2, 1);
+  --white-color: rgba(255, 255, 255, 1);
+  --violet-color: rgba(144, 111, 204, 1);
+  --blue-color: rgba(9, 132, 203, 1);
+  --blue-dark-color: rgba(7, 105, 161, 1);
+  --grey-color: rgba(247, 247, 247, 1);
+  --grey-dark-color: rgba(177, 177, 177, 1);
+  --red-color: rgba(255, 78, 78, 1);
+  --green-color: rgba(55, 167, 46, 1);
+  --overlay-color: rgba(217, 217, 217, 0.5);
+  --overlay-2-color: rgba(10, 10, 10, 0.6);
+  --footer-color: rgba(9, 132, 203, 0.06);
+}
+
+.test-class {
+  padding: 1rem 2rem;
+}
