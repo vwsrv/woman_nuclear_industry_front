@@ -1,4 +1,5 @@
 .overlay {
+  z-index: 999;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -42,16 +43,12 @@
 
   .popupContainer {
     position: relative;
-    margin: 48px 30px 80px;
+    padding: 48px 30px 80px;
     display: flex;
     flex-direction: column;
 
     .popupHeading {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       margin-bottom: 40px;
-      z-index: 2;
       background-color: var(--white-color);
     }
 
@@ -62,10 +59,14 @@
       border: none;
       background-color: transparent;
       background-repeat: no-repeat;
-      background-position: top;
+      background-position: center;
       width: 43px;
       height: 40px;
       transition: 0.3s;
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: translate(-30px, 41px);
 
       &:hover {
         opacity: 0.7;

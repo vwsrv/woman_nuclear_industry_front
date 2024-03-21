@@ -41,12 +41,12 @@ export const Popup: React.FC<PopupOptions> = props => {
             <div className={cn(classes.popupContainer)}>
               <div className={cn(classes.popupHeading)}>
                 <h2 className="bold">{title}</h2>
-                <button
-                  className={cn(classes.popupButton)}
-                  aria-label="Закрыть"
-                  onClick={onClose}
-                />
               </div>
+              <button
+                className={cn(classes.popupButton)}
+                aria-label="Закрыть"
+                onClick={onClose}
+              />
               <div className={cn(classes.popupContent)}>{children}</div>
             </div>
           </div>
