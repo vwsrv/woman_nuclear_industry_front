@@ -5,12 +5,14 @@ import { ICheckboxProps } from './types';
 import classes from './styles.module.scss';
 import cn from 'classnames';
 
-/* Компонент может использоватся в виде самозакрывающегося тега, в случае если в нём нет текста
+/* 
+1. Компонент может использоватся в виде самозакрывающегося тега, в случае если в нём нет текста
 для label. В ином случае используются парные теги, текст идёт в children;
-Для создания хендлера использвать следущий тип event:
-  const handleChecked = (evt: React.ChangeEvent<HTMLInputElement>) => {
-    setIsChecked(evt.target.checked);
-};*/
+2. Для передачи стейта использовать стандартный проп checked;
+3. Для работы внутреннего хендлера передавать в проп onCheckboxChange функцию-диспатчер стейта;
+  Пример: если используем useState, то в checked идёт isChecked, а в onCheckboxChange идёт
+  setIsChecked;
+*/
 
 export const Checkbox: FC<ICheckboxProps> = props => {
   const {
@@ -21,8 +23,13 @@ export const Checkbox: FC<ICheckboxProps> = props => {
     onChange,
     children,
     value,
+    onCheckboxChange,
     ...otherProps
   } = props;
+
+  const handleChecked = (evt: React.ChangeEvent<HTMLInputElement>) => {
+    onCheckboxChange(evt.target.checked);
+  };
 
   return (
     <label htmlFor={id} className={cn(className, classes.label)}>
@@ -34,7 +41,7 @@ export const Checkbox: FC<ICheckboxProps> = props => {
         id={id}
         value={id}
         checked={checked}
-        onChange={onChange}
+        onChange={handleChecked}
         {...otherProps}
       />
       <span

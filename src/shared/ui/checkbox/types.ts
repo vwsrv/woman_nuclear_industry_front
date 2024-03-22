@@ -4,5 +4,5 @@ export interface ICheckboxProps extends DetailedHTMLProps<InputHTMLAttributes<HT
   textSize?: 'm' | 'l';
   checked: boolean | undefined;
   children?: ReactNode;
-  onChange: ChangeEventHandler<HTMLInputElement> | undefined;
+  onCheckboxChange: React.Dispatch<React.SetStateAction<boolean>>
 }
