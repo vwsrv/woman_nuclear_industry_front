@@ -13,6 +13,4 @@ export interface typeTextareaProps
   label: string;
   value: string | undefined;
   setValue: Dispatch<SetStateAction<string>>;
-  focus: boolean;
-  setFocus: Dispatch<SetStateAction<boolean>>;
 }

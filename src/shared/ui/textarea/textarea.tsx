@@ -10,8 +10,6 @@ export const Textarea: React.FC<typeTextareaProps> = ({
   label,
   value,
   setValue,
-  focus,
-  setFocus,
   required
 }) => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
@@ -23,16 +21,6 @@ export const Textarea: React.FC<typeTextareaProps> = ({
       const height = textareaRef.current.offsetHeight;
       const row = Math.ceil(scrollHeight / height);
       textareaRef.current.rows = row;
-    }
-  };
-
-  const handleFocus = (): void => {
-    setFocus(true);
-  };
-
-  const handleBlur = (): void => {
-    if (!value || value === '') {
-      setFocus(false);
     }
   };
 
@@ -48,16 +36,9 @@ export const Textarea: React.FC<typeTextareaProps> = ({
 
   return (
     <div
-      className={cn(
-        className,
-        classes.textareaWrapper,
-        {
-          [classes.onValue]: value
-        },
-        {
-          [classes.onFocus]: focus || value !== ''
-        }
-      )}
+      className={cn(className, classes.textareaWrapper, {
+        [classes.onValue]: value
+      })}
       onClick={() => {
         if (textareaRef.current) {
           textareaRef.current.focus();
@@ -69,10 +50,10 @@ export const Textarea: React.FC<typeTextareaProps> = ({
           className,
           classes.textareaLabel,
           {
-            [classes.onFocus]: focus || value !== ''
+            [classes.required]: required
           },
           {
-            [classes.required]: required
+            [classes.onValue]: value || value !== ''
           }
         )}
         htmlFor="textarea"
@@ -85,7 +66,7 @@ export const Textarea: React.FC<typeTextareaProps> = ({
           className,
           classes.textarea,
           {
-            [classes.onFocus]: focus || value !== ''
+            [classes.onValue]: value || value !== ''
           },
           {
             [classes.moreTwoRows]:
@@ -96,8 +77,6 @@ export const Textarea: React.FC<typeTextareaProps> = ({
         id="textarea"
         value={value}
         autoComplete="off"
-        onFocus={handleFocus}
-        onBlur={handleBlur}
         onChange={e => {
           setValue(e.target.value);
           autoResize();
