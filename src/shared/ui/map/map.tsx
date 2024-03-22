@@ -20,7 +20,11 @@ const { YMapZoomControl, YMapGeolocationControl } = reactify.module(
   await ymaps3.import('@yandex/ymaps3-controls@0.0.1')
 );
 
-export const Map: React.FC<mapProps> = ({ className, coordinats, controls }) => {
+export const Map: React.FC<mapProps> = ({
+  className,
+  coordinats,
+  controls
+}) => {
   const location = {
     center: [coordinats.lng, coordinats.lat],
     zoom: 16
@@ -40,7 +44,8 @@ export const Map: React.FC<mapProps> = ({ className, coordinats, controls }) => 
         <>
           <YMapControls position="left">
             <YMapGeolocationControl />
-          </YMapControls><YMapControls position="right">
+          </YMapControls>
+          <YMapControls position="right">
             <YMapZoomControl />
           </YMapControls>
         </>
