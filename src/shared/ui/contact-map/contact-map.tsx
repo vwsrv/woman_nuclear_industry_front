@@ -35,7 +35,7 @@ export const ContactMap: React.FC<contactMapProps> = ({
         </Link>
       </div>
       <YandexMapLoader />
-      <Map className="map" coordinats={coordinats} />
+      <Map className="map" coordinats={coordinats} controls={false} />
     </address>
   );
 };

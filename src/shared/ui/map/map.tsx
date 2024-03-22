@@ -14,14 +14,13 @@ const {
   YMapDefaultSchemeLayer,
   YMapDefaultFeaturesLayer,
   YMapControls,
-  YMapMarker,
-  YMapListener
+  YMapMarker
 } = reactify.module(ymaps3);
 const { YMapZoomControl, YMapGeolocationControl } = reactify.module(
   await ymaps3.import('@yandex/ymaps3-controls@0.0.1')
 );
 
-export const Map: React.FC<mapProps> = ({ className, coordinats }) => {
+export const Map: React.FC<mapProps> = ({ className, coordinats, controls }) => {
   const location = {
     center: [coordinats.lng, coordinats.lat],
     zoom: 16
@@ -37,12 +36,15 @@ export const Map: React.FC<mapProps> = ({ className, coordinats }) => {
     >
       <YMapDefaultSchemeLayer />
       <YMapDefaultFeaturesLayer />
-      <YMapControls position="left">
-        <YMapGeolocationControl />
-      </YMapControls>
-      <YMapControls position="right">
-        <YMapZoomControl />
-      </YMapControls>
+      {controls && (
+        <>
+          <YMapControls position="left">
+            <YMapGeolocationControl />
+          </YMapControls><YMapControls position="right">
+            <YMapZoomControl />
+          </YMapControls>
+        </>
+      )}
       <YMapMarker
         coordinates={location.center as LngLat}
         draggable={false}

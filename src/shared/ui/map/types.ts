@@ -5,5 +5,6 @@ export interface mapProps
   coordinats: {
     lat: number;
     lng: number;
-  };
+  },
+  controls: boolean
 }
