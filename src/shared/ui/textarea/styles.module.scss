@@ -11,13 +11,20 @@
   cursor: text;
   background-color: transparent;
 
-  &.onFocus {
+  &:focus-within {
     background-color: var(--white-color);
   }
 
   &.onValue {
     max-width: none;
   }
+}
+
+.textareaWrapper:focus-within .textareaLabel {
+  top: 0;
+  left: 0;
+  font-size: 14px;
+  transform: none;
 }
 
 .textareaLabel {
@@ -53,13 +60,6 @@
     font-size: 14px;
     transform: none;
   }
-}
-
-.textareaWrapper:focus-within .textareaLabel {
-  top: 0;
-  left: 0;
-  font-size: 14px;
-  transform: none;
 }
 
 .textarea {
