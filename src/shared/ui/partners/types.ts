@@ -1,10 +1,10 @@
 import { HTMLAttributes, DetailedHTMLProps } from 'react';
 
-export interface typeEventProps
+export interface typePartnersProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  imageUrl?: string;
-  title: string;
-  date?: Date;
-  eventType?: string;
+  logos: {
+    logo: string;
+    link?: string;
+  }[];
   linkUrl: string;
 }
