@@ -1,0 +1,23 @@
+.map {
+  width: 100%;
+  min-height: 517px;
+  border-radius: 8px;
+}
+
+.mapMarker {
+  position: relative;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  mask-image: linear-gradient(to bottom, black, transparent),
+    linear-gradient(to top, transparent, black 20%);
+  mask-position: 0 100%;
+  mask-size: 100% 200%;
+  transition: mask-position 0.3s ease-out;
+  cursor: pointer;
+
+  &:hover {
+    mask-position: 0 0%;
+  }
+}
