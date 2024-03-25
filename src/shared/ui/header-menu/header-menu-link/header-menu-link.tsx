@@ -6,7 +6,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { headerMenuLinkProps } from './types';
 import Image from 'next/image';
-import arrow from '@/shared/images/arrow-down.svg';
+import arrow from '@/shared/images/for-header-menu/arrow-down.svg';
 
 export const HeaderMenuLink: React.FC<headerMenuLinkProps> = ({
   className,
@@ -37,7 +37,7 @@ export const HeaderMenuLink: React.FC<headerMenuLinkProps> = ({
             )}
           >
             {link.title}
-            <Image src={arrow} alt="Стрелка вниз" />
+            <Image src={arrow} alt="" />
           </button>
           {link.children && (
             <ul
