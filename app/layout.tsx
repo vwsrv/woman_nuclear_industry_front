@@ -1,5 +1,4 @@
 import React from 'react';
-import '../src/app/styles/normalize.css';
 import '../src/app/styles/global.css';
 import { inter, montserrat } from '@/app/fonts/fonts';
 
