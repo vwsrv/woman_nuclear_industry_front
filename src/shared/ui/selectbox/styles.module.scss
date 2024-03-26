@@ -1,0 +1,148 @@
+.selectbox {
+  position: relative;
+  cursor: pointer;
+  height: 44px;
+  border-radius: 8px;
+  transition: 0.3s;
+  width: fit-content;
+  max-width: 259px;
+
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-25px, 70%);
+    content: url('../../images/for-selectbox/arrow-down--white.svg');
+  }
+
+  &.white {
+    border: 1px solid var(--black-color);
+
+    &::after {
+      content: url('../../images/for-selectbox/arrow-down--black.svg');
+    }
+  }
+
+  &.white-number {
+    box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.3);
+
+    &::after {
+      content: url('../../images/for-selectbox//arrow-down--black.svg');
+    }
+  }
+
+  &:hover {
+    transition: 0.3s;
+  }
+
+  &.violet {
+    background-color: var(--violet-color);
+
+    &:hover {
+      background-color: var(--violet-hover);
+    }
+  }
+
+  &.blue {
+    background-color: var(--blue-color);
+
+    &:hover {
+      background-color: var(--blue-dark-color);
+    }
+  }
+}
+
+.button {
+  cursor: pointer;
+  padding: 0 55px 0 30px;
+  text-align: left;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  outline: none;
+  position: relative;
+  color: var(--white-color);
+  border: none;
+  background: none;
+  height: 100%;
+  width: 100%;
+
+  &.white {
+    color: var(--black-color);
+  }
+
+  &.white-number {
+    color: var(--black-color);
+    border-radius: 8px 8px 0 0;
+  }
+}
+
+.options {
+  z-index: 1;
+  margin-top: 3px;
+  position: absolute;
+  display: none;
+  background-color: var(--white-color);
+  max-width: 100%;
+  width: 100%;
+  border-radius: 8px;
+
+  &.violet {
+    border: 1px solid var(--violet-color);
+  }
+
+  &.blue {
+    border: 1px solid var(--blue-color);
+  }
+
+  &.white {
+    border: 1px solid var(--black-color);
+  }
+
+  &.white-number {
+    margin: 0;
+    border-radius: 0;
+    border-radius: 0 0 8px 8px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+
+  &.enabled {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.option {
+  border-radius: 8px;
+  border: none;
+  background: none;
+  text-decoration: none;
+  display: block;
+  padding: 10px 15px 10px;
+  text-align: left;
+
+  &:hover {
+    background-color: var(--grey-color);
+  }
+
+  &.violet {
+    color: var(--violet-color);
+  }
+
+  &.blue {
+    color: var(--blue-color);
+  }
+
+  &.white {
+    color: var(--black-color);
+  }
+
+  &.white-number {
+    color: var(--black-color);
+    text-align: center;
+  }
+}
+
+.selectbox.white-number.enabled {
+  border-radius: 8px 8px 0 0;
+}
