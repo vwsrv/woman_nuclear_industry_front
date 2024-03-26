@@ -1,4 +1,4 @@
-import { SelectHTMLAttributes, ChangeEventHandler } from 'react';
+import { SelectHTMLAttributes } from 'react';
 
 export interface Option {
   value: string;
@@ -10,4 +10,5 @@ export interface typeSelectBoxProps
   variant?: 'violet' | 'white' | 'blue';
   dataList: Option[];
   setValue: (selectedValue: string) => void;
+  value: string;
 }
