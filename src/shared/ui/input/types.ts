@@ -10,8 +10,8 @@ export interface typeInputProps
     HTMLInputElement
   > {
   label?: string;
+  name?: string;
   value?: string;
-  onChange: ChangeEventHandler<HTMLInputElement>;
-  name: string;
-  type?: 'text' | 'email' | 'tel' | 'password' | 'url' | 'number';
+  handleChange: (newValue: string) => void;
+  type?: 'text' | 'email' | 'tel' | 'password' | 'url' | 'number' | 'date';
 }
