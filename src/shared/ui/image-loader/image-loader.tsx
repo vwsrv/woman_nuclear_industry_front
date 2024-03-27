@@ -9,7 +9,7 @@ import { typeImageLoaderProps } from '@/shared/ui/image-loader/types';
 export const ImageLoader: React.FC<typeImageLoaderProps> = props => {
   const { width = 153, height = 153, setImageData, ImageData } = props;
 
-  const handleChange = (evt: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     if (!evt.target.files) return;
     setImageData(URL.createObjectURL(evt.target.files[0]));
   };
