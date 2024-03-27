@@ -1,8 +1,17 @@
-import { ChangeEventHandler, DetailedHTMLProps, InputHTMLAttributes, ReactNode } from "react";
+import {
+  ChangeEventHandler,
+  DetailedHTMLProps,
+  InputHTMLAttributes,
+  ReactNode
+} from 'react';
 
-export interface ICheckboxProps extends DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
+export interface ICheckboxProps
+  extends DetailedHTMLProps<
+    InputHTMLAttributes<HTMLInputElement>,
+    HTMLInputElement
+  > {
   textSize?: 'm' | 'l';
   checked: boolean | undefined;
   children?: ReactNode;
-  onCheckboxChange: React.Dispatch<React.SetStateAction<boolean>>
+  onCheckboxChange: React.Dispatch<React.SetStateAction<boolean>>;
 }
