@@ -1,7 +1,6 @@
 import {
   DetailedHTMLProps,
   InputHTMLAttributes,
-  ChangeEventHandler
 } from 'react';
 
 export interface typeInputProps
@@ -11,7 +10,7 @@ export interface typeInputProps
   > {
   label?: string;
   name?: string;
-  value?: string;
-  handleChange: (newValue: string) => void;
+  value: string;
+  handleInputChange: (newValue: string) => void;
   type?: 'text' | 'email' | 'tel' | 'password' | 'url' | 'number' | 'date';
 }
