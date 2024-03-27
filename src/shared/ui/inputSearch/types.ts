@@ -1,7 +1,8 @@
 import {
   InputHTMLAttributes,
   DetailedHTMLProps,
-  ChangeEventHandler
+  // Dispatch,
+  // SetStateAction,
 } from 'react';
 
 export interface typeInputSearchProps
@@ -9,7 +10,10 @@ export interface typeInputSearchProps
     InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement
   > {
-  // variant?: 'violet' | 'blue';
-  value?: string;
-  onChange: ChangeEventHandler<HTMLInputElement>;
+  value: string;
+  // onChange: React.ChangeEventHandler<HTMLInputElement>;
+  // handleInputChange: React.Dispatch<React.SetStateAction<string>>;
+  handleInputChange: (text: string) => void;
+  handleForm: (text: string) => void;
+  // handleForm: () => void;
 }
