@@ -4,15 +4,14 @@ import { Button } from '@/shared/ui/button';
 import { InputSearch } from '@/shared/ui/inputSearch';
 import React from 'react';
 export const TestPage: React.FC = () => {
+  
   const [value, setValue] = React.useState('');
 
-  const handleForm = (text: string): void => {
+  const handleForm = (): void => {
     console.log('Submit:', value);
-  };
-  // const handleForm = (): void => {
-  //   console.log('Submit:', value);
-  // }
-  console.log('newValue:', value);
+  }
+
+  // console.log('newValue:', value);
 
   return (
     <div>
