@@ -21,10 +21,15 @@ export const InputSearch: FC<typeInputSearchProps> = props => {
     e.preventDefault();
     handleForm(value);
     // handleForm();
-  };  
+  };
 
   return (
-    <form className={cn(classes.searchContainer)} action="#" onSubmit={handleSubmit} noValidate>
+    <form
+      className={cn(classes.searchContainer)}
+      action="#"
+      onSubmit={handleSubmit}
+      noValidate
+    >
       <input
         className={cn(classes.searchInput)}
         value={value}
@@ -34,10 +39,7 @@ export const InputSearch: FC<typeInputSearchProps> = props => {
         type="text"
         {...otherProps}
       />
-      <button
-        className={cn(classes.searchSubmit)}
-        type="submit"
-      />
+      <button className={cn(classes.searchSubmit)} type="submit" />
     </form>
   );
 };

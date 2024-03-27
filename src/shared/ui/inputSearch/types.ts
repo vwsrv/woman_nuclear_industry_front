@@ -1,6 +1,6 @@
 import {
   InputHTMLAttributes,
-  DetailedHTMLProps,
+  DetailedHTMLProps
   // Dispatch,
   // SetStateAction,
 } from 'react';
