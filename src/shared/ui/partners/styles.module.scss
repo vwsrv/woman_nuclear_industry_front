@@ -37,12 +37,26 @@
   padding-bottom: 24px;
 }
 
-.btn {
+.link {
   margin: 0;
   border: 0;
   height: 44px;
+  width: 178px;
   border-radius: 8px;
-  padding: 8px 30px;
+  border-color: transparent;
+  background-color: var(--violet-color);
+  color: var(--white-color);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all ease-in 2ms;
+
+  &:hover {
+    background-color: var(--violet-hover);
+  }
+}
+
+.link_text {
+  margin: 8px 30px;
 }
 
 @media screen and (max-width: 927px) {

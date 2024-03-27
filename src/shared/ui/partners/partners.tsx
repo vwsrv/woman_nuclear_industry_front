@@ -1,7 +1,6 @@
 'use client';
 
 import { typePartnersProps } from '@/shared/ui/partners/types';
-import { Button } from '@/shared/ui/button';
 import React from 'react';
 import Link from 'next/link';
 import classes from './styles.module.scss';
@@ -35,10 +34,8 @@ export const Partners: React.FC<typePartnersProps> = props => {
           Международный совет по поддержке и развитию женщин в промышленности и
           технологиях
         </p>
-        <Link href={linkUrl}>
-          <Button className={cn(className, classes.btn)}>
-            <p>Узнать больше</p>
-          </Button>
+        <Link className={cn(className, classes.link)} href={linkUrl}>
+          <p className={cn(className, classes.link_text)}>Узнать больше</p>
         </Link>
       </div>
     </div>
