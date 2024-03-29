@@ -6,8 +6,8 @@ export interface typePaginationProps
     HTMLInputElement
   > {
   activePage: number;
-  itemsPerPage: number;
+  itemsPerPage: 9 | 18 | 30;
   setActivePage: Dispatch<React.SetStateAction<number>>;
-  setItemsPerPage: Dispatch<React.SetStateAction<number>>;
+  setItemsPerPage: Dispatch<React.SetStateAction<9 | 18 | 30>>;
   totalPages: number;
 }
