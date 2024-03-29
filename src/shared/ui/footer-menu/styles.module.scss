@@ -1,0 +1,23 @@
+@import '../../styles/mixins.scss';
+
+.footerMenu {
+  &__wrapper {
+    @include mp-null;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    max-width: max-content;
+    column-count: 2;
+    column-gap: 28px;
+  }
+
+  &__item {
+    list-style: none;
+    max-width: max-content;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: black;
+  }
+}

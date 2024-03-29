@@ -15,7 +15,7 @@ export const Event: React.FC<typeEventProps> = props => {
   
   const formatDate = (date: Date) => {
     const actualDate = new Date(date);
-    
+
     const formattedDate = actualDate.toLocaleString('ru-RU', {
       day: 'numeric',
       month: 'long',
@@ -49,7 +49,7 @@ export const Event: React.FC<typeEventProps> = props => {
           />
           <p className={cn(classes.date, classes.text)}>{eventDate}</p>
 
-          {eventType 
+          {eventType
             ? <Image
                 className={cn(classes.icon, classes.event)}
                 src={EventIcon}
