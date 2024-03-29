@@ -52,12 +52,12 @@ export const Pagination: React.FC<typePaginationProps> = props => {
         case 30:
           setItemsPerPage(30);
           break;
-        default: 
+        default:
           setItemsPerPage(9);
           break;
-      };
+      }
     }
-  }
+  };
 
   const handleClickNavigateArrow = (
     evt: React.MouseEvent<HTMLButtonElement>
@@ -103,13 +103,12 @@ export const Pagination: React.FC<typePaginationProps> = props => {
   React.useEffect(() => {
     if (activePage === 1) {
       setVisiblePages(pagesArray.slice(0, activePage + 2));
-    }
-    else if (activePage === totalPages) {
+    } else if (activePage === totalPages) {
       setVisiblePages(pagesArray.slice(totalPages - 3, totalPages + 1));
     } else {
       setVisiblePages(pagesArray.slice(activePage - 2, activePage + 1));
     }
-  }, [activePage])
+  }, [activePage]);
 
   return (
     <div className={cn(classes['pagination'])}>
