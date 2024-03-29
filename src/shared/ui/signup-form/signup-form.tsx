@@ -7,7 +7,7 @@ import { SetStateAction, useState } from 'react';
 import Link from 'next/link';
 import { Checkbox } from '../checkbox';
 import { Button } from '../button';
-import { ExternalSignButtons } from '@/shared/external-sign-buttons';
+import { ExternalSignButtons } from '@/shared/ui/external-sign-buttons';
 import { usePathname } from 'next/navigation';
 
 export const SignupForm: React.FC = () => {
