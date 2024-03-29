@@ -6,12 +6,7 @@ import classes from './styles.module.scss';
 import cn from 'classnames';
 
 export const ProfileForm: FC<typeProfileFormProps> = props => {
-  const {
-    ...otherProps
-  } = props;
+  const { ...otherProps } = props;
 
-  return (
-    <>
-    </>
-  );
+  return <></>;
 };
