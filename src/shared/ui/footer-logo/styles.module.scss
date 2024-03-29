@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  align-items: center;
+  min-height: 103px;
+  width: 439px;
+}
+
+@media screen and (max-width: 575px) {
+  .container {
+    flex-direction: column;
+    width: 320px;
+
+    .text {
+      text-align: center;
+      width: 320px;
+    }
+  }
+}
