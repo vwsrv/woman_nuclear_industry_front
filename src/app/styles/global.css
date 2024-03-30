@@ -18,10 +18,6 @@
   );
 }
 
-.test-class {
-  padding: 1rem 2rem;
-}
-
 body {
   font-family: var(--font-inter);
 }
@@ -29,6 +25,7 @@ body {
 h1,
 h2,
 h3 {
+  margin: 0;
   font-family: var(--font-montserrat);
   font-size: 32px;
   font-weight: 400;
@@ -51,6 +48,7 @@ h3 {
 }
 
 p {
+  margin: 0;
   font-size: 16px;
   font-weight: 400;
   line-height: 28px;

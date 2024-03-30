@@ -1,0 +1,86 @@
+.textareaWrapper {
+  margin: 0;
+  padding: 0;
+  max-width: 431px;
+  min-height: 64px;
+  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.05) inset;
+  border-radius: 8px;
+  border: none;
+  position: relative;
+  transition: min-width 0.5s ease;
+  cursor: text;
+  background-color: transparent;
+
+  &:focus-within {
+    background-color: var(--white-color);
+  }
+
+  &.onValue {
+    max-width: none;
+  }
+}
+
+.textareaWrapper:focus-within .textareaLabel {
+  top: 0;
+  left: 0;
+  font-size: 14px;
+  transform: none;
+}
+
+.textareaLabel {
+  margin: 0;
+  padding: 0 10px;
+  position: absolute;
+  top: 50%;
+  left: 6px;
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 400;
+  color: var(--grey-dark-color);
+  transition:
+    top 0.5s ease,
+    left 0.5s ease,
+    font-size 0.5s ease,
+    transform 0.5s ease;
+  transform: translate(-50%, -50%) translateX(50%);
+  z-index: 2;
+
+  &.required {
+    &::after {
+      content: '*';
+      color: var(--red-color);
+      margin: 0;
+      padding-left: 5px;
+    }
+  }
+
+  &.onValue {
+    top: 0;
+    left: 0;
+    font-size: 14px;
+    transform: none;
+  }
+}
+
+.textarea {
+  margin: 22px 10px 0 10px;
+  padding: 0;
+  width: calc(100% - 20px);
+  min-height: 100%;
+  border: none;
+  outline: none;
+  resize: none;
+  overflow: hidden;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--black-color);
+  background-color: transparent;
+
+  &:focus {
+    background-color: var(--white-color);
+  }
+
+  &.moreTwoRows {
+    line-height: 1.75;
+  }
+}

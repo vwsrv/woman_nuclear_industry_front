@@ -1,0 +1,51 @@
+@import '../../styles/mixins.scss';
+
+.news {
+  @include flex-row;
+  gap: 14px;
+  border-radius: 8px;
+  max-height: 209px;
+  text-decoration: none;
+  color: #020202;
+  max-width: 100%;
+  overflow: hidden;
+  transition: box-shadow 0.3s;
+
+  &:hover {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  &__image {
+    width: 308px;
+    height: 209px;
+  }
+
+  &__content {
+    @include flex-column;
+    gap: 16px;
+    margin-top: 24px;
+
+    &_containerDate {
+      @include flex-row;
+      gap: 10px;
+    }
+
+    &_date {
+      @include mp-null;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.8;
+    }
+
+    &_title {
+      @include mp-null;
+      font-family: var(--font-inter);
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.75;
+      margin-right: 15px;
+      max-height: 119px;
+      overflow: hidden;
+    }
+  }
+}
