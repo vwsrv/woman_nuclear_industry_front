@@ -7,7 +7,6 @@ import { SetStateAction, useState } from 'react';
 import Link from 'next/link';
 import { Checkbox } from '../checkbox';
 import { Button } from '../button';
-import { ExternalSignButtons } from '@/shared/ui/external-sign-buttons';
 import { usePathname } from 'next/navigation';
 
 export const SignupForm: React.FC = () => {
@@ -47,9 +46,9 @@ export const SignupForm: React.FC = () => {
       <div className={cn(classes.signupFormAuthLinksWrapper)}>
         <Link
           className={cn(classes.signupFormAuthLink, {
-            [classes.active]: pathname === '/'
+            [classes.active]: pathname === '/signup'
           })}
-          href="/"
+          href="/signup"
         >
           Зарегистрироваться
         </Link>
@@ -57,13 +56,12 @@ export const SignupForm: React.FC = () => {
           className={cn(classes.signupFormAuthLink, {
             [classes.active]: pathname === '/signin'
           })}
-          href="signup"
+          href="signin"
         >
           Войти
         </Link>
       </div>
       <div className={cn(classes.signupFormInputsWrapper)}>
-        <ExternalSignButtons />
         <div className={cn(classes.signupFormSeparator)}>
           <hr className={cn(classes.signupFormSeparatorLine)} />
           <span className={cn(classes.signupFormSeparatorText)}>или</span>
