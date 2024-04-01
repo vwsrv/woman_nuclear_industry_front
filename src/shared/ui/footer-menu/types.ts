@@ -8,5 +8,5 @@ interface typeProfileMenuPropsTitle
 
 export interface FooterMenuProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-    menuItems: typeProfileMenuPropsTitle[][];
+  menuItems: typeProfileMenuPropsTitle[][];
 }
