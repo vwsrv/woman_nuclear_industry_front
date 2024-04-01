@@ -1,0 +1,36 @@
+.newsHeader {
+  margin: 0;
+  padding: 0;
+  color: var(--black-color);
+  font-family: var(--font-montserrat);
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1.25;
+}
+
+.newsHeaderButton {
+  margin-top: 2px;
+  padding: 0;
+  min-width: 40px;
+  min-height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--white-color);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.1) inset;
+  }
+}
+
+.newsHeaderWrapper {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+}
