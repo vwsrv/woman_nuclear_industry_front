@@ -1,19 +1,30 @@
 .profileDetails {
-  display: grid;
-  grid-template-columns: 1fr 1.54fr;
-  column-gap: 30px;
+  display: flex;
+  max-height: 75vh;
 }
 
 .profileCard {
-  overflow: hidden;
+  margin-right: 30px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-width: 431px;
 
-  .profilePhoto {
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    background: transparent;
+  }
+
+  .imageHolder {
     margin-bottom: 16px;
-    border-radius: 8px;
-    object-fit: cover;
-    width: 100%;
+
+    position: relative;
     height: 41vh;
-    max-width: 431px;
+    width: 100%;
+    .profilePhoto {
+      border-radius: 8px;
+      object-fit: cover;
+    }
   }
 
   .profileDescription {
@@ -23,9 +34,10 @@
 }
 
 .profileAbout {
+  width: 100%;
   overflow-x: hidden;
   overflow-y: auto;
-  height: 60vh;
+  max-height: 75vh;
 
   &::-webkit-scrollbar {
     width: 0;

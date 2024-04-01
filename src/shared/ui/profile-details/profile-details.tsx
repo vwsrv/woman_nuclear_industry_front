@@ -13,11 +13,14 @@ export const ProfileDetails: React.FC<profileDetailsProps> = props => {
   return (
     <div className={cn(classes.profileDetails)}>
       <div className={cn(classes.profileCard)}>
-        <Image
-          src={imageUrl}
-          alt={name}
-          className={cn(classes.profilePhoto)}
-        ></Image>
+        <div className={cn(classes.imageHolder)}>
+          <Image
+            src={imageUrl}
+            alt={name}
+            className={cn(classes.profilePhoto)}
+            fill={true}
+          ></Image>
+        </div>
         <h2>{name}</h2>
         <ul className={cn(classes.profileDescription)}>
           {Array.isArray(description) ? (
