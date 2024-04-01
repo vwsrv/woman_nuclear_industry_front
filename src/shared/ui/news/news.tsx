@@ -14,7 +14,11 @@ export const News: React.FC<NewsProps> = props => {
     <Link href={link} className={cn(classes.news)}>
       <div className={cn(classes.news__image)}>
         <Image
-          src={imageUrl ? imageUrl : "https://imgholder.ru/600x400/8493a8/adb9ca&text=Нет+изображения&font=kelson"}
+          src={
+            imageUrl
+              ? imageUrl
+              : 'https://imgholder.ru/600x400/8493a8/adb9ca&text=Нет+изображения&font=kelson'
+          }
           alt={title}
           style={{ objectFit: 'cover' }}
           width={308}

@@ -12,7 +12,7 @@ import EventIcon from '@/shared/ui/event/images/event_icon.svg';
 
 export const Event: React.FC<typeEventProps> = props => {
   const { className, imageUrl, title, date, eventType, linkUrl } = props;
-  
+
   const formatDate = (date: Date) => {
     const actualDate = new Date(date);
 
@@ -24,7 +24,7 @@ export const Event: React.FC<typeEventProps> = props => {
       hour12: false,
       timeZone: 'Europe/Moscow'
     });
-    return formattedDate.replace(' в',', ');
+    return formattedDate.replace(' в', ', ');
   };
 
   const eventDate = date ? formatDate(date) : '';
@@ -49,16 +49,17 @@ export const Event: React.FC<typeEventProps> = props => {
           />
           <p className={cn(classes.date, classes.text)}>{eventDate}</p>
 
-          {eventType
-            ? <Image
-                className={cn(classes.icon, classes.event)}
-                src={EventIcon}
-                alt="event"
-                width={28}
-                height={28}
-              />
-            : ''
-          }
+          {eventType ? (
+            <Image
+              className={cn(classes.icon, classes.event)}
+              src={EventIcon}
+              alt="event"
+              width={28}
+              height={28}
+            />
+          ) : (
+            ''
+          )}
           <p className={cn(classes.type, classes.text)}>{eventType}</p>
         </div>
         <h3 className={cn(classes.title)}>{title}</h3>
