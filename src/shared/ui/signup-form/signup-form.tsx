@@ -1,46 +1,27 @@
-'use client';
-
 import cn from 'classnames';
 import classes from './styles.module.scss';
 import { Input } from '../input';
-import { SetStateAction, useState } from 'react';
 import Link from 'next/link';
 import { Checkbox } from '../checkbox';
 import { Button } from '../button';
-import { usePathname } from 'next/navigation';
+import { signupFromProps } from './types';
 
-export const SignupForm: React.FC = () => {
-  const pathname = usePathname();
-
-  const [email, setEmail] = useState('');
-  const [fullName, setFullName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [date, setDate] = useState('');
-  const [password, setPassword] = useState('');
-  const [consent, setConsent] = useState(false);
-
-  const onChangeEmail = (newValue: SetStateAction<string>) =>
-    setEmail(newValue);
-
-  const onChangeFullName = (newValue: SetStateAction<string>) =>
-    setFullName(newValue);
-
-  const onChangePhone = (newValue: SetStateAction<string>) =>
-    setPhone(newValue);
-
-  const onChangeDate = (newValue: SetStateAction<string>) => setDate(newValue);
-
-  const onChangePassword = (newValue: SetStateAction<string>) =>
-    setPassword(newValue);
-
-  const toggleConsent = (): void => setConsent(!consent);
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    console.log('submit');
-  };
-
+export const SignupForm: React.FC<signupFromProps> = ({
+  pathname,
+  email,
+  onChangeEmail,
+  fullName,
+  onChangeFullName,
+  phone,
+  onChangePhone,
+  date,
+  onChangeDate,
+  password,
+  onChangePassword,
+  consent,
+  toggleConsent,
+  handleSubmit
+}) => {
   return (
     <form className={cn(classes.signupForm)} onSubmit={handleSubmit} action="">
       <div className={cn(classes.signupFormAuthLinksWrapper)}>
@@ -54,25 +35,30 @@ export const SignupForm: React.FC = () => {
         </Link>
         <Link
           className={cn(classes.signupFormAuthLink, {
-            [classes.active]: pathname === '/signin'
+            [classes.active]: pathname === '/'
           })}
-          href="signin"
+          href="/signin"
         >
           Войти
         </Link>
       </div>
+      <div className={cn(classes.signupFormExternalWrapper)}>
+        <div className={cn(classes.signupFormExternalButton)}>Google</div>
+        <div className={cn(classes.signupFormExternalButton)}>VK</div>
+      </div>
+      <div className={cn(classes.signupFormSeparator)}>
+        <hr className={cn(classes.signupFormSeparatorLine)} />
+        <span className={cn(classes.signupFormSeparatorText)}>или</span>
+        <hr className={cn(classes.signupFormSeparatorLine)} />
+      </div>
       <div className={cn(classes.signupFormInputsWrapper)}>
-        <div className={cn(classes.signupFormSeparator)}>
-          <hr className={cn(classes.signupFormSeparatorLine)} />
-          <span className={cn(classes.signupFormSeparatorText)}>или</span>
-          <hr className={cn(classes.signupFormSeparatorLine)} />
-        </div>
         <Input
           value={email}
           handleInputChange={onChangeEmail}
           label="E-mail"
           name="email"
           type="email"
+          required
         />
         <Input
           value={fullName}
@@ -80,6 +66,7 @@ export const SignupForm: React.FC = () => {
           label="ФИО"
           name="fullName"
           type="text"
+          required
         />
         <Input
           value={phone}
@@ -87,13 +74,15 @@ export const SignupForm: React.FC = () => {
           label="Телефон"
           name="phone"
           type="tel"
+          required
         />
         <Input
           value={date}
           handleInputChange={onChangeDate}
           label="ДД.ММ.ГГ"
-          name="email"
-          type="email"
+          name="date"
+          type="text"
+          required
         />
         <Input
           value={password}
@@ -101,6 +90,7 @@ export const SignupForm: React.FC = () => {
           label="Пароль"
           name="password"
           type="password"
+          required
         />
         <Checkbox checked={consent} onCheckboxChange={toggleConsent}>
           Я согласен на{' '}
@@ -109,7 +99,12 @@ export const SignupForm: React.FC = () => {
           </Link>
         </Checkbox>
       </div>
-      <Button type="submit" variant="blue" disabled={!consent}>
+      <Button
+        className={cn(classes.signupFormSubmitButton)}
+        type="submit"
+        variant="blue"
+        disabled={!consent}
+      >
         Зарегистрироваться
       </Button>
     </form>
