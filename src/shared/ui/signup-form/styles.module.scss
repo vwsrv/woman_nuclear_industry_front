@@ -90,11 +90,10 @@
 }
 
 .signupFormSubmitButton {
+  border: none;
   font-family: var(--font-inter);
   font-weight: 400;
   font-size: 16px;
   line-height: 1.75;
   padding: 8px 30px;
-  padding-block: 0;
-  padding-inline: 0;
 }

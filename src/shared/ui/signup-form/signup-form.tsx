@@ -23,7 +23,7 @@ export const SignupForm: React.FC<signupFromProps> = ({
   handleSubmit
 }) => {
   return (
-    <form className={cn(classes.signupForm)} onSubmit={handleSubmit} action="">
+    <form className={cn(classes.signupForm)} onSubmit={handleSubmit}>
       <div className={cn(classes.signupFormAuthLinksWrapper)}>
         <Link
           className={cn(classes.signupFormAuthLink, {
