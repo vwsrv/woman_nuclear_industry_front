@@ -4,6 +4,7 @@ import { About } from '@/shared/ui/about';
 import { Button } from '@/shared/ui/button';
 
 import React from 'react';
+
 export const TestPage: React.FC = () => {
   return (
     <div>
