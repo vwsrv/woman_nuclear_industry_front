@@ -1,8 +1,9 @@
 .form__item {
   position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   border-radius: 8px;
   box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.1) inset;
 
@@ -18,15 +19,19 @@
 }
 
 .input {
-  width: 100%;
+  width: calc(100% - 20px);
   font-size: 16px;
   line-height: 1.75;
   font-weight: 400;
   background-color: transparent;
   border: none;
   outline: none;
-  padding: 22px 10px 14px 10px;
+  padding: 22px 10px 10px 10px;
   color: var(--grey-dark-color);
+
+  &.error {
+    padding: 22px 10px 0 10px;
+  }
 
   &:focus {
     color: var(--black-color);
@@ -51,4 +56,14 @@
       color: var(--red-color);
     }
   }
+}
+
+.error {
+  margin: 0;
+  padding-left: 10px;
+  color: var(--red-color);
+  font-family: var(--font-inter);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 28px;
 }
