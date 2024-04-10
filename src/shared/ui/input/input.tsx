@@ -5,7 +5,7 @@ import { FC } from 'react';
 import classes from './styles.module.scss';
 import cn from 'classnames';
 
-export const Input: FC<Omit<typeInputProps, 'placeholder'>> = (props) => {
+export const Input: FC<Omit<typeInputProps, 'placeholder'>> = props => {
   const {
     name,
     label,
@@ -31,8 +31,8 @@ export const Input: FC<Omit<typeInputProps, 'placeholder'>> = (props) => {
         required={required}
         value={value}
         onChange={e => {
-          console.log(1111111)
-          handleInputChange(e.target.value)
+          console.log(1111111);
+          handleInputChange(e.target.value);
         }}
         className={cn(className, classes.input, {
           [classes.error]: error
@@ -40,11 +40,7 @@ export const Input: FC<Omit<typeInputProps, 'placeholder'>> = (props) => {
         {...otherProps}
       />
 
-      {error && (
-        <p className={cn(className, classes.error)}>
-          {`${error}`}
-        </p>
-      )}
+      {error && <p className={cn(className, classes.error)}>{`${error}`}</p>}
 
       {label !== undefined && label !== '' && (
         <span
