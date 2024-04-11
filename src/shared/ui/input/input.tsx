@@ -4,43 +4,74 @@ import { typeInputProps } from '@/shared/ui/input/types';
 import { FC } from 'react';
 import classes from './styles.module.scss';
 import cn from 'classnames';
+import { useFormContext } from 'react-hook-form';
 
 export const Input: FC<Omit<typeInputProps, 'placeholder'>> = props => {
   const {
     name,
     label,
     className,
-    value,
-    handleInputChange,
     required,
     type = 'text',
-    error,
+    registerOptions,
     ...otherProps
   } = props;
   // Cтандартный пропс 'placeholder' удален, чтобы случайно не появился под label.
 
+  const {
+    register,
+    watch,
+    formState: { errors },
+    setValue
+  } = useFormContext();
+
+  const value = watch(name);
+  const error = errors[name]?.message || '';
+  console.log(errors[name]);
+  console.log(registerOptions);
+  console.log('value', value);
+
   return (
     <label
-      className={cn(className, classes.form__item, {
-        [classes.active]: value
-      })}
+      className={cn(
+        className,
+        classes.form__item,
+        {
+          [classes.active]: value
+        },
+        {
+          [classes.error]: error !== ''
+        }
+      )}
     >
       <input
+        {...register(name, {
+          pattern: {
+            value: registerOptions?.pattern,
+            message: registerOptions?.errorMessage
+          },
+          required: registerOptions?.required
+        })}
         name={name}
         type={type}
         required={required}
-        value={value}
-        onChange={e => {
-          console.log(1111111);
-          handleInputChange(e.target.value);
-        }}
-        className={cn(className, classes.input, {
-          [classes.error]: error
-        })}
+        onChange={e => setValue(name, e.target.value)}
+        className={cn(
+          className,
+          classes.input,
+          {
+            [classes.error]: error !== ''
+          },
+          {
+            [classes.onValue]: value && value !== ''
+          }
+        )}
         {...otherProps}
       />
 
-      {error && <p className={cn(className, classes.error)}>{`${error}`}</p>}
+      {typeof error === 'string' && error !== '' && (
+        <p className={cn(className, classes.errorText)}>{error}</p>
+      )}
 
       {label !== undefined && label !== '' && (
         <span

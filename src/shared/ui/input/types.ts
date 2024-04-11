@@ -1,5 +1,12 @@
 import { DetailedHTMLProps, InputHTMLAttributes } from 'react';
-import { FieldError, FieldErrorsImpl, Merge } from 'react-hook-form';
+import {
+  FieldError,
+  FieldErrorsImpl,
+  FieldValues,
+  Merge,
+  UseFormRegister,
+  UseFormWatch
+} from 'react-hook-form';
 
 export interface typeInputProps
   extends DetailedHTMLProps<
@@ -7,13 +14,11 @@ export interface typeInputProps
     HTMLInputElement
   > {
   label?: string;
-  name?: string;
-  value: string;
-  handleInputChange: (newValue: string) => void;
+  name: string;
   type?: 'text' | 'email' | 'tel' | 'password' | 'url' | 'number' | 'date';
-  error?:
-    | string
-    | FieldError
-    | Merge<FieldError, FieldErrorsImpl<any>>
-    | undefined;
+  registerOptions?: {
+    pattern?: RegExp;
+    errorMessage?: string;
+    required?: boolean;
+  };
 }

@@ -13,6 +13,10 @@
     transform: translate(-8px, -14px);
   }
 
+  &.error {
+    border: 1px solid rgba(255, 78, 78, 1);
+  }
+
   // &:focus-within .input {
   //   color: var(--black-color);
   // }
@@ -26,7 +30,7 @@
   background-color: transparent;
   border: none;
   outline: none;
-  padding: 22px 10px 10px 10px;
+  padding: 18px 16px;
   color: var(--grey-dark-color);
 
   &.error {
@@ -34,7 +38,12 @@
   }
 
   &:focus {
+    padding: 18px 10px;
     color: var(--black-color);
+  }
+
+  &.onValue {
+    padding: 22px 10px 0 10px;
   }
 }
 
@@ -58,9 +67,10 @@
   }
 }
 
-.error {
+.errorText {
   margin: 0;
-  padding-left: 10px;
+  padding: 0 10px;
+  width: calc(100% - 20px);
   color: var(--red-color);
   font-family: var(--font-inter);
   font-weight: 400;

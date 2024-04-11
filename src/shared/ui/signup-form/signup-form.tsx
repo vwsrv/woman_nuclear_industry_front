@@ -8,31 +8,13 @@ import { signupFromProps } from './types';
 
 export const SignupForm: React.FC<signupFromProps> = ({
   pathname,
-  email,
-  onChangeEmail,
-  firstName,
-  onChangeFirstName,
-  lastName,
-  onChangeLastName,
-  phone,
-  onChangePhone,
-  date,
-  onChangeDate,
-  password,
-  onChangePassword,
   consent,
   toggleConsent,
-  handleSubmit,
   onSubmit,
-  register,
-  errors,
   className
 }) => {
   return (
-    <form
-      className={cn(className, classes.signupForm)}
-      onSubmit={handleSubmit(onSubmit)}
-    >
+    <form className={cn(className, classes.signupForm)} onSubmit={onSubmit}>
       <div className={cn(className, classes.signupFormAuthLinksWrapper)}>
         <Link
           className={cn(className, classes.signupFormAuthLink, {
@@ -68,24 +50,21 @@ export const SignupForm: React.FC<signupFromProps> = ({
       </div>
       <div className={cn(className, classes.signupFormInputsWrapper)}>
         <Input
-          {...register('email', {
+          registerOptions={{
             pattern: /^.+@.+\..+$/,
-            required: 'Поле e-mail должно быть обязательно заполнено.'
-          })}
-          value={email}
-          handleInputChange={onChangeEmail}
+            errorMessage: 'Поле e-mail должно быть обязательно заполнено.',
+            required: true
+          }}
           label="E-mail"
           name="email"
           type="email"
-          autoComplete="on"
-          error={errors.email?.message}
           required
         />
-        <Input
-          {...register('firstName', {
-            min: 2,
-            required: 'Имя дожно состоять минимум из 2-х символов.'
-          })}
+        {/* <Input
+          // {...register('firstName', {
+          //   min: 2,
+          //   required: 'Имя дожно состоять минимум из 2-х символов.'
+          // })}
           value={firstName}
           handleInputChange={onChangeFirstName}
           label="Имя"
@@ -95,10 +74,10 @@ export const SignupForm: React.FC<signupFromProps> = ({
           required
         />
         <Input
-          {...register('lastName', {
-            min: 2,
-            required: 'Фамилия дожна состоять минимум из 2-х символов.'
-          })}
+          // {...register('lastName', {
+          //   min: 2,
+          //   required: 'Фамилия дожна состоять минимум из 2-х символов.'
+          // })}
           value={lastName}
           handleInputChange={onChangeLastName}
           label="Фамилия"
@@ -108,10 +87,10 @@ export const SignupForm: React.FC<signupFromProps> = ({
           required
         />
         <Input
-          {...register('phone', {
-            pattern: /^(?:\+7|8)\d{10}$/,
-            required: 'Номер телефона должен начинаться либо с +7 либо с 8.'
-          })}
+          // {...register('phone', {
+          //   pattern: /^(?:\+7|8)\d{10}$/,
+          //   required: 'Номер телефона должен начинаться либо с +7 либо с 8.'
+          // })}
           value={phone}
           handleInputChange={onChangePhone}
           label="Телефон"
@@ -121,10 +100,10 @@ export const SignupForm: React.FC<signupFromProps> = ({
           required
         />
         <Input
-          {...register('date', {
-            pattern: /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/(\d{4})$/,
-            required: 'Пожалуйста введите дату в формате дд.мм.ггг.'
-          })}
+          // {...register('date', {
+          //   pattern: /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/(\d{4})$/,
+          //   required: 'Пожалуйста введите дату в формате дд.мм.ггг.'
+          // })}
           value={date}
           handleInputChange={onChangeDate}
           label="ДД.ММ.ГГ"
@@ -134,10 +113,10 @@ export const SignupForm: React.FC<signupFromProps> = ({
           required
         />
         <Input
-          {...register('password', {
-            pattern: /.{8,}/,
-            required: 'Пароль должен состоять из не менее чем 8 символов.'
-          })}
+          // {...register('password', {
+          //   pattern: /.{8,}/,
+          //   required: 'Пароль должен состоять из не менее чем 8 символов.'
+          // })}
           value={password}
           handleInputChange={onChangePassword}
           label="Пароль"
@@ -145,7 +124,7 @@ export const SignupForm: React.FC<signupFromProps> = ({
           type="password"
           error={errors.password?.message}
           required
-        />
+        /> */}
         <Checkbox checked={consent} onCheckboxChange={toggleConsent}>
           Я согласен на{' '}
           <Link href="http://winrussia.com/include/licenses_detail.php">
