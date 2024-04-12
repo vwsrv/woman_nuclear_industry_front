@@ -10,4 +10,9 @@ export interface typeInputProps
   value: string;
   handleInputChange: (newValue: string) => void;
   type?: 'text' | 'email' | 'tel' | 'password' | 'url' | 'number' | 'date';
+  error?:
+    | string
+    | FieldError
+    | Merge<FieldError, FieldErrorsImpl<any>>
+    | undefined;
 }

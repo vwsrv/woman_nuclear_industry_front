@@ -14,13 +14,14 @@ export const Input: FC<Omit<typeInputProps, 'placeholder'>> = props => {
     handleInputChange,
     required,
     type = 'text',
+    error,
     ...otherProps
   } = props;
   // Cтандартный пропс 'placeholder' удален, чтобы случайно не появился под label.
 
   return (
     <label
-      className={cn(classes.form__item, {
+      className={cn(className, classes.form__item, {
         [classes.active]: value
       })}
     >
@@ -30,9 +31,12 @@ export const Input: FC<Omit<typeInputProps, 'placeholder'>> = props => {
         required={required}
         value={value}
         onChange={e => handleInputChange(e.target.value)}
-        className={cn(classes.input)}
+        className={cn(className, classes.input, {
+          [classes.error]: error
+        })}
         {...otherProps}
       />
+      {error && <p className={cn(className, classes.error)}>{`${error}`}</p>}
 
       {label !== undefined && label !== '' && (
         <span
