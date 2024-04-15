@@ -1,25 +1,25 @@
-'use client';
-
-import { typeInputProps } from '@/shared/ui/input/types';
-import { FC } from 'react';
+import { forwardRef, ForwardRefExoticComponent } from 'react';
 import classes from './styles.module.scss';
 import cn from 'classnames';
 import { useFormContext } from 'react-hook-form';
+import { InputProps } from './types';
 
-export const Input: FC<Omit<typeInputProps, 'placeholder'>> = props => {
+const Input: ForwardRefExoticComponent<InputProps> = forwardRef<
+  HTMLInputElement,
+  InputProps
+>((props, ref) => {
   const {
     name,
     label,
     className,
     required,
+    // onBlur,
+    onChange,
     type = 'text',
-    registerOptions,
     ...otherProps
   } = props;
-  // Cтандартный пропс 'placeholder' удален, чтобы случайно не появился под label.
 
   const {
-    register,
     watch,
     formState: { errors },
     setValue
@@ -27,9 +27,6 @@ export const Input: FC<Omit<typeInputProps, 'placeholder'>> = props => {
 
   const value = watch(name);
   const error = errors[name]?.message || '';
-  console.log(errors[name]);
-  console.log(registerOptions);
-  console.log('value', value);
 
   return (
     <label
@@ -45,27 +42,20 @@ export const Input: FC<Omit<typeInputProps, 'placeholder'>> = props => {
       )}
     >
       <input
-        {...register(name, {
-          pattern: {
-            value: registerOptions?.pattern,
-            message: registerOptions?.errorMessage
-          },
-          required: registerOptions?.required
-        })}
         name={name}
         type={type}
         required={required}
-        onChange={e => setValue(name, e.target.value)}
-        className={cn(
-          className,
-          classes.input,
-          {
-            [classes.error]: error !== ''
-          },
-          {
-            [classes.onValue]: value && value !== ''
-          }
-        )}
+        value={value}
+        // onBlur={onBlur ? (e) => setValue(name, onBlur(e)) : undefined}
+        onChange={
+          onChange
+            ? e => setValue(name, onChange(e))
+            : e => setValue(name, e.target.value)
+        }
+        className={cn(className, classes.input, {
+          [classes.error]: error !== ''
+        })}
+        ref={ref}
         {...otherProps}
       />
 
@@ -75,13 +65,24 @@ export const Input: FC<Omit<typeInputProps, 'placeholder'>> = props => {
 
       {label !== undefined && label !== '' && (
         <span
-          className={cn(className, classes.label, {
-            [classes.required]: required
-          })}
+          className={cn(
+            className,
+            classes.label,
+            {
+              [classes.required]: required
+            },
+            {
+              [classes.error]: error !== ''
+            }
+          )}
         >
           {label}
         </span>
       )}
     </label>
   );
-};
+});
+
+Input.displayName = 'Input';
+
+export { Input };

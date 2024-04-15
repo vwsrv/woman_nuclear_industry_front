@@ -30,20 +30,19 @@
   background-color: transparent;
   border: none;
   outline: none;
-  padding: 18px 16px;
+  padding: 22px 10px 10px 10px;
   color: var(--grey-dark-color);
 
   &.error {
     padding: 22px 10px 0 10px;
   }
 
-  &:focus {
-    padding: 18px 10px;
-    color: var(--black-color);
+  &.error:focus {
+    padding: 22px 10px 0 10px;
   }
 
-  &.onValue {
-    padding: 22px 10px 0 10px;
+  &:focus {
+    color: var(--black-color);
   }
 }
 
@@ -64,6 +63,11 @@
       content: ' *';
       color: var(--red-color);
     }
+  }
+
+  &.error {
+    font-size: 12px;
+    transform: translate(-8px, -14px);
   }
 }
 
