@@ -57,9 +57,13 @@ const Input: ForwardRefExoticComponent<InputProps> = forwardRef<
         {...otherProps}
       />
 
-      {typeof error === 'string' && error !== '' && (
-        <p className={cn(className, classes.errorText)}>{error}</p>
-      )}
+      <p
+        className={cn(className, classes.errorText, {
+          [classes.error]: error !== ''
+        })}
+      >
+        {typeof error === 'string' && error !== '' ? error : ''}
+      </p>
 
       {label !== undefined && label !== '' && (
         <span
