@@ -66,11 +66,11 @@ export const signupInputs: inputsTypes[] = [
     handleChange: e => {
       if (e.target.value.length === 1 && e.target.value === '8') {
         return '+7';
-      }
-      if (e.target.value.length === 12) {
+      } else if (e.target.value.length > 12) {
+        return e.target.value.slice(0, -1);
+      } else {
         return e.target.value;
       }
-      return e.target.value;
     },
     options: {
       pattern: {
