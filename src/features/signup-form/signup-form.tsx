@@ -15,7 +15,13 @@ export const SignupForm: React.FC<signupFromProps> = ({
   onSubmit,
   className
 }) => {
-  const { control } = useFormContext();
+  const {
+    watch,
+    control,
+    formState: { errors }
+  } = useFormContext();
+  const allFields = watch();
+  const checkAllFields = Object.values(allFields).every(field => !!field);
 
   return (
     <form className={cn(className, classes.signupForm)} onSubmit={onSubmit}>
@@ -82,7 +88,7 @@ export const SignupForm: React.FC<signupFromProps> = ({
         className={cn(className, classes.signupFormSubmitButton)}
         type="submit"
         variant="blue"
-        disabled={!consent}
+        disabled={!consent || Object.keys(errors).length > 0 || !checkAllFields}
       >
         Зарегистрироваться
       </Button>
