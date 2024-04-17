@@ -27,10 +27,10 @@ export interface inputTypes {
       value: RegExp;
       message: string;
     };
-    validate?: (value: string | number | Date) => boolean;
+    validate?: (value: string | number | Date) => boolean | string;
     required?: {
       value: boolean;
       message: string;
     };
-  };
+  }
 }
