@@ -1,11 +1,11 @@
-const EMAIL_MESSAGE = 'Введите почту в формате email@email.ru';
+const EMAIL_MESSAGE = 'Введите почту в формате - email@email.ru';
 const FIRSTNAME_MESSAGE =
   'От 2 до 50 символов, русского или латинского алфавита.';
 const LASTNAME_MESSAGE =
   'От 2 до 50 символов, русского или латинского алфавита.';
 const PATRONYMIC_MESSAGE =
   'От 2 до 50 символов, русского или латинского алфавита.';
-const PHONE_MESSAGE = 'Номер телефона должен начинаться с +7.';
+const PHONE_MESSAGE = 'Введите номер в формате - 79998887766.';
 const FUTURE_DATE_MESSAGE = 'Дата рождения не может быть в будущем.';
 const REQUIRED_DATE_MESSAGE =
   'Дата рождения должна быть обязательно заполнена.';
