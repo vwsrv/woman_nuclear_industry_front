@@ -63,7 +63,6 @@ export const SignupForm: React.FC<signupFromProps> = ({
               render={({ field }) => (
                 <Input
                   {...field}
-                  // onBlur={input.handleBlur ? input.handleBlur : undefined}
                   onChange={input.handleChange ? input.handleChange : undefined}
                   label={input.label}
                   type={input.type}

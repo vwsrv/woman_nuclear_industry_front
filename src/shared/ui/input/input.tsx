@@ -13,7 +13,6 @@ const Input: ForwardRefExoticComponent<InputProps> = forwardRef<
     label,
     className,
     required,
-    // onBlur,
     onChange,
     type = 'text',
     ...otherProps
@@ -46,7 +45,6 @@ const Input: ForwardRefExoticComponent<InputProps> = forwardRef<
         type={type}
         required={required}
         value={value}
-        // onBlur={onBlur ? (e) => setValue(name, onBlur(e)) : undefined}
         onChange={
           onChange
             ? e => setValue(name, onChange(e))

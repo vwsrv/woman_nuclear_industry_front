@@ -88,16 +88,19 @@ export const signupInputs: inputsTypes[] = [
     type: 'text',
     label: 'ДД.ММ.ГГГ',
     defaultValue: '',
-    // handleBlur: (e) => {
-    //   if (e.target.value !== '' && e.target.value.length >= 8) {
-    //     return e.target.value.slice(0, 2)
-    //     + "/" + e.target.value.slice(2, 4)
-    //     + "/" + e.target.value.slice(4)
-    //   }
-    // },
+    handleChange: e => {
+      if (e.target.value.length < 8) {
+        return e.target.value;
+      } else if (e.target.value.length > 10) {
+        return e.target.value.slice(0, -1);
+      } else {
+        return e.target.value.replace(/(\d{2})(\d{2})(\d{4})/, '$1/$2/$3');
+      }
+    },
     options: {
       pattern: {
-        value: /^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/(\d{4})$/,
+        value:
+          /^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/(19\d{2}|20[012]\d)$/,
         message: DATE_MESSAGE
       },
       required: {
