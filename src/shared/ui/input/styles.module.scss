@@ -45,7 +45,7 @@
     color: var(--black-color);
   }
 
-  &[type="date"]:not(:focus)[value=""] {
+  &[type='date']:not(:focus)[value=''] {
     color: transparent;
   }
 }

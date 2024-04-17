@@ -32,5 +32,5 @@ export interface inputTypes {
       value: boolean;
       message: string;
     };
-  }
+  };
 }

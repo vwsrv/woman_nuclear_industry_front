@@ -108,7 +108,7 @@ export const signupInputs: inputTypes[] = [
     defaultValue: '',
     handleChange: e => {
       if (e.target.value.length > 22) {
-        return e.target.value.slice(0, -1)
+        return e.target.value.slice(0, -1);
       }
       const input = e.target.value.replace(/\D/g, '');
       let formattedInput = '';
@@ -119,7 +119,10 @@ export const signupInputs: inputTypes[] = [
         formattedInput = input;
       }
 
-      formattedInput = formattedInput.replace(/(\d{1})(\d{3})(\d{3})(\d{2})(\d{2})/, '+$1 ($2) $3 - $4 - $5');
+      formattedInput = formattedInput.replace(
+        /(\d{1})(\d{3})(\d{3})(\d{2})(\d{2})/,
+        '+$1 ($2) $3 - $4 - $5'
+      );
 
       return formattedInput;
     },
@@ -140,18 +143,18 @@ export const signupInputs: inputTypes[] = [
     label: 'ДД.ММ.ГГГ',
     defaultValue: '',
     options: {
-      validate: (value) => {
-        const currentDate = new Date()
-        const selectedDate = new Date(value)
-        const maxDate = new Date()
-        maxDate.setFullYear(currentDate.getFullYear() - 120)
+      validate: value => {
+        const currentDate = new Date();
+        const selectedDate = new Date(value);
+        const maxDate = new Date();
+        maxDate.setFullYear(currentDate.getFullYear() - 120);
         if (selectedDate > currentDate) {
-          return FUTURE_DATE_MESSAGE
+          return FUTURE_DATE_MESSAGE;
         }
         if (selectedDate < maxDate) {
-          return OLD_DATE_MESSAGE
+          return OLD_DATE_MESSAGE;
         }
-        return true
+        return true;
       },
       required: {
         value: true,
