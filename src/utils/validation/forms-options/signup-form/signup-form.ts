@@ -7,9 +7,9 @@ import {
   PHONE_MESSAGE,
   REQUIRED_MESSAGE
 } from '../../error-messages';
-import { inputsTypes } from '../../types';
+import { inputTypes } from '../../types';
 
-export const signupInputs: inputsTypes[] = [
+export const signupInputs: inputTypes[] = [
   {
     name: 'email',
     type: 'email',

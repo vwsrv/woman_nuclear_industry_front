@@ -1,12 +1,10 @@
-import { ChangeEvent, ChangeEventHandler, FocusEventHandler } from 'react';
-import { FieldValues, UseFormSetValue } from 'react-hook-form';
+import { ChangeEventHandler } from 'react';
 
-export interface inputsTypes {
+export interface inputTypes {
   name: string;
   type: string;
   label: string;
   defaultValue: string;
-  // handleBlur?: FocusEventHandler<HTMLInputElement>
   handleChange?: ChangeEventHandler<HTMLInputElement>;
   options?: {
     min?: {
