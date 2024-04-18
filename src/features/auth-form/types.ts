@@ -1,26 +1,15 @@
 import { HTMLAttributes, DetailedHTMLProps } from 'react';
-import {
-  FieldErrors,
-  FieldValues,
-  SubmitHandler,
-  UseFormHandleSubmit,
-  UseFormRegister
-} from 'react-hook-form';
+import { inputTypes } from '@/utils/validation/types';
 
 export interface typeAuthFormProps
-  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  email: string;
-  password: string;
-  onChangeEmail: (value: string) => void;
-  onChangePassword: (value: string) => void;
-  handleSubmit: UseFormHandleSubmit<FieldValues, undefined>;
-  onSubmit: SubmitHandler<FieldValues>;
-  register: UseFormRegister<FieldValues>;
-  errors: FieldErrors<FieldValues>;
-  isValid: boolean;
-  registrationLinkUrl: string;
+  extends DetailedHTMLProps<HTMLAttributes<HTMLFormElement>, HTMLFormElement> {
+  inputs: inputTypes[];
+  pathname: string | null;
   recoveryLinkUrl: string;
-  // для входа с помощью Google(Яндекс)/ВКонтакте:
-  linkGoggleEntryUrl?: string;
-  linkVKEntryUrl?: string;
+  onSubmit: (
+    e?: React.BaseSyntheticEvent<object, any, any> | undefined
+  ) => Promise<void>;
+  // для входа с помощью Яндекс/ВКонтакте:
+  // linkYandexEntryUrl?: string;
+  // linkVKEntryUrl?: string;
 }

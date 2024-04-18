@@ -1,44 +1,45 @@
 'use client';
 
 import { typeAuthFormProps } from '@/features/auth-form/types';
-import { useForm } from 'react-hook-form';
-import { useState, SetStateAction, ChangeEvent } from 'react';
 import Link from 'next/link';
+import { Input } from '@/shared/ui/input';
+import { Button } from '@/shared/ui/button';
 import classes from './styles.module.scss';
 import cn from 'classnames';
 import Image from 'next/image';
-import GoogleIcon from '@/shared/images/icons/google_icon.png';
-import VKIcon from '@/shared/images/icons/vk_icon.png';
-import { Input } from '@/shared/ui/input';
-import { Button } from '@/shared/ui/button';
+import { Controller, useFormContext } from 'react-hook-form';
+import VKIcon from '@/shared/images/icons/vk-icon.png';
+// import Yandex from '@/shared/images/icons/yandex_icon.png';
+
+// TODO: для входа с помощью Яндекс/ВКонтакте пока черновой вариант, добавить вторую иконку
 
 export const AuthForm: React.FC<typeAuthFormProps> = props => {
   const {
     className,
-    email,
-    password,
-    onChangeEmail,
-    onChangePassword,
+    inputs,
+    pathname,
     onSubmit,
-    handleSubmit,
-    register,
-    errors,
-    isValid,
-    /*linkGoggleEntryUrl, linkVKEntryUrl,*/
-    registrationLinkUrl,
-    recoveryLinkUrl
+    recoveryLinkUrl,
+    ...otherProps
+    /* linkYandexEntryUrl, linkVKEntryUrl, */
   } = props;
 
-  // для входа с помощью Google(Яндекс)/ВКонтакте оставила пока черновой вариант
+  const {
+    control,
+    watch,
+    formState: { errors }
+  } = useFormContext();
+  const allFields = watch();
+  const checkValuesAllFields = Object.values(allFields).every(field => !!field);
+
   return (
-    <form
-      className={cn(className, classes.container)}
-      onSubmit={handleSubmit(onSubmit)}
-    >
+    <form className={cn(className, classes.signin_form)} onSubmit={onSubmit}>
       <div className={cn(className, classes.entry_choice)}>
         <Link
-          className={cn(classes.registration_link)}
-          href={registrationLinkUrl}
+          className={cn(classes.registration_link, {
+            [classes.active]: pathname === '/signup'
+          })}
+          href="/signup"
         >
           Зарегистрироваться
         </Link>
@@ -47,16 +48,16 @@ export const AuthForm: React.FC<typeAuthFormProps> = props => {
 
       <Link
         className={cn(className, classes.alternative_link)}
-        href={'#' /*linkGoggleEntryUrl*/}
+        href={'#' /*linkYandexEntryUrl*/}
       >
         <Image
           className={cn(classes.image_icon)}
-          src={GoogleIcon}
+          src={VKIcon}
           alt=""
           width={40}
           height={40}
         />
-        <p className={cn(classes.text_icon)}>Войти с помощью Google</p>
+        <p className={cn(classes.text_icon)}>Войти с помощью Яндекс ID</p>
       </Link>
       <Link
         className={cn(className, classes.alternative_link)}
@@ -78,35 +79,24 @@ export const AuthForm: React.FC<typeAuthFormProps> = props => {
         <hr className={cn(classes.separator_line)} />
       </div>
       <div className={cn(classes.inputs_container)}>
-        <Input
-          label="E-mail"
-          type="email"
-          value={email}
-          handleInputChange={onChangeEmail}
-          autoComplete="on"
-          error={errors.email?.message}
-          {...register('email', {
-            required: 'Поле e-mail должно быть обязательно заполнено.',
-            pattern: {
-              value: /^.+@.+\..+$/,
-              message: 'Адрес электронной почты введён некорректно.'
-            }
-          })}
-        />
-        <Input
-          label="Пароль"
-          type="password"
-          value={password}
-          handleInputChange={onChangePassword}
-          error={errors.password?.message}
-          {...register('password', {
-            required: 'Поле пароль должно быть обязательно заполнено.',
-            minLength: {
-              value: 8,
-              message: 'Пароль должен состоять из не менее чем 8 символов.'
-            }
-          })}
-        />
+        {inputs &&
+          inputs.map(input => (
+            <Controller
+              key={input.name}
+              name={input.name}
+              control={control}
+              rules={input.options}
+              render={({ field }) => (
+                <Input
+                  {...field}
+                  onChange={input.handleChange ? input.handleChange : undefined}
+                  label={input.label}
+                  type={input.type}
+                  required
+                />
+              )}
+            />
+          ))}
       </div>
       <div className={cn(className, classes.entry)}>
         <Link
@@ -119,7 +109,7 @@ export const AuthForm: React.FC<typeAuthFormProps> = props => {
           className={cn(className, classes.btn)}
           variant="blue"
           type="submit"
-          disabled={!isValid}
+          disabled={Object.keys(errors).length > 0 || !checkValuesAllFields}
         >
           <p>Войти</p>
         </Button>

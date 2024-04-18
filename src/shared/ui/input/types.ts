@@ -1,18 +1,27 @@
-import { DetailedHTMLProps, InputHTMLAttributes } from 'react';
+import {
+  DetailedHTMLProps,
+  InputHTMLAttributes,
+  PropsWithoutRef,
+  RefAttributes
+} from 'react';
 
-export interface typeInputProps
+interface typeInputProps
   extends DetailedHTMLProps<
     InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement
   > {
   label?: string;
-  name?: string;
-  value: string;
-  handleInputChange: (newValue: string) => void;
-  type?: 'text' | 'email' | 'tel' | 'password' | 'url' | 'number' | 'date';
-  error?:
-    | string
-    | FieldError
-    | Merge<FieldError, FieldErrorsImpl<any>>
-    | undefined;
+  name: string;
+  type?:
+    | 'text'
+    | 'email'
+    | 'tel'
+    | 'password'
+    | 'url'
+    | 'number'
+    | 'date'
+    | string;
 }
+
+export type InputProps = PropsWithoutRef<typeInputProps> &
+  RefAttributes<HTMLInputElement>;
