@@ -88,7 +88,9 @@ export const SignupForm: React.FC<signupFromProps> = ({
         className={cn(className, classes.signupFormSubmitButton)}
         type="submit"
         variant="blue"
-        disabled={!consent || Object.keys(errors).length > 0 || !checkValuesAllFields}
+        disabled={
+          !consent || Object.keys(errors).length > 0 || !checkValuesAllFields
+        }
       >
         Зарегистрироваться
       </Button>
