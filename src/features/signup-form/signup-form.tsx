@@ -21,7 +21,7 @@ export const SignupForm: React.FC<signupFromProps> = ({
     formState: { errors }
   } = useFormContext();
   const allFields = watch();
-  const checkAllFields = Object.values(allFields).every(field => !!field);
+  const checkValuesAllFields = Object.values(allFields).every(field => !!field); // просмотр наличия значений сразу во всех полях
 
   return (
     <form className={cn(className, classes.signupForm)} onSubmit={onSubmit}>
@@ -88,7 +88,7 @@ export const SignupForm: React.FC<signupFromProps> = ({
         className={cn(className, classes.signupFormSubmitButton)}
         type="submit"
         variant="blue"
-        disabled={!consent || Object.keys(errors).length > 0 || !checkAllFields}
+        disabled={!consent || Object.keys(errors).length > 0 || !checkValuesAllFields}
       >
         Зарегистрироваться
       </Button>
