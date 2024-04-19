@@ -1,4 +1,4 @@
-'use-client';
+'use client';
 
 import { typeSelectBoxProps } from './types';
 import classes from './styles.module.scss';

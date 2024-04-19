@@ -1,0 +1,47 @@
+.profileDetails {
+  display: flex;
+  max-height: 75vh;
+}
+
+.profileCard {
+  margin-right: 30px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-width: 431px;
+
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    background: transparent;
+  }
+
+  .imageHolder {
+    margin-bottom: 16px;
+
+    position: relative;
+    height: 41vh;
+    width: 100%;
+    .profilePhoto {
+      border-radius: 8px;
+      object-fit: cover;
+    }
+  }
+
+  .profileDescription {
+    margin: 0 0 20px 0;
+    padding-left: 17px;
+  }
+}
+
+.profileAbout {
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: 75vh;
+
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    background: transparent;
+  }
+}
