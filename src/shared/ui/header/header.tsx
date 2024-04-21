@@ -1,5 +1,4 @@
-'use client';
-
+import React from 'react';
 import Image from 'next/image';
 import cn from 'classnames';
 import classes from './styles.module.scss';
@@ -12,18 +11,23 @@ import { Button } from '../button';
 export const Header: React.FC<headerProps & headerMenuProps> = ({
   image,
   avatar,
-  value,
+  search,
   links,
-  handleInputChange,
-  handleForm,
+  language,
   isLoggedIn,
   isCartExist = false,
-  language,
-  handleLanguageChange,
   isPageCart = false,
   isCartFilled = false,
   itemsInCart = [1, 2, 3, 4, 5]
 }) => {
+  const { currentLanguage, onChange: handleLanguageChange } = language || {};
+
+  const {
+    value,
+    onChange: handleInputChange,
+    onSubmitForm: handleForm
+  } = search || {};
+
   return (
     <div className={cn(classes.header)}>
       <Image
@@ -32,22 +36,27 @@ export const Header: React.FC<headerProps & headerMenuProps> = ({
         alt="логотип WinRussia территория смыслов"
         width={image.width}
         height={image.height}
-      ></Image>
+      />
       <div className={cn(classes.header__container)}>
         <div className={cn(classes.header__nav)}>
-          <InputSearch
-            value={value}
-            handleInputChange={handleInputChange}
-            handleForm={handleForm}
-          />
+          {search && (
+            <InputSearch
+              value={value || ''}
+              handleInputChange={handleInputChange || (() => {})}
+              handleForm={handleForm || (() => {})}
+            />
+          )}
           <HeaderMenu className={cn(classes.header__navMenu)} links={links} />
         </div>
         <div className={cn(classes.header__buttons)}>
           <button
             className={cn(classes.header__button)}
-            onClick={handleLanguageChange}
+            onClick={() =>
+              handleLanguageChange &&
+              handleLanguageChange(currentLanguage === 'ru' ? 'en' : 'ru')
+            }
           >
-            {language === 'ru' ? 'EN' : 'RU'}
+            {currentLanguage === 'ru' ? 'EN' : 'RU'}
           </button>
           {isCartExist && (
             <button
