@@ -1,8 +1,6 @@
 'use client';
 
-import { About } from '@/shared/ui/about';
 import { Button } from '@/shared/ui/button';
-
 import React from 'react';
 
 export const TestPage: React.FC = () => {
@@ -10,7 +8,11 @@ export const TestPage: React.FC = () => {
     <div>
       <h1>Test page</h1>
       <div>
-        <Button disabled={false} className="test-class">
+        <Button
+          disabled={false}
+          className="test-class"
+          onClick={() => console.log('Test click')}
+        >
           Test button
         </Button>
       </div>
