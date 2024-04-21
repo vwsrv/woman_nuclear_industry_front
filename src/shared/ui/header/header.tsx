@@ -23,8 +23,8 @@ export const Header: React.FC<headerProps & headerMenuProps> = ({
   const { currentLanguage, onChange: handleLanguageChange } = language || {};
 
   const {
-    value,
-    onChange: handleInputChange,
+    value: searchValue,
+    onChange: searchOnChangeHandler,
     onSubmitForm: handleForm
   } = search || {};
 
@@ -41,8 +41,8 @@ export const Header: React.FC<headerProps & headerMenuProps> = ({
         <div className={cn(classes.header__nav)}>
           {search && (
             <InputSearch
-              value={value || ''}
-              handleInputChange={handleInputChange || (() => {})}
+              value={searchValue || ''}
+              handleInputChange={searchOnChangeHandler || (() => {})}
               handleForm={handleForm || (() => {})}
             />
           )}
