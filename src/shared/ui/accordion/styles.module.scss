@@ -21,6 +21,7 @@
 
 .title {
   margin: 0;
+  text-align: left;
 }
 
 @mixin animate($animation, $duration, $method, $times) {
