@@ -4,15 +4,12 @@ import { typeProfileFormProps } from '@/shared/ui/profile-form/types';
 import { FC, useState, ChangeEvent } from 'react';
 import classes from './styles.module.scss';
 import cn from 'classnames';
-import { Input } from '@/shared/ui/input'
+import { Input } from '@/shared/ui/input';
 import Image from 'next/image';
 import { StaticImageData } from 'next/image';
 
 export const ProfileForm: FC<typeProfileFormProps> = props => {
-  const { 
-    userInfo,
-    ...otherProps
-  } = props;
+  const { userInfo, ...otherProps } = props;
 
   const [value, setValue] = useState<string>('');
 
@@ -24,13 +21,11 @@ export const ProfileForm: FC<typeProfileFormProps> = props => {
   const dateOfBirth = userInfo.dateOfBirth;
 
   console.log(value);
-  
-
 
   return (
     <div className={cn(classes.profileForm)}>
-      <div className='userInfo'>
-        <div className='image'>
+      <div className="userInfo">
+        <div className="image">
           {/* <Image
             className={cn(classes.image)}
             src={userInfo.logo}
@@ -56,7 +51,7 @@ export const ProfileForm: FC<typeProfileFormProps> = props => {
         handleInputChange={handleChange}
         name="name"
         className={cn(classes.inputName)}
-        type='date'
+        type="date"
       />
       {/* <input placeholder="Birth Date" ></input> */}
     </div>
