@@ -49,3 +49,14 @@
     }
   }
 }
+
+@media screen and (max-width: 570px) {
+  .news {
+    flex-direction: column;
+    align-items: center;
+    max-height: 418px;
+  }
+  .news__content {
+    padding-left: 10px;
+  }
+}

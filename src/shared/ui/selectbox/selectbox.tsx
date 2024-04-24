@@ -7,6 +7,7 @@ import React, { useState } from 'react';
 
 export const SelectBox: React.FC<typeSelectBoxProps> = props => {
   const {
+    className,
     variant = 'violet',
     dataList,
     value,
@@ -33,7 +34,7 @@ export const SelectBox: React.FC<typeSelectBoxProps> = props => {
 
   return (
     <div
-      className={cn(classes.selectbox, classes[variant], {
+      className={cn(className, classes.selectbox, classes[variant], {
         [classes.enabled]: isOpen,
         ...otherProps
       })}
