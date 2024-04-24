@@ -1,5 +1,5 @@
 import { inter } from '@/app/fonts/fonts';
-import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
+import { ButtonHTMLAttributes, DetailedHTMLProps, HTMLAttributes } from 'react';
 
 export interface typeAccordionItem
   extends DetailedHTMLProps<
@@ -10,7 +10,8 @@ export interface typeAccordionItem
   title: string;
 }
 
-export interface typeAccordionProps {
+export interface typeAccordionProps
+  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   contentList: typeAccordionItem[];
 }
 

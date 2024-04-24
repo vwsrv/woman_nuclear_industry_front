@@ -13,7 +13,8 @@ import minus from '@/shared/images/for-accordition/minus.svg';
 import plus from '@/shared/images/for-accordition/plus.svg';
 
 export const Accordion: React.FC<typeAccordionProps> = ({
-  contentList
+  contentList,
+  className
 }: typeAccordionProps) => {
   const [propsState, setPropsState] = React.useState<
     typeAccordionItemWithState[]
