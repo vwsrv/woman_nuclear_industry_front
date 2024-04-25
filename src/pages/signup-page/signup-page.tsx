@@ -3,7 +3,6 @@
 import cn from 'classnames';
 import classes from './styles.module.scss';
 import { SignupForm } from '@/features/signup-form';
-import { SignLayout } from '@/shared/layouts/sign-layout';
 import { usePathname } from 'next/navigation';
 import React, { useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
@@ -28,18 +27,16 @@ export const SignupPage: React.FC = () => {
 
   return (
     <div className={cn(classes.signupPage)}>
-      <SignLayout>
-        <FormProvider {...methods}>
-          <SignupForm
-            inputs={signupInputs}
-            pathname={pathname}
-            consent={consent}
-            toggleConsent={toggleConsent}
-            onSubmit={methods.handleSubmit(onSubmit)}
-            className="signup-form"
-          />
-        </FormProvider>
-      </SignLayout>
+      <FormProvider {...methods}>
+        <SignupForm
+          inputs={signupInputs}
+          pathname={pathname}
+          consent={consent}
+          toggleConsent={toggleConsent}
+          onSubmit={methods.handleSubmit(onSubmit)}
+          className="signup-form"
+        />
+      </FormProvider>
     </div>
   );
 };
