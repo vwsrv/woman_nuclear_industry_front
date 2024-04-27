@@ -57,8 +57,10 @@
   }
 
   &__showHideListBtn {
+    display: flex;
     width: 261px;
     align-items: center;
+    justify-content: center;
     margin: 20px auto 0;
   }
 
