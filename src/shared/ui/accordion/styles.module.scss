@@ -11,7 +11,6 @@
   gap: 20px;
   &:not(:disabled):hover {
     cursor: pointer;
-    border-color: rgba(9, 132, 203, 1);
   }
   &.open {
     border-color: rgba(9, 132, 203, 1);
@@ -47,5 +46,5 @@
       max-height: 1000px;
     }
   }
-  @include animate(opening, 0.4s, ease-in, 1);
+  @include animate(opening, 0.3s, ease-in, 1);
 }
