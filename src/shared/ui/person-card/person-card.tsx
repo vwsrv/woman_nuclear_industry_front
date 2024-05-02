@@ -29,7 +29,7 @@ export const PersonCard: React.FC<typePersonCardProps> = props => {
         )}
       </div>
 
-      <p className={cn(classes.text, 'bold')}>PersonCard</p>
+      <p className={cn(classes.text, 'bold')}>{name}</p>
       <p className={cn(classes.text)}>{description}</p>
     </div>
   );
