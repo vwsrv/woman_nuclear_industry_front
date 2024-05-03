@@ -13,12 +13,21 @@ export const Footer: React.FC<footerProps> = ({
 }) => {
   return (
     <footer className={cn(className, classes.footer)}>
-      <FooterLogo
-        copyrightText={copyright.text}
-        copyrightYear={copyright.year}
-      />
-      <FooterMenu menuItems={items} />
-      <FooterContacts address={contacts.address} email={contacts.email} />
+      <div className={cn(className, classes.footerWrapper)}>
+        <FooterLogo
+          className="footerLogo"
+          copyrightText={copyright.text}
+          copyrightYear={copyright.year}
+        />
+        <div className={cn(className, classes.footerMenu)}>
+          <FooterMenu className="footerMenu" menuItems={items} />
+          <FooterContacts
+            className="footerContacts"
+            address={contacts.address}
+            email={contacts.email}
+          />
+        </div>
+      </div>
     </footer>
   );
 };

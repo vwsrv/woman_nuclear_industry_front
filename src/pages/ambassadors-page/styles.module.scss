@@ -1,6 +1,6 @@
 .ambassadorsPage {
   margin: 0;
-  padding-bottom: 303px;
+  padding: 4px 0 303px 0;
 }
 
 .ambassadorsCategories {
@@ -23,6 +23,16 @@
 
   &.selected {
     font-weight: 700;
+  }
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  &.selected:hover {
+    text-decoration: none;
+    cursor: default;
   }
 }
 
