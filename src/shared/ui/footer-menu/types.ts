@@ -1,6 +1,6 @@
 import { DetailedHTMLProps, HTMLAttributes } from 'react';
 
-interface typeProfileMenuPropsTitle
+export interface typeFooterMenuPropsTitle
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   title: string;
   link: string;
@@ -8,5 +8,5 @@ interface typeProfileMenuPropsTitle
 
 export interface FooterMenuProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  menuItems: typeProfileMenuPropsTitle[][];
+  menuItems: typeFooterMenuPropsTitle[][];
 }
