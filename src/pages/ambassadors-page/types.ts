@@ -1,9 +1,12 @@
-interface itemType {
+import { StaticImageData } from 'next/image';
+
+export interface itemType {
   id: number;
   name: string;
   description: string;
-  img: string;
+  img: StaticImageData;
   region: string;
+  itemAbout: { title: string; children: React.ReactNode }[];
 }
 
 interface categoryType {

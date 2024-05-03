@@ -12,12 +12,12 @@ const MainLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
           image={logo}
           isLoggedIn={false}
           links={[
-            { title: 'Колба', link: '/' },
-            { title: 'Амбассадоры', link: '/' },
-            { title: 'Лауреаты', link: '/' },
-            { title: 'Новости', link: '/' },
-            { title: 'Медиатека', link: '/' },
-            { title: 'Контакты', link: '/' }
+            { title: 'Колба', link: '/flask' },
+            { title: 'Амбассадоры', link: '/ambassadors' },
+            { title: 'Лауреаты', link: '/laureates' },
+            { title: 'Новости', link: '/news' },
+            { title: 'Медиатека', link: '/media-library' },
+            { title: 'Контакты', link: '/contacts' }
           ]}
         />
         {children}
@@ -35,20 +35,20 @@ const MainLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
         }}
         items={[
           [
-            { title: 'Партнеры', link: '/' },
-            { title: 'Объединение', link: '/' },
-            { title: 'Территория присутствия', link: '/' },
-            { title: 'Мероприятия', link: '/' },
-            { title: 'Новости', link: '/' },
-            { title: 'Проекты', link: '/' },
-            { title: 'Контакты', link: '/' }
+            { title: 'Партнеры', link: '/partners' },
+            { title: 'Объединение', link: '/association' },
+            { title: 'Территория присутствия', link: '/territory-presence' },
+            { title: 'Мероприятия', link: '/events' },
+            { title: 'Новости', link: '/news' },
+            { title: 'Проекты', link: '/projects' },
+            { title: 'Контакты', link: '/contacts' }
           ],
           [
-            { title: 'О сообществе', link: '/' },
-            { title: 'Команда', link: '/' },
-            { title: 'Амбассадоры', link: '/' },
-            { title: 'Международный совет', link: '/' },
-            { title: 'Вопрос - ответ', link: '/' }
+            { title: 'О сообществе', link: '/about' },
+            { title: 'Команда', link: '/team' },
+            { title: 'Амбассадоры', link: '/ambassadors' },
+            { title: 'Международный совет', link: '/international-council' },
+            { title: 'Вопрос - ответ', link: '/question-answer' }
           ]
         ]}
       />
