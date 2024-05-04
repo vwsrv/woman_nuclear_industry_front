@@ -2,7 +2,15 @@ import { ChangeEventHandler } from 'react';
 
 export interface inputTypes {
   name: string;
-  type: string;
+  type:
+    | 'text'
+    | 'email'
+    | 'tel'
+    | 'password'
+    | 'url'
+    | 'number'
+    | 'date'
+    | string;
   label: string;
   defaultValue: string;
   handleChange?: ChangeEventHandler<HTMLInputElement>;
