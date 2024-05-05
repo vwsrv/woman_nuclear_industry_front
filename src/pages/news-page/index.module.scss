@@ -1,0 +1,221 @@
+.newsId {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+
+  &__content {
+    margin: 32px 0;
+  }
+
+  &__data {
+    display: flex;
+    gap: 30px;
+  }
+
+  &__dataItem {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+
+    &_platform::before {
+      content: '';
+      width: 40px;
+      height: 40px;
+      background: url('../../shared/images/for-news-id-page/online_icon.svg')
+        no-repeat center;
+    }
+    &_moderators::before {
+      content: '';
+      width: 40px;
+      height: 40px;
+      background: url('../../shared/images/for-news-id-page/moderator_icon.svg')
+        no-repeat center;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 15px;
+    margin: 24px 0 84px;
+  }
+
+  &__gallery {
+    position: relative;
+    display: grid;
+    max-height: 440px;
+    grid-auto-columns: 200px;
+    gap: 25px;
+    grid-template-rows: 200px 200px;
+    grid-auto-flow: column dense;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    box-sizing: border-box;
+  }
+
+  &__gallery::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__galleryImgContainer {
+    width: 100%;
+    height: auto;
+
+    &_doubleRow {
+      grid-row: span 2;
+      grid-column: span 2;
+    }
+  }
+
+  &__galleryImg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    cursor: pointer;
+  }
+
+  &__galleryBtnScroll {
+    position: sticky;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 124px;
+    border-radius: 8px 8px 8px 8px;
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+    border: none;
+    cursor: pointer;
+
+    &_hidden {
+      visibility: hidden;
+    }
+
+    &_left {
+      right: 95%;
+    }
+    &_left::after {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-image: url('../../shared/images/for-selectbox/arrow-down--black.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      transform: rotate(90deg);
+    }
+    &_right {
+      right: 5%;
+    }
+    &_right::after {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-image: url('../../shared/images/for-selectbox/arrow-down--black.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      transform: rotate(-90deg);
+    }
+  }
+
+  &__galleryBtnScrollBg {
+    position: sticky;
+    top: 0;
+
+    width: 397px;
+    height: 440px;
+    background: linear-gradient(
+      270deg,
+      #ffffff 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+
+    &_hidden {
+      visibility: hidden;
+    }
+
+    &_left {
+      right: 80%;
+      transform: rotate(180deg);
+    }
+    &_right {
+      right: 0;
+      transform: translateY(-50%);
+    }
+  }
+
+  &__prevNextNews {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 42px;
+    margin-bottom: 56px;
+  }
+
+  &__prevNextNewsBtn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    background: none;
+    padding: 8px, 25px, 8px, 15px;
+    font-weight: 700;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &_prev::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-image: url('../../shared/images/for-selectbox/arrow-down--black.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      transform: rotate(90deg);
+    }
+    &_next::after {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-image: url('../../shared/images/for-selectbox/arrow-down--black.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      transform: rotate(-90deg);
+    }
+  }
+
+  &__popupGallery {
+    display: flex;
+    width: 80vw;
+    height: 70vh;
+    max-width: 1000px;
+    gap: 30px;
+  }
+
+  &__popupGalleryLeftContaner {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    max-height: 864px;
+    gap: 24px;
+    overflow-y: scroll;
+  }
+
+  &__popupGalleryLeftContanerImgContainer {
+    width: 200px;
+    height: 200px;
+  }
+
+  &__popupGalleryRightContaner {
+    width: 100%;
+    max-width: 847px;
+    max-height: 864px;
+    object-fit: contain;
+  }
+
+  &__popup {
+    background: none;
+  }
+}
