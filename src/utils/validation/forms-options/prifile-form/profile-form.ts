@@ -12,7 +12,7 @@ import {
   BIO_MESSAGE,
   SPECIALIZATION_MESSAGE,
   DEGREE_MESSAGE,
-  EDUCATION_MESSAGE,
+  EDUCATION_MESSAGE
 } from '../../error-messages';
 import { inputTypes } from '../../types';
 

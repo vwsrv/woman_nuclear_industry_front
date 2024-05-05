@@ -12,9 +12,7 @@ import { profileInputs } from '@/utils/validation';
 import DefaultAvatar from '@/shared/images/for-profile/womanPhoto.png';
 import DefaultAvatar2 from '@/shared/images/for-profile/woman.png';
 
-
 export const TestPage: React.FC = () => {
-
   const userDB = {
     email: 'email@mail.ru',
     lastName: 'Лавлейс',
@@ -26,25 +24,25 @@ export const TestPage: React.FC = () => {
     specialization: '',
     degree: '',
     education: '',
-    image: DefaultAvatar,
+    image: DefaultAvatar
   };
 
   // Временное сохранение данных при отправке формы
   // const [ formValues, setFormValues] = useState({});
-  const [ currentUser, setCurrentUser] = useState( userDB );
+  const [currentUser, setCurrentUser] = useState(userDB);
 
   // Задаем defaultValues. Стало
   const methods = useForm({
     defaultValues: currentUser,
-    mode: 'onBlur',
-  })
+    mode: 'onBlur'
+  });
 
-  const { 
-    handleSubmit, 
-    reset, 
-    formState, 
-    formState: {defaultValues}, 
-    setValue,
+  const {
+    handleSubmit,
+    reset,
+    formState,
+    formState: { defaultValues },
+    setValue
   } = methods;
 
   const onSumit = (data: any) => {
@@ -64,14 +62,14 @@ export const TestPage: React.FC = () => {
   const deleteAvatar = () => {
     setValue('image', DefaultAvatar2, { shouldDirty: true });
     console.log('deleteAvatar');
-  }
+  };
 
   // Сброс состояния формы, но в этом случае не запоминаются введенные данные - их придется получать заново.
   React.useEffect(() => {
     // console.log('formState', formState);
     if (formState.isSubmitSuccessful) {
-      // Данные формы перезаписываются из useState (или их можно повторно получить с сервера?) 
-      // + сбрасываются состояния формы (isDirty и dirtyFields). 
+      // Данные формы перезаписываются из useState (или их можно повторно получить с сервера?)
+      // + сбрасываются состояния формы (isDirty и dirtyFields).
       // reset(formValues, { keepDirtyValues: false });
       reset(currentUser);
       // console.log('reset');
@@ -79,10 +77,12 @@ export const TestPage: React.FC = () => {
       // reset(undefined, { keepDirtyValues: false });
     }
     // if (formState.touchedFields){}
-  }, [ formState, reset, currentUser ]);
+  }, [formState, reset, currentUser]);
 
   return (
-    <div style={{padding: '30px'}}> {/* backgroundColor: '#fcc' */}
+    <div style={{ padding: '30px' }}>
+      {' '}
+      {/* backgroundColor: '#fcc' */}
       {/* <h1>Test page</h1> */}
       {/* <div>
         <Button
@@ -101,7 +101,7 @@ export const TestPage: React.FC = () => {
           // consent={consent}
           // toggleConsent={toggleConsent}
           onSubmit={handleSubmit(onSumit)}
-          className='profile-form'
+          className="profile-form"
         />
       </FormProvider>
       {/* <FormProvider {...methods}>
@@ -119,48 +119,45 @@ export const TestPage: React.FC = () => {
 };
 
 // -------------------------
-  // const methods = useForm({
-  //   defaultValues: Object.fromEntries(
-  //     // signupInputs.map(input => [input.name, input.defaultValue])
-  //     profileInputs.map(input => [input.name, input.defaultValue])
-  //   ),
-  //   mode: 'onBlur'
-  // });
-  // console.log('profileInputs', profileInputs);
-  
-  // const methods = useForm({
-  // defaultValues: Object.fromEntries(
-  //   profileInputs.map(function (input) {
-  //     const valueFromDB = currentUser[input.name as keyof typeof currentUser];
-  //     return [input.name, valueFromDB];
-  //   })
-  // ),
-  //   mode: 'onBlur'
-  // });
-  // console.log('profileInputs', profileInputs);
+// const methods = useForm({
+//   defaultValues: Object.fromEntries(
+//     // signupInputs.map(input => [input.name, input.defaultValue])
+//     profileInputs.map(input => [input.name, input.defaultValue])
+//   ),
+//   mode: 'onBlur'
+// });
+// console.log('profileInputs', profileInputs);
 
-  // const pathname = usePathname();
-  // const [ consent, setConsent] = useState(false);
-  // const toggleConsent = ():void => setConsent(!consent);
+// const methods = useForm({
+// defaultValues: Object.fromEntries(
+//   profileInputs.map(function (input) {
+//     const valueFromDB = currentUser[input.name as keyof typeof currentUser];
+//     return [input.name, valueFromDB];
+//   })
+// ),
+//   mode: 'onBlur'
+// });
+// console.log('profileInputs', profileInputs);
 
+// const pathname = usePathname();
+// const [ consent, setConsent] = useState(false);
+// const toggleConsent = ():void => setConsent(!consent);
 
-  // ==============
-  // // Добавляет в инпуты данные о пользоватле из БД
-  // const currentUserInputs = profileInputs.map(function (input) {
-  //   if (currentUser) {
-  //     input.defaultValue = currentUser[input.name as keyof typeof currentUser];
-  //   }
-  //   return input;
-  // });
+// ==============
+// // Добавляет в инпуты данные о пользоватле из БД
+// const currentUserInputs = profileInputs.map(function (input) {
+//   if (currentUser) {
+//     input.defaultValue = currentUser[input.name as keyof typeof currentUser];
+//   }
+//   return input;
+// });
 
-  // Задаем defaultValues. Было
-  // const methods = useForm({
-  //   defaultValues: Object.fromEntries(
-  //     profileInputs.map(input => [input.name, input.defaultValue])
-  //     // currentUserInputs.map(input => [input.name, input.defaultValue])
-  //   ),
-  //   mode: 'onBlur'
-  // });
-  // ==============
-
-
+// Задаем defaultValues. Было
+// const methods = useForm({
+//   defaultValues: Object.fromEntries(
+//     profileInputs.map(input => [input.name, input.defaultValue])
+//     // currentUserInputs.map(input => [input.name, input.defaultValue])
+//   ),
+//   mode: 'onBlur'
+// });
+// ==============

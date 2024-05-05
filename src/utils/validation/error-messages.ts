@@ -14,9 +14,12 @@ const PASSWORD_MESSAGE = 'Пароль должен состоять не мен
 const REQUIRED_MESSAGE = 'Поле должно быть обязательно заполнено.';
 
 const BIO_MESSAGE = 'До 250 символов: только буквы, цифры и знаки препинания.';
-const SPECIALIZATION_MESSAGE = 'До 250 символов: только буквы, цифры и знаки препинания.';
-const DEGREE_MESSAGE = 'До 250 символов: только буквы, цифры и знаки препинания.';
-const EDUCATION_MESSAGE = 'До 250 символов: только буквы, цифры и знаки препинания.';
+const SPECIALIZATION_MESSAGE =
+  'До 250 символов: только буквы, цифры и знаки препинания.';
+const DEGREE_MESSAGE =
+  'До 250 символов: только буквы, цифры и знаки препинания.';
+const EDUCATION_MESSAGE =
+  'До 250 символов: только буквы, цифры и знаки препинания.';
 
 export {
   EMAIL_MESSAGE,
@@ -29,9 +32,8 @@ export {
   REQUIRED_DATE_MESSAGE,
   PASSWORD_MESSAGE,
   REQUIRED_MESSAGE,
-  
   BIO_MESSAGE,
   SPECIALIZATION_MESSAGE,
   DEGREE_MESSAGE,
-  EDUCATION_MESSAGE,
+  EDUCATION_MESSAGE
 };

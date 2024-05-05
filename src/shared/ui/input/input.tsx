@@ -20,20 +20,13 @@ const Input: ForwardRefExoticComponent<InputProps> = forwardRef<
 
   const {
     watch,
-    formState,
     formState: { errors },
-    setValue,
-    // register,
+    setValue
   } = useFormContext();
 
   const value = watch(name);
-  const error = errors[name]?.message || '';  
+  const error = errors[name]?.message || '';
 
-  // if (name === 'bio') {
-  //   console.log('errors', formState);
-  // }
-  
-  
   return (
     <label
       className={cn(

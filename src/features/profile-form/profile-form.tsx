@@ -18,12 +18,12 @@ import { Button } from '../../shared/ui/button';
 // import { StaticImageData } from 'next/image';
 
 export const ProfileForm: React.FC<typeProfileFormProps> = props => {
-  const { 
+  const {
     inputs,
     deleteAvatar,
-    // currentUser, 
-    onSubmit, 
-    className, 
+    // currentUser,
+    onSubmit,
+    className,
     ...otherProps
   } = props;
 
@@ -31,9 +31,9 @@ export const ProfileForm: React.FC<typeProfileFormProps> = props => {
 
   const {
     control,
-    formState: { isDirty, isValid, defaultValues }, // dirtyFields, 
+    formState: { isDirty, isValid, defaultValues }, // dirtyFields,
     setValue,
-    watch,
+    watch
     // formState,
     // register
   } = useFormContext();
@@ -41,8 +41,14 @@ export const ProfileForm: React.FC<typeProfileFormProps> = props => {
   // console.log('disabled', {isDirty, isValid});
   // console.log('isDirty', isDirty);
   // console.log('isValid', isValid);
-  
-  const name = (defaultValues?.lastName + ' ' + defaultValues?.firstName + ' ' + defaultValues?.patronymic).trim();
+
+  const name = (
+    defaultValues?.lastName +
+    ' ' +
+    defaultValues?.firstName +
+    ' ' +
+    defaultValues?.patronymic
+  ).trim();
   // console.log('defaultValues', name);
 
   const userAvatar = watch('image');
@@ -53,10 +59,9 @@ export const ProfileForm: React.FC<typeProfileFormProps> = props => {
 
   return (
     <form className={cn(className, classes.profileForm)} onSubmit={onSubmit}>
-      
       <div className={cn(classes.userInfo)}>
         <div className={cn(classes.imageContainer)}>
-          <Image 
+          <Image
             src={userAvatar}
             alt="Фото пользователя"
             className={cn(classes.avatar)}
@@ -65,7 +70,7 @@ export const ProfileForm: React.FC<typeProfileFormProps> = props => {
             <button
               className={cn(classes.imageButton, classes.addAvatar)}
               type="button"
-              name='addAvatar'
+              name="addAvatar"
               onClick={() => {
                 console.log('onClick: Add avatar');
               }}
@@ -73,7 +78,7 @@ export const ProfileForm: React.FC<typeProfileFormProps> = props => {
             <button
               className={cn(classes.imageButton, classes.deleteAvatar)}
               type="button"
-              name='deleteAvatar'
+              name="deleteAvatar"
               onClick={() => {
                 deleteAvatar();
                 console.log('onClick: Delete avatar');
@@ -82,7 +87,9 @@ export const ProfileForm: React.FC<typeProfileFormProps> = props => {
           </div>
         </div>
         <div className={cn(classes.info)}>
-          <h3 className={cn(classes.name)}>{ name !== '' ? name : 'Имя пользователя' }</h3>
+          <h3 className={cn(classes.name)}>
+            {name !== '' ? name : 'Имя пользователя'}
+          </h3>
           <p className={cn(classes.description)}>{defaultValues?.bio}</p>
         </div>
       </div>
@@ -152,13 +159,11 @@ export const ProfileForm: React.FC<typeProfileFormProps> = props => {
           className={cn(className, classes.button)}
           type="submit"
           variant="blue"
-          disabled={ !isValid || !isDirty }
+          disabled={!isValid || !isDirty}
         >
           Сохранить
         </Button>
       </div>
-
     </form>
   );
 };
-

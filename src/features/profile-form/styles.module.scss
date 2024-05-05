@@ -18,62 +18,62 @@
   // background-color: #fcf;
 }
 
-  .avatar {
-    // position: relative;
-    width: 74px;
-    height: 74px;
+.avatar {
+  // position: relative;
+  width: 74px;
+  height: 74px;
+}
+
+.imageButtonContainer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.5);
+  // opacity: 0;
+
+  // &:hover {
+  //   opacity: 1;
+  // }
+}
+
+.imageButton {
+  // position: absolute;
+  // left: 0;
+  // z-index: 2;
+  background-color: transparent;
+  background-size: 24px 24px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 74px;
+  height: 37px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  opacity: 0.8;
+
+  &:hover {
+    opacity: 1;
   }
 
-  .imageButtonContainer {
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    background-color: rgba(0, 0, 0, 0.5);
-    // opacity: 0;
-
-    // &:hover {
-    //   opacity: 1;
-    // }
+  &.addAvatar {
+    // top: 0;
+    background-image: url('../../shared/images/for-profile/add-photo2.svg');
+    border-bottom: 1px dashed #fff;
   }
 
-  .imageButton {
-    // position: absolute;
-    // left: 0;
-    // z-index: 2;
-    background-color: transparent;
-    background-size: 24px 24px;
-    background-position: center center;
-    background-repeat: no-repeat;
-    width: 74px;
-    height: 37px;
-    padding: 0;
-    margin: 0;
-    border: none;
-    box-sizing: border-box;
-    cursor: pointer;
-    opacity: 0.8;
-    
-    &:hover {
-      opacity: 1;
-    }
-
-    &.addAvatar {
-      // top: 0;
-      background-image: url('../../shared/images/for-profile/add-photo2.svg');
-      border-bottom: 1px dashed #fff;
-    }
-
-    &.deleteAvatar {
-      // bottom: 0;
-      background-image: url('../../shared/images/for-profile/delete-photo2.svg');
-      border-top: 1px dashed #fff;
-    }
+  &.deleteAvatar {
+    // bottom: 0;
+    background-image: url('../../shared/images/for-profile/delete-photo2.svg');
+    border-top: 1px dashed #fff;
   }
+}
 
-.info{
+.info {
   display: flex;
   flex-direction: column;
 }
@@ -113,8 +113,6 @@
   // background-color: #cff;
 }
 
-
-
 // .signupFormSubmitButton {
 //   border: none;
 //   font-family: var(--font-inter);
@@ -131,8 +129,8 @@
   gap: 36px;
 }
 
-.button {
-  font-size: 16px;
-  line-height: 1.75;
-  padding: 8px 30px;
-}
+// .button {
+//   font-size: 16px;
+//   line-height: 1.75;
+//   padding: 8px 30px;
+// }
