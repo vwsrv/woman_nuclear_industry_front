@@ -8,51 +8,15 @@ import {
   REQUIRED_MESSAGE,
   FUTURE_DATE_MESSAGE,
   OLD_DATE_MESSAGE,
-  REQUIRED_DATE_MESSAGE
+  REQUIRED_DATE_MESSAGE,
+  BIO_MESSAGE,
+  SPECIALIZATION_MESSAGE,
+  DEGREE_MESSAGE,
+  EDUCATION_MESSAGE,
 } from '../../error-messages';
 import { inputTypes } from '../../types';
 
 export const profileInputs: inputTypes[] = [
-  {
-    name: 'email',
-    type: 'email',
-    label: 'E-mail',
-    defaultValue: '',
-    options: {
-      pattern: {
-        value: /^.+@.+\..+$/,
-        message: EMAIL_MESSAGE
-      },
-      required: {
-        value: true,
-        message: REQUIRED_MESSAGE
-      }
-    }
-  },
-  {
-    name: 'lastName',
-    type: 'text',
-    label: 'Фамилия',
-    defaultValue: '',
-    options: {
-      pattern: {
-        value: /^[a-zA-Zа-яА-Я]{2,50}$/,
-        message: LASTNAME_MESSAGE
-      },
-      minLength: {
-        value: 2,
-        message: LASTNAME_MESSAGE
-      },
-      maxLength: {
-        value: 50,
-        message: LASTNAME_MESSAGE
-      },
-      required: {
-        value: true,
-        message: REQUIRED_MESSAGE
-      }
-    }
-  },
   {
     name: 'firstName',
     type: 'text',
@@ -60,7 +24,7 @@ export const profileInputs: inputTypes[] = [
     defaultValue: '',
     options: {
       pattern: {
-        value: /^[a-zA-Zа-яА-Я]{2,50}$/,
+        value: /^[a-zA-Zа-яА-Я\s]{2,50}$/,
         message: FIRSTNAME_MESSAGE
       },
       minLength: {
@@ -102,6 +66,55 @@ export const profileInputs: inputTypes[] = [
     }
   },
   {
+    name: 'lastName',
+    type: 'text',
+    label: 'Фамилия',
+    defaultValue: '',
+    options: {
+      pattern: {
+        value: /^[a-zA-Zа-яА-Я]{2,50}$/,
+        message: LASTNAME_MESSAGE
+      },
+      minLength: {
+        value: 2,
+        message: LASTNAME_MESSAGE
+      },
+      maxLength: {
+        value: 50,
+        message: LASTNAME_MESSAGE
+      },
+      required: {
+        value: true,
+        message: REQUIRED_MESSAGE
+      }
+    }
+  },
+  {
+    name: 'date',
+    type: 'date',
+    label: 'ДД.ММ.ГГГ',
+    defaultValue: '',
+    options: {
+      validate: value => {
+        const currentDate = new Date();
+        const selectedDate = new Date(value);
+        const maxDate = new Date();
+        maxDate.setFullYear(currentDate.getFullYear() - 120);
+        if (selectedDate > currentDate) {
+          return FUTURE_DATE_MESSAGE;
+        }
+        if (selectedDate < maxDate) {
+          return OLD_DATE_MESSAGE;
+        }
+        return true;
+      },
+      required: {
+        value: true,
+        message: REQUIRED_DATE_MESSAGE
+      }
+    }
+  },
+  {
     name: 'phone',
     type: 'tel',
     label: 'Телефон',
@@ -138,27 +151,18 @@ export const profileInputs: inputTypes[] = [
     }
   },
   {
-    name: 'date',
-    type: 'date',
-    label: 'ДД.ММ.ГГГ',
+    name: 'email',
+    type: 'email',
+    label: 'E-mail',
     defaultValue: '',
     options: {
-      validate: value => {
-        const currentDate = new Date();
-        const selectedDate = new Date(value);
-        const maxDate = new Date();
-        maxDate.setFullYear(currentDate.getFullYear() - 120);
-        if (selectedDate > currentDate) {
-          return FUTURE_DATE_MESSAGE;
-        }
-        if (selectedDate < maxDate) {
-          return OLD_DATE_MESSAGE;
-        }
-        return true;
+      pattern: {
+        value: /^.+@.+\..+$/,
+        message: EMAIL_MESSAGE
       },
       required: {
         value: true,
-        message: REQUIRED_DATE_MESSAGE
+        message: REQUIRED_MESSAGE
       }
     }
   },
@@ -182,16 +186,16 @@ export const profileInputs: inputTypes[] = [
     name: 'bio',
     type: 'text',
     label: 'Bio',
-    defaultValue: 'sddsfsdf',
+    defaultValue: '',
     options: {
       pattern: {
         value: /^(?:[a-zA-Zа-яА-Я0-9ёЁ\s"':;!?,\(\)\.\-]+){0,250}$/,
-        message: 'До 250 символов: только буквы, цифры и знаки препинания.'
+        message: BIO_MESSAGE
       },
       maxLength: {
         value: 250,
-        message: 'До 250 символов: только буквы, цифры и знаки препинания.'
-      },
+        message: BIO_MESSAGE
+      }
     }
   },
   {
@@ -202,12 +206,12 @@ export const profileInputs: inputTypes[] = [
     options: {
       pattern: {
         value: /^(?:[a-zA-Zа-яА-Я0-9ёЁ\s"':;!?,\(\)\.\-]+){0,250}$/,
-        message: 'До 250 символов: только буквы, цифры и знаки препинания.'
+        message: SPECIALIZATION_MESSAGE
       },
       maxLength: {
         value: 250,
-        message: 'До 250 символов: только буквы, цифры и знаки препинания.'
-      },
+        message: SPECIALIZATION_MESSAGE
+      }
     }
   },
   {
@@ -218,12 +222,12 @@ export const profileInputs: inputTypes[] = [
     options: {
       pattern: {
         value: /^(?:[a-zA-Zа-яА-Я0-9ёЁ\s"':;!?,\(\)\.\-]+){0,250}$/,
-        message: 'До 250 символов: только буквы, цифры и знаки препинания.'
+        message: DEGREE_MESSAGE
       },
       maxLength: {
         value: 250,
-        message: 'До 250 символов: только буквы, цифры и знаки препинания.'
-      },
+        message: DEGREE_MESSAGE
+      }
     }
   },
   {
@@ -234,16 +238,12 @@ export const profileInputs: inputTypes[] = [
     options: {
       pattern: {
         value: /^(?:[a-zA-Zа-яА-Я0-9ёЁ\s"':;!?,\(\)\.\-]+){0,250}$/,
-        message: 'До 250 символов: только буквы, цифры и знаки препинания.'
+        message: EDUCATION_MESSAGE
       },
       maxLength: {
         value: 250,
-        message: 'До 250 символов: только буквы, цифры и знаки препинания.'
-      },
+        message: EDUCATION_MESSAGE
+      }
     }
-  },
+  }
 ];
-
-
-        // value: /^(?=.[A-Za-zА-Яа-я0-9ёЁ\s"'():;.!,?])[^\n]{0,150}$/, // пробелы, знаки препинания
-        // value: /^[a-zA-Zа-яА-Я0-9]{0,150}$/, // пробелы, знаки препинания

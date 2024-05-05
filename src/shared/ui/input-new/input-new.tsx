@@ -13,7 +13,6 @@ const InputNew: ForwardRefExoticComponent<InputProps> = forwardRef<
     label,
     className,
     required,
-    // value,
     onChange,
     type = 'text',
     ...otherProps
