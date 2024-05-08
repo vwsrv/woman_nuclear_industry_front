@@ -2,15 +2,7 @@ import { ChangeEventHandler } from 'react';
 
 export interface inputTypes {
   name: string;
-  type:
-    | 'text'
-    | 'email'
-    | 'tel'
-    | 'password'
-    | 'url'
-    | 'number'
-    | 'date'
-    | string;
+  type: string;
   label: string;
   defaultValue: string;
   handleChange?: ChangeEventHandler<HTMLInputElement>;
@@ -35,7 +27,7 @@ export interface inputTypes {
       value: RegExp;
       message: string;
     };
-    validate?: (value: string | number | Date) => boolean;
+    validate?: (value: string | number | Date) => boolean | string;
     required?: {
       value: boolean;
       message: string;
