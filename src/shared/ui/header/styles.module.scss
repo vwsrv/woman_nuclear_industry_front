@@ -1,0 +1,118 @@
+.header {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+
+  &__logo {
+    max-width: 137px;
+    max-height: 103px;
+    object-fit: contain;
+  }
+
+  &__container {
+    display: flex;
+    align-self: flex-end;
+    gap: 30px;
+    align-items: baseline;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 794px;
+    align-self: flex-end;
+  }
+
+  &__navMenu {
+    justify-content: center;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 15px;
+  }
+
+  &__button {
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 0;
+    text-align: center;
+
+    &:hover {
+      background-color: rgba(128, 128, 128, 0.059);
+    }
+
+    &_cartActiveFilled {
+      position: relative;
+      background-image: url('../../images/for-header/cart-active-filled.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      text-align: right;
+      &::after {
+        content: attr(data-text); /* Получает текст из атрибута data-text */
+        position: absolute; /* Позволяет позиционировать текст внутри кнопки */
+        top: 6px; /* Располагает текст в верхней части кнопки */
+        right: 8px;
+      }
+    }
+    &_cartActive {
+      background-image: url('../../images/for-header/cart-active.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    &_cartFilled {
+      position: relative;
+      background-image: url('../../images/for-header/cart-filled.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+
+      &::after {
+        content: attr(data-text); /* Получает текст из атрибута data-text */
+        position: absolute; /* Позволяет позиционировать текст внутри кнопки */
+        top: 6px; /* Располагает текст в верхней части кнопки */
+        right: 8px;
+      }
+    }
+    &_cart {
+      background-image: url('../../images/for-header/cart.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    &_avatar {
+      display: flex;
+      align-items: center;
+      width: 69px;
+      height: 40px;
+      gap: 20px;
+      flex-wrap: nowrap;
+      box-sizing: border-box;
+
+      &::after {
+        content: '';
+        height: 20px;
+        width: 10px;
+        background-image: url('../../images/for-header/arrow.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+    }
+  }
+
+  &__buttonAvatarImage {
+    max-width: 40px;
+    max-height: 40px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  &__buttonLogin {
+    min-height: 44px;
+    min-width: 99px;
+  }
+}
