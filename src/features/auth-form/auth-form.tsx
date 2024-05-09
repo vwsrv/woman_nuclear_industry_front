@@ -29,6 +29,7 @@ export const AuthForm: React.FC<typeAuthFormProps> = props => {
     watch,
     formState: { errors }
   } = useFormContext();
+
   const allFields = watch();
   const checkValuesAllFields = Object.values(allFields).every(field => !!field);
 
