@@ -12,15 +12,9 @@ interface typeInputProps
   > {
   label?: string;
   name: string;
-  type?:
-    | 'text'
-    | 'email'
-    | 'tel'
-    | 'password'
-    | 'url'
-    | 'number'
-    | 'date'
-    | string;
+  type?: 'file' | string;
+  setImg: React.Dispatch<React.SetStateAction<string | null>>;
+  handleFile: (file: File) => void;
 }
 
 export type InputProps = PropsWithoutRef<typeInputProps> &

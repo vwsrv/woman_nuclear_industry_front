@@ -21,10 +21,11 @@ export const TestPage: React.FC = () => {
     phone: '+7 (999) 888 - 77 - 11',
     date: '1980-09-10',
     bio: 'Москва 125424, г. Москва, Волоколамское шоссе, д. 108, оф. 19',
-    specialization: '',
-    degree: '',
-    education: '',
-    image: DefaultAvatar
+    // specialization: '',
+    // degree: '',
+    // education: '',
+    image: DefaultAvatar,
+    photo: ''
   };
 
   // Временное сохранение данных при отправке формы
@@ -59,9 +60,16 @@ export const TestPage: React.FC = () => {
     // reset(data, { keepDirtyValues: true });
   };
 
-  const deleteAvatar = () => {
+  const handleDeleteAvatar = () => {
     setValue('image', DefaultAvatar2, { shouldDirty: true });
     console.log('deleteAvatar');
+  };
+
+  const handleChangeAvatar = (e: any) => {
+    const selectedFile = e.target.files[0];
+    console.log('selectedFile', selectedFile);
+
+    // setFile(selectedFile)
   };
 
   // Сброс состояния формы, но в этом случае не запоминаются введенные данные - их придется получать заново.
@@ -97,7 +105,8 @@ export const TestPage: React.FC = () => {
         <ProfileForm
           inputs={profileInputs}
           // currentUser={currentUser}
-          deleteAvatar={deleteAvatar}
+          deleteAvatar={handleDeleteAvatar}
+          changeAvatar={handleChangeAvatar}
           // consent={consent}
           // toggleConsent={toggleConsent}
           onSubmit={handleSubmit(onSumit)}

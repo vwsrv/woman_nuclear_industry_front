@@ -5,6 +5,7 @@ export interface typeProfileFormProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLFormElement>, HTMLFormElement> {
   inputs: inputTypes[];
   deleteAvatar: () => void;
+  changeAvatar: (e: any) => void;
   // currentUser: object;
   // pathname: string | null;
   // consent: boolean;

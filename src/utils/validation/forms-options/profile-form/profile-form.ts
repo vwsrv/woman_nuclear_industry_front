@@ -18,13 +18,19 @@ import { inputTypes } from '../../types';
 
 export const profileInputs: inputTypes[] = [
   {
+    name: 'photo',
+    type: 'file',
+    label: '',
+    defaultValue: ''
+  },
+  {
     name: 'firstName',
     type: 'text',
     label: 'Имя',
     defaultValue: '',
     options: {
       pattern: {
-        value: /^[a-zA-Zа-яА-Я\s]{2,50}$/,
+        value: /^[a-zA-Zа-яА-Я\s]{2,50}$/, // Разрешены пробелы
         message: FIRSTNAME_MESSAGE
       },
       minLength: {
@@ -48,7 +54,7 @@ export const profileInputs: inputTypes[] = [
     defaultValue: '',
     options: {
       pattern: {
-        value: /^[a-zA-Zа-яА-Я]{2,50}$/,
+        value: /^[a-zA-Zа-яА-Я\s]{2,50}$/, // Разрешены пробелы
         message: PATRONYMIC_MESSAGE
       },
       minLength: {
@@ -72,7 +78,7 @@ export const profileInputs: inputTypes[] = [
     defaultValue: '',
     options: {
       pattern: {
-        value: /^[a-zA-Zа-яА-Я]{2,50}$/,
+        value: /^[a-zA-Zа-яА-Я\s]{2,50}$/, // Разрешены пробелы
         message: LASTNAME_MESSAGE
       },
       minLength: {
