@@ -1,23 +1,25 @@
 'use client';
 
-import { FC, useState, ChangeEvent } from 'react'; // React
+import React, { FC, useState, ChangeEvent } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
 import classes from './styles.module.scss';
 import cn from 'classnames';
-import { typeProfileFormProps } from '@/features/profile-form/types';
+import { typeProfileFormPropsCopy } from '@/features/profile-form-copy/types';
 
 import { Input } from '../../shared/ui/input';
+import { InputFile } from '@/shared/ui/inputFile';
 import { Button } from '../../shared/ui/button';
-// import DefaultAvatar from '@/shared/images/for-profile/womanPhoto.png';
+import DefaultAvatar from '@/shared/images/for-profile/womanPhoto.png';
 
-export const ProfileForm: FC<typeProfileFormProps> = props => {
+export const ProfileFormCopy: FC<typeProfileFormPropsCopy> = props => {
   const {
     inputs,
     deleteAvatar,
-    changeAvatar,
+    previewAvatar,
+    setPreviewAvatar,
     // currentUser,
     onSubmit,
     className,
@@ -30,16 +32,15 @@ export const ProfileForm: FC<typeProfileFormProps> = props => {
     control,
     formState: { isDirty, isValid, defaultValues }, // dirtyFields,
     setValue,
-    watch
-    // formState,
-    // register
+    watch,
+    resetField
+    // register,
   } = useFormContext();
 
-  // console.log('disabled', {isDirty, isValid});
-  // console.log('isDirty', isDirty);
-  // console.log('isValid', isValid);
+  // Для подсветки элемента, которая показывает, что в него можно "уронить" файл.
+  const [drop, setDrop] = useState(false);
 
-  const name = (
+  const fullName = (
     defaultValues?.lastName +
     ' ' +
     defaultValues?.firstName +
@@ -54,40 +55,64 @@ export const ProfileForm: FC<typeProfileFormProps> = props => {
   const inputsPrimary = inputs.slice(1, 8);
   const inputsSecondary = inputs.slice(8);
 
-  const [ img, setImg ] = useState<string | null>(null);
-  
-  const fileChange = (e: ChangeEvent<HTMLInputElement>) => {
-    // Вариант 1.
-    if (e.target.files && e.target.files[0]) {
-      setImg(URL.createObjectURL(e.target.files[0]));
-      setValue(inputs[0].name, e.target.files[0], { shouldDirty: true });
+  // const value = watch('photo');
+
+  const handleFile = (file: File) => {
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setPreviewAvatar(reader.result as string);
+        // setValue(inputPhoto.name, reader.result as string, { shouldDirty: true });
+      };
+      reader.readAsDataURL(file);
+
+      // reader.onerror = () => {
+      //   console.log('Error reading file:', reader.error);
+      // };
     }
+  };
 
-    // console.log(e);
-    
-    // Вариант 2. ХЗ какой лучше.
-    // const file = e.target.files?.[0];
-    // if (file) {
-    //   const reader = new FileReader();
-    //   reader.onload = () => {
-    //     setImg(reader.result as string);
-    //   };
-    //   reader.readAsDataURL(file);
-      
-    //   reader.onerror = () => {
-    //     console.log('Error reading file:', reader.error);
-    //   };
-    // }
-  }
+  const handleUploadedFile = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      // const urlImage = URL.createObjectURL(file);
+      // setPreviewAvatar(urlImage);
 
-  // console.log('inputPhoto', inputPhoto);
-  
-  const value = watch('photo');
+      // setValue(inputPhoto.name, file, { shouldDirty: true });
+      handleFile(file);
+    }
+  };
 
+  // ----------------------------
+
+  // Cброс класса "drop", когда курсор с файлом покидает область элемента.
+  // Без e.preventDefault(); файл откроется в новой вкладке.
+  const onDragLeave = (event: React.DragEvent<HTMLElement>) => {
+    // if (disabled) return;
+    event.preventDefault();
+    setDrop(false);
+  };
+
+  // Добавляет класс "drop", когда курсор с файлом попадает в область элемента.
+  const onDragOver = (event: React.DragEvent<HTMLElement>) => {
+    event.preventDefault();
+    setDrop(true);
+  };
+
+  // onDrop - получит список файлов, которые мы "уронили" на компонент.
+  const handleDrop = (event: React.DragEvent<HTMLElement>) => {
+    event.preventDefault();
+    const droppedFile = event.dataTransfer.files[0];
+    setDrop(false);
+
+    // setValue(inputPhoto.name, droppedFile, { shouldDirty: true });
+    handleFile(droppedFile);
+  };
+
+  // ----------------------------
 
   return (
     <form className={cn(className, classes.profileForm)} onSubmit={onSubmit}>
-
       <div>
         <Controller
           key={inputPhoto.name}
@@ -95,65 +120,47 @@ export const ProfileForm: FC<typeProfileFormProps> = props => {
           control={control}
           rules={inputPhoto.options}
           render={({ field }) => (
-            <label className={cn(classes.form__item_upload)}>
-              <div className={cn(classes.labelContainer)}>
-                <span className={cn(classes.dropTitle)}>Перетащите файл сюда</span>
-                <span className={cn(classes.dropStrip)}>или</span>
-                <span className={cn(classes.buttonUpload)}>Выберите файл</span>
-              {/* <Button
-                className={cn(classes.buttonUpload)}
-                variant="blue"
-                type="button"
-                // onClick={() => router.back()}
-              >
-                Выберите файл
-              </Button> */}
-
-              <input
-                {...field}
-                name='photo'
-                type="file"
-                value={value?.fileName}
-                className={cn(classes.inputFile)}
-                // onChange={(e) => handleFileChange(e)}
-                // onChange={(e) => {
-                //   fileChange(e);
-                //   // field.onChange({ target: { value: e.target.files, name: field.name } })
-                //   // setValue(name, e?.target?.files, { shouldDirty: true });
-                // }}
-                onChange={(event) => {
-                  fileChange(event);
-                  field.onChange(event.target.files);
-                }}
-                accept=".png, .jpg, .jpeg, .gif"
-              />
-              
-              </div>
-            </label>
+            <InputFile
+              {...field}
+              // name={field.name}
+              label={inputPhoto.label}
+              type={inputPhoto.type}
+              // onChange={input.handleChange ? input.handleChange : undefined}
+              // onChange={input?.handleChange} // То же самое, но короче
+              onChange={handleUploadedFile}
+              drop={drop}
+              handleDrop={handleDrop}
+              dragOver={onDragOver}
+              dragLeave={onDragLeave}
+              // className={cn(className)}
+            />
           )}
         />
-
-        { img && (
-          <Image
-            src={img}
-            alt="Фото пользователя"
-            className={cn(classes.avatar)}
-            width={100}
-            height={100}
-          />
-        )}
       </div>
 
       <br />
+      <hr />
       <br />
 
       <div className={cn(classes.userInfo)}>
         <div className={cn(classes.imageContainer)}>
-          <Image
-            src={userAvatar}
-            alt="Фото пользователя"
-            className={cn(classes.avatar)}
-          />
+          {previewAvatar ? (
+            <Image
+              src={previewAvatar}
+              alt="Фото пользователя"
+              className={cn(classes.avatar)}
+              width={100}
+              height={100}
+            />
+          ) : (
+            <Image
+              src={DefaultAvatar}
+              alt="Фото пользователя"
+              className={cn(classes.avatar)}
+              width={100}
+              height={100}
+            />
+          )}
           <div className={cn(classes.imageButtonContainer)}>
             <button
               className={cn(classes.imageButton, classes.addAvatar)}
@@ -176,7 +183,7 @@ export const ProfileForm: FC<typeProfileFormProps> = props => {
         </div>
         <div className={cn(classes.info)}>
           <h3 className={cn(classes.name)}>
-            {name !== '' ? name : 'Имя пользователя'}
+            {fullName !== '' ? fullName : 'Имя пользователя'}
           </h3>
           <p className={cn(classes.description)}>{defaultValues?.bio}</p>
         </div>
@@ -208,7 +215,7 @@ export const ProfileForm: FC<typeProfileFormProps> = props => {
           ))}
       </div>
 
-      <h2 className={cn(classes.headerForm)}>Добавьте информацию о себе</h2>
+      {/* <h2 className={cn(classes.headerForm)}>Добавьте информацию о себе</h2>
       <div className={cn(classes.inputs, classes.secondaryInfo)}>
         {inputsSecondary &&
           inputsSecondary.map(input => (
@@ -231,7 +238,7 @@ export const ProfileForm: FC<typeProfileFormProps> = props => {
               )}
             />
           ))}
-      </div>
+      </div> */}
 
       <div className={cn(classes.buttonsContainer)}>
         <Button

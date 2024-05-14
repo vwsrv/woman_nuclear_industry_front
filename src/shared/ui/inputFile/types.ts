@@ -13,8 +13,15 @@ interface typeInputProps
   label?: string;
   name: string;
   type?: 'file' | string;
-  setImg: React.Dispatch<React.SetStateAction<string | null>>;
-  handleFile: (file: File) => void;
+  onChange: (e: any) => void;
+  // setPreviewAvatar: React.Dispatch<React.SetStateAction<string | undefined>>
+  // setImg: React.Dispatch<React.SetStateAction<string | null>>;
+  // handleFile: (file: File) => void;
+
+  drop: boolean;
+  handleDrop: (event: React.DragEvent<HTMLElement>) => void;
+  dragOver: (event: React.DragEvent<HTMLElement>) => void;
+  dragLeave: (event: React.DragEvent<HTMLElement>) => void;
 }
 
 export type InputProps = PropsWithoutRef<typeInputProps> &

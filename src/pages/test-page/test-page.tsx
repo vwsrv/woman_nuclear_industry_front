@@ -3,14 +3,15 @@
 // import { Button } from '@/shared/ui/button';
 // import { SignupForm } from '@/features/signup-form';
 import { ProfileForm } from '@/features/profile-form';
+import { ProfileFormCopy } from '@/features/profile-form-copy';
 
 // import { usePathname } from 'next/navigation';
 import React, { useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 // import { signupInputs } from '@/utils/validation';
 import { profileInputs } from '@/utils/validation';
-import DefaultAvatar from '@/shared/images/for-profile/womanPhoto.png';
-import DefaultAvatar2 from '@/shared/images/for-profile/woman.png';
+// import DefaultAvatar from '@/shared/images/for-profile/womanPhoto.png';
+// import DefaultAvatar2 from '@/shared/images/for-profile/woman.png';
 
 export const TestPage: React.FC = () => {
   const userDB = {
@@ -24,13 +25,13 @@ export const TestPage: React.FC = () => {
     // specialization: '',
     // degree: '',
     // education: '',
-    image: DefaultAvatar,
-    photo: ''
+    photo: undefined
+    // photo: '', // Для ProfileFormCopy
   };
 
   // Временное сохранение данных при отправке формы
-  // const [ formValues, setFormValues] = useState({});
   const [currentUser, setCurrentUser] = useState(userDB);
+  const [previewAvatar, setPreviewAvatar] = useState<string | undefined>();
 
   // Задаем defaultValues. Стало
   const methods = useForm({
@@ -42,17 +43,15 @@ export const TestPage: React.FC = () => {
     handleSubmit,
     reset,
     formState,
-    formState: { defaultValues },
+    formState: { defaultValues, dirtyFields, isDirty },
     setValue
   } = methods;
 
   const onSumit = (data: any) => {
-    // console.log('onSumit', { ...data, consent });
     console.log('onSumit', { ...data });
-
     setCurrentUser(data);
 
-    // В доке сказано: Рекомендуется выполнить сброс в useEffect, поскольку порядок выполнения имеет значение.
+    // В доке сказано: Рекомендуется выполнить сброс в useEffect, поскольку порядок выполнения имеет значение:
     // https://react-hook-form.com/docs/useform/reset
     // ---
     // В форме сохраняются данные и сбрасывается состояние формы (isDirty), но перестает работать
@@ -61,66 +60,50 @@ export const TestPage: React.FC = () => {
   };
 
   const handleDeleteAvatar = () => {
-    setValue('image', DefaultAvatar2, { shouldDirty: true });
-    console.log('deleteAvatar');
+    setPreviewAvatar(undefined);
+    setValue('photo', undefined, { shouldDirty: true });
+    // setValue('photo', '', { shouldDirty: true }); // Для ProfileFormCopy
   };
 
-  const handleChangeAvatar = (e: any) => {
-    const selectedFile = e.target.files[0];
-    console.log('selectedFile', selectedFile);
-
-    // setFile(selectedFile)
-  };
+  // console.log("dirtyFields", dirtyFields);
+  console.log('isDirty', isDirty);
+  // console.log("formState", formState);
 
   // Сброс состояния формы, но в этом случае не запоминаются введенные данные - их придется получать заново.
   React.useEffect(() => {
-    // console.log('formState', formState);
     if (formState.isSubmitSuccessful) {
-      // Данные формы перезаписываются из useState (или их можно повторно получить с сервера?)
-      // + сбрасываются состояния формы (isDirty и dirtyFields).
-      // reset(formValues, { keepDirtyValues: false });
       reset(currentUser);
-      // console.log('reset');
+      // Данные формы перезаписываются из useState (или их можно/нужно повторно получить с сервера?)
+      // + сбрасываются состояния формы (isDirty и dirtyFields).
+      // reset(currentUser, { keepDirtyValues: false });
       // Сбрасывает состояние ошибок, и isDirty
       // reset(undefined, { keepDirtyValues: false });
     }
-    // if (formState.touchedFields){}
   }, [formState, reset, currentUser]);
 
   return (
     <div style={{ padding: '30px' }}>
-      {' '}
-      {/* backgroundColor: '#fcc' */}
-      {/* <h1>Test page</h1> */}
-      {/* <div>
-        <Button
-          disabled={false}
-          className="test-class"
-          onClick={() => console.log('Test click')}
-        >
-          Test button
-        </Button>
-      </div> */}
       <FormProvider {...methods}>
         <ProfileForm
           inputs={profileInputs}
           // currentUser={currentUser}
           deleteAvatar={handleDeleteAvatar}
-          changeAvatar={handleChangeAvatar}
-          // consent={consent}
-          // toggleConsent={toggleConsent}
+          previewAvatar={previewAvatar}
+          setPreviewAvatar={setPreviewAvatar}
           onSubmit={handleSubmit(onSumit)}
           className="profile-form"
         />
       </FormProvider>
+
       {/* <FormProvider {...methods}>
-        <SignupForm
-          inputs={signupInputs}
-          pathname={pathname}
-          consent={consent}
-          toggleConsent={toggleConsent}
-          onSubmit={methods.handleSubmit(onSumit)}
-          className='signup-form'
+        <ProfileFormCopy
+          inputs={profileInputs}
+          // currentUser={currentUser}
+          deleteAvatar={handleDeleteAvatar}
+          previewAvatar={previewAvatar}
+          setPreviewAvatar={setPreviewAvatar}
+          onSubmit={handleSubmit(onSumit)}
+          className="profile-form"
         />
       </FormProvider> */}
     </div>

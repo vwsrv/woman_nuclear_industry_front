@@ -12,13 +12,14 @@ import { typeProfileFormProps } from '@/features/profile-form/types';
 import { Input } from '../../shared/ui/input';
 import { InputFile } from '@/shared/ui/inputFile';
 import { Button } from '../../shared/ui/button';
-// import DefaultAvatar from '@/shared/images/for-profile/womanPhoto.png';
+import DefaultAvatar from '@/shared/images/for-profile/womanPhoto.png';
 
 export const ProfileForm: FC<typeProfileFormProps> = props => {
   const {
     inputs,
     deleteAvatar,
-    changeAvatar,
+    previewAvatar,
+    setPreviewAvatar,
     // currentUser,
     onSubmit,
     className,
@@ -31,16 +32,15 @@ export const ProfileForm: FC<typeProfileFormProps> = props => {
     control,
     formState: { isDirty, isValid, defaultValues }, // dirtyFields,
     setValue,
-    watch
-    // formState,
-    // register
+    watch,
+    resetField
+    // register,
   } = useFormContext();
 
-  // console.log('disabled', {isDirty, isValid});
-  // console.log('isDirty', isDirty);
-  // console.log('isValid', isValid);
+  // Для подсветки элемента, которая показывает, что в него можно "уронить" файл.
+  const [drop, setDrop] = useState(false);
 
-  const name = (
+  const fullName = (
     defaultValues?.lastName +
     ' ' +
     defaultValues?.firstName +
@@ -54,8 +54,6 @@ export const ProfileForm: FC<typeProfileFormProps> = props => {
   const inputPhoto = inputs.slice(0, 1)[0];
   const inputsPrimary = inputs.slice(1, 8);
   const inputsSecondary = inputs.slice(8);
-
-  const [img, setImg] = useState<string | null>(null);
 
   // const fileChange = (e: ChangeEvent<HTMLInputElement>) => {
   //   // Вариант 1.
@@ -84,74 +82,103 @@ export const ProfileForm: FC<typeProfileFormProps> = props => {
   // console.log('inputPhoto', inputPhoto);
 
   const value = watch('photo');
+  // console.log('value', value);
 
   // ----------------------------
 
+  // const handleFile = (file: File) => {
+  //   // if (loading || !file) return;
+
+  //   // setLoading(true);
+  //   // const uploading = upload<T>(file, url, { onProgress: setProgress });
+  //   // Сохраняем функцию abort
+  //   // abortUploading.current = uploading.abort;
+  //   // uploading
+  //   //   .then(onUpload)
+  //   //   .catch((e) => {})
+  //   //   .finally(reset)
+
+  //   if (file) {
+  //     const reader = new FileReader();
+  //     reader.onload = () => {
+  //       setImg(reader.result as string);
+  //     };
+  //     reader.readAsDataURL(file);
+
+  //     // reader.onerror = () => {
+  //     //   console.log('Error reading file:', reader.error);
+  //     // };
+  //   }
+  // };
+
+  // const handleFileChange = (
+  //   event: React.ChangeEvent<HTMLInputElement>,
+  //   field: string
+  // ) => {
+  //   if (event.target.files && event.target.files[0]) {
+  //     handleFile(event.target.files[0]);
+
+  //     setValue(field, event.target.files[0], { shouldDirty: true });
+  //   }
+  // };
+
+  // ----------------------------
+
+  // console.log('inputPhoto.name', inputPhoto.name);
+
+  // const [previewAvatar, setPreviewAvatar] = useState<string | undefined>();
+
   const handleFile = (file: File) => {
-    // if (loading || !file) return;
-
-    // setLoading(true);
-    // const uploading = upload<T>(file, url, { onProgress: setProgress });
-    // Сохраняем функцию abort
-    // abortUploading.current = uploading.abort;
-    // uploading
-    //   .then(onUpload)
-    //   .catch((e) => {})
-    //   .finally(reset)
-
     if (file) {
       const reader = new FileReader();
       reader.onload = () => {
-        setImg(reader.result as string);
+        setPreviewAvatar(reader.result as string);
       };
       reader.readAsDataURL(file);
 
-      // reader.onerror = () => {
-      //   console.log('Error reading file:', reader.error);
-      // };
+      // setValue(inputPhoto.name, reader.result, { shouldDirty: true });
+
+      reader.onerror = () => {
+        console.log('Error reading file:', reader.error);
+      };
     }
   };
 
-  const handleFileChange = (
-    event: React.ChangeEvent<HTMLInputElement>,
-    field: string
-  ) => {
-    if (event.target.files && event.target.files[0]) {
-      handleFile(event.target.files[0]);
+  const handleUploadedFile = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      // const urlImage = URL.createObjectURL(file);
+      // setPreviewAvatar(urlImage);
 
-      setValue(field, event.target.files[0], { shouldDirty: true });
+      setValue(inputPhoto.name, file, { shouldDirty: true });
+
+      handleFile(file);
     }
   };
 
   // ----------------------------
 
-  const [drop, setDrop] = useState(false);
-
-  // Мы хотим, чтобы компонент при наведении файла показывал, что в него можно "уронить" файл,
-  // и когда мы убираем мышь с компонента, он принимал свое обычное состояние - нам нужно повесить
-  // обработчик onDragLeave, который будет срабатывать, когда мышь с файлом покинула компонент.
-  // onDragLeave - это тот самый обработчик для сброса отображения drop.
+  // Cброс класса "drop", когда курсор с файлом покидает область элемента.
+  // Без e.preventDefault(); файл откроется в новой вкладке.
   const onDragLeave = (event: React.DragEvent<HTMLElement>) => {
     // if (disabled) return;
     event.preventDefault();
     setDrop(false);
   };
 
-  // onDragOver должен выполнить e.preventDefault(); иначе файл по умолчанию откроется
-  // в новой вкладке браузера.
+  // Добавляет класс "drop", когда курсор с файлом попадает в область элемента.
   const onDragOver = (event: React.DragEvent<HTMLElement>) => {
     event.preventDefault();
     setDrop(true);
   };
 
-  // onDrop, именно он получит список файлов, которые мы "уронили" на компонент, другие
-  // обработчики не получают этих данных, если файлы перемещаемы из файловой системы.
-  const handleDrop = (event: React.DragEvent<HTMLElement>, field: string) => {
+  // onDrop - получит список файлов, которые мы "уронили" на компонент.
+  const handleDrop = (event: React.DragEvent<HTMLElement>) => {
     event.preventDefault();
     const droppedFile = event.dataTransfer.files[0];
     setDrop(false);
 
-    setValue(field, droppedFile, { shouldDirty: true });
+    setValue(inputPhoto.name, droppedFile, { shouldDirty: true });
     handleFile(droppedFile);
   };
 
@@ -173,9 +200,9 @@ export const ProfileForm: FC<typeProfileFormProps> = props => {
             //   // onChange={input?.handleChange} // То же самое, но короче
             //   label={inputPhoto.label}
             //   type={inputPhoto.type}
-            //   setImg={setImg}
-            //   onChange={handleFileChange}
-            //   handleFile={handleFile}
+            //   setPreview={setPreview}
+            //   onChange={handleUploadedFile}
+            //   // handleFile={handleFile}
             //   // className={cn(className)}
             // />
 
@@ -183,7 +210,7 @@ export const ProfileForm: FC<typeProfileFormProps> = props => {
               className={cn(classes.form__item_upload, {
                 [classes.drop]: drop
               })}
-              onDrop={e => handleDrop(e, field.name)}
+              onDrop={handleDrop}
               onDragOver={onDragOver}
               onDragLeave={onDragLeave}
             >
@@ -193,20 +220,13 @@ export const ProfileForm: FC<typeProfileFormProps> = props => {
                 </span>
                 <span className={cn(classes.dropStrip)}>или</span>
                 <span className={cn(classes.buttonUpload)}>Выберите файл</span>
-                {/* <Button
-                  className={cn(classes.buttonUpload)}
-                  variant="blue"
-                  type="button"
-                  // onClick={}
-                >
-                  Выберите файл
-                </Button> */}
 
                 <input
                   {...field}
                   name={field.name}
                   type="file"
                   value={value?.fileName}
+                  // value={value}
                   className={cn(classes.inputFile)}
                   // onChange={(e) => handleFileChange(e)}
                   // onChange={(e) => {
@@ -214,39 +234,44 @@ export const ProfileForm: FC<typeProfileFormProps> = props => {
                   //   // field.onChange({ target: { value: e.target.files, name: field.name } })
                   //   // setValue(name, e?.target?.files, { shouldDirty: true });
                   // }}
-                  onChange={event => {
-                    // fileChange(event);
-                    handleFileChange(event, field.name);
-                    // field.onChange(event.target.files);
-                  }}
+                  // onChange={event => {
+                  //   // fileChange(event);
+                  //   handleFileChange(event, field.name);
+                  //   // field.onChange(event.target.files);
+                  //   console.log(value.name);
+                  // }}
+                  onChange={handleUploadedFile}
                   accept=".png, .jpg, .jpeg, .gif"
                 />
               </div>
             </label>
           )}
         />
-
-        {img && (
-          <Image
-            src={img}
-            alt="Фото пользователя"
-            className={cn(classes.avatar)}
-            width={100}
-            height={100}
-          />
-        )}
       </div>
 
       <br />
+      <hr />
       <br />
 
       <div className={cn(classes.userInfo)}>
         <div className={cn(classes.imageContainer)}>
-          <Image
-            src={userAvatar}
-            alt="Фото пользователя"
-            className={cn(classes.avatar)}
-          />
+          {previewAvatar ? (
+            <Image
+              src={previewAvatar}
+              alt="Фото пользователя"
+              className={cn(classes.avatar)}
+              width={100}
+              height={100}
+            />
+          ) : (
+            <Image
+              src={DefaultAvatar}
+              alt="Фото пользователя"
+              className={cn(classes.avatar)}
+              width={100}
+              height={100}
+            />
+          )}
           <div className={cn(classes.imageButtonContainer)}>
             <button
               className={cn(classes.imageButton, classes.addAvatar)}
@@ -269,7 +294,7 @@ export const ProfileForm: FC<typeProfileFormProps> = props => {
         </div>
         <div className={cn(classes.info)}>
           <h3 className={cn(classes.name)}>
-            {name !== '' ? name : 'Имя пользователя'}
+            {fullName !== '' ? fullName : 'Имя пользователя'}
           </h3>
           <p className={cn(classes.description)}>{defaultValues?.bio}</p>
         </div>
