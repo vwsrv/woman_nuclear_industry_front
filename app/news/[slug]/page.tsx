@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-import styles from './index.module.scss';
-import { Button } from '@/shared/ui/button';
-import cn from 'classnames';
-import { NewsIdPage } from '@/pages/news-page';
+import { NewsSlugPage } from '@/pages/news-slug-page';
 
 // Моковые данные новостей
 const newsData = [
@@ -10,6 +7,8 @@ const newsData = [
     slug: 'news-1',
     title:
       '30 экспертов из 20 стран мира обсудили проблемы, тенденции, вызовы и новые возможности в сфере образования на ближайшие годы на III Международной конференции Global Impact Conference 2022 (GIC 2022)',
+    platform: 'онлайн-платформа Объединения женщин атомной отрасли',
+    moderators: 'модераторы: Светлана Кожевникова, Анна Тоболенко',
     content: (
       <>
         <p>
@@ -187,6 +186,8 @@ const newsData = [
   {
     slug: 'news-2',
     title: 'Название новости 2',
+    platform: 'онлайн-платформа Объединения женщин атомной отрасли',
+    moderators: 'модераторы: Светлана Кожевникова, Анна Тоболенко',
     content: (
       <p>
         Заместитель директора Центра подготовки персонала VinAtom, Маи Хуонг в
@@ -199,7 +200,7 @@ const newsData = [
   }
 ];
 
-const NewsIdHomePage: React.FC<any> = ({
+const NewsSlugHomePage: React.FC<any> = ({
   params
 }: {
   params: { slug: string };
@@ -210,7 +211,7 @@ const NewsIdHomePage: React.FC<any> = ({
     return <div>Новость не найдена</div>;
   }
 
-  return <NewsIdPage newsItem={newsItem} />;
+  return <NewsSlugPage newsItem={newsItem} />;
 };
 
-export default NewsIdHomePage;
+export default NewsSlugHomePage;

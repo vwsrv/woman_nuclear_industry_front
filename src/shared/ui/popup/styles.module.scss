@@ -66,6 +66,10 @@
       right: 0;
       transform: translate(-30px, 41px);
 
+      &_white {
+        background-image: url('../../images/for-popup/close-white.svg');
+      }
+
       &:hover {
         opacity: 0.7;
         transition: 0.3s;
