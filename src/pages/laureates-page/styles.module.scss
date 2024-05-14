@@ -1,0 +1,51 @@
+.laureatesfilter {
+  display: flex;
+  justify-content: space-between;
+  margin: 32px auto 24px;
+
+  &__inputSearch {
+    width: 259px;
+  }
+}
+
+.title {
+  font-size: 32px;
+  line-height: 1.25;
+}
+
+.laureatesList {
+  display: flex;
+  flex-flow: column;
+  gap: 24px;
+}
+
+.laureate {
+  display: flex;
+  gap: 30px;
+  padding: 28px 30px 32px;
+  border: 1px solid grey;
+  border-radius: 8px;
+
+  &__image {
+    width: 124px;
+    height: 124px;
+  }
+
+  &__fullName {
+    font-size: 16px;
+    line-height: 1.75;
+    font-weight: 700;
+    color: var(--black-color);
+  }
+
+  &__position {
+    font-size: 16px;
+    line-height: 1.75;
+    font-weight: 400;
+    color: var(--black-color);
+  }
+
+  &__description {
+    margin-top: 16px;
+  }
+}
