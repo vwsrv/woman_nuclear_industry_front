@@ -1,7 +1,9 @@
 .newsId {
+  width: 100%;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
+  box-sizing: border-box;
 
   &__content {
     margin: 32px 0;

@@ -1,6 +1,8 @@
 .gallery {
   position: relative;
   display: grid;
+  min-width: 100%;
+  width: 90vw;
   max-height: 440px;
   grid-auto-columns: 200px;
   gap: 25px;

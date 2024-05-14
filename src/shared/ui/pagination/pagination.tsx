@@ -9,7 +9,7 @@ export const Pagination: React.FC<typePaginationProps> = props => {
   const {
     activePage = 1,
     totalPages,
-    itemsPerPage = 8,
+    itemsPerPage = 9,
     setActivePage,
     setItemsPerPage
   } = props;
@@ -43,8 +43,8 @@ export const Pagination: React.FC<typePaginationProps> = props => {
   ): void => {
     if (evt.currentTarget.textContent !== null) {
       switch (+evt.currentTarget.textContent) {
-        case 8:
-          setItemsPerPage(8);
+        case 9:
+          setItemsPerPage(9);
           break;
         case 18:
           setItemsPerPage(18);
@@ -53,7 +53,7 @@ export const Pagination: React.FC<typePaginationProps> = props => {
           setItemsPerPage(30);
           break;
         default:
-          setItemsPerPage(8);
+          setItemsPerPage(9);
           break;
       }
     }
@@ -120,10 +120,10 @@ export const Pagination: React.FC<typePaginationProps> = props => {
           onClick={handleChangeItemsPerPage}
           className={cn(
             classes['pagination__number-button'],
-            8 == itemsPerPage && classes['pagination__number-button_active']
+            9 == itemsPerPage && classes['pagination__number-button_active']
           )}
         >
-          8
+          9
         </button>
         <button
           onClick={handleChangeItemsPerPage}
