@@ -37,7 +37,13 @@ export const Popup: React.FC<PopupOptions> = props => {
           className={cn(classes.overlay, { [classes.active]: isOpen })}
           onClick={handleClickByOverlay}
         >
-          <div className={cn(classes.popup, { [classes.active]: isOpen })}>
+          <div
+            className={cn(
+              classes.popup,
+              { [classes.active]: isOpen },
+              className
+            )}
+          >
             <div className={cn(classes.popupContainer)}>
               <div className={cn(classes.popupHeading)}>
                 <h2 className="bold">{title}</h2>

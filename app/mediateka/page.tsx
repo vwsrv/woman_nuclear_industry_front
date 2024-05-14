@@ -1,7 +1,7 @@
 import React from 'react';
 import { MediatekaPage } from '@/pages/mediateka-page';
 
-const HomePage: React.FC = () => {
+const MediatekaHomePage: React.FC = () => {
   return (
     <>
       <MediatekaPage />
@@ -9,4 +9,4 @@ const HomePage: React.FC = () => {
   );
 };
 
-export default HomePage;
+export default MediatekaHomePage;
