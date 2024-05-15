@@ -27,7 +27,8 @@ export const LaureatesPage: React.FC = () => {
     {
       id: 2,
       fullName: 'Шрайбер Ирина',
-      position: 'Кандидат физико-математических науки, учёный, исследователь, ментор, лектор​',
+      position:
+        'Кандидат физико-математических науки, учёный, исследователь, ментор, лектор​',
       description:
         'Международный совет по поддержке и развитию женщин в промышленности и технологиях - это международная неправительственная некоммерческая организация, объединяющая женщин-экспертов из различных технологических отраслей. Совет создан в 2022 году Фондом поддержки и развития женских инициатив Объединение женщин атомной отрасли. Международный совет по поддержке и развитию женщин в промышленности и технологиях - это международная неправительственная некоммерческая организация, объединяющая женщин-экспертов из различных технологических отраслей. Совет создан в 2022 году Фондом поддержки и развития женских инициатив Объединение женщин атомной отрасли.',
       imageUrl: laureateImg2,
@@ -97,7 +98,8 @@ export const LaureatesPage: React.FC = () => {
     {
       id: 9,
       fullName: 'Иваниловская Екатерина',
-      position: 'Начальник отдела стратегических коммуникаций РЭУ им. Г.В. Плеханова',
+      position:
+        'Начальник отдела стратегических коммуникаций РЭУ им. Г.В. Плеханова',
       description:
         'Международный совет по поддержке и развитию женщин в промышленности и технологиях - это международная неправительственная некоммерческая организация, объединяющая женщин-экспертов из различных технологических отраслей. Совет создан в 2022 году Фондом поддержки и развития женских инициатив Объединение женщин атомной отрасли. Международный совет по поддержке и развитию женщин в промышленности и технологиях - это международная неправительственная некоммерческая организация, объединяющая женщин-экспертов из различных технологических отраслей. Совет создан в 2022 году Фондом поддержки и развития женских инициатив Объединение женщин атомной отрасли.',
       imageUrl: laureateImg3,
@@ -139,24 +141,24 @@ export const LaureatesPage: React.FC = () => {
   const [pageData, setPageData] = useState<ILaureate[]>([]);
 
   const searchLaureates = () => {
-    const result = laureates.filter((laureate) =>
-      laureate.fullName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      laureate.position.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      laureate.description.toLowerCase().includes(searchQuery.toLowerCase()));
+    const result = laureates.filter(
+      laureate =>
+        laureate.fullName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        laureate.position.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        laureate.description.toLowerCase().includes(searchQuery.toLowerCase())
+    );
 
     setLaureates(result);
-
-  }
+  };
 
   useEffect(() => {
-    const start = (activePage -1) * itemsPerPage;
-    const end = (activePage -1) * itemsPerPage + itemsPerPage;
+    const start = (activePage - 1) * itemsPerPage;
+    const end = (activePage - 1) * itemsPerPage + itemsPerPage;
     console.log(start);
     console.log(itemsPerPage);
-    const currentPageData = laureates.slice(start, end)
+    const currentPageData = laureates.slice(start, end);
     setPageData(currentPageData);
   }, [activePage, itemsPerPage, laureates]);
-
 
   return (
     <>
@@ -179,7 +181,7 @@ export const LaureatesPage: React.FC = () => {
           className={cn(classes.laureatesfilter__inputSearch)}
           value={searchQuery}
           handleInputChange={setSearchQuery}
-          handleForm={() => { }}
+          handleForm={() => {}}
         />
       </div>
       <LaureateList laureates={pageData} />
@@ -192,9 +194,7 @@ export const LaureatesPage: React.FC = () => {
         }
         setActivePage={setActivePage}
         setItemsPerPage={setItemsPerPage}
-        totalPages={Math.ceil(
-          laureates.length / itemsPerPage
-        )}
+        totalPages={Math.ceil(laureates.length / itemsPerPage)}
       />
     </>
   );
