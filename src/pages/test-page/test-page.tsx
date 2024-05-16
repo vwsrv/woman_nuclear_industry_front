@@ -13,7 +13,6 @@ export const TestPage: React.FC = () => {
         <Button disabled={false} className="test-class">
           Test button
         </Button>
-        <NewsPage />
       </div>
     </div>
   );
