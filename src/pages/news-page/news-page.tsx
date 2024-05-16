@@ -18,10 +18,9 @@ import styles from './index.module.scss';
 
 //export const NewsPage: React.FC<newsPageProps> = ({ pageData }) => {
 export const NewsPage: React.FC = () => {
-
   // for SelectBox
 
-  // TODO: в открывающемся списке нет данных 
+  // TODO: в открывающемся списке нет данных
   // + добавить setValue: (selectedValue: string) => void;
   // + dataList
   const [options, setOptions] = useState([]);
@@ -49,8 +48,8 @@ export const NewsPage: React.FC = () => {
     { value: 'Сентябрь', label: 'Сентябрь' },
     { value: 'Октябрь', label: 'Октябрь' },
     { value: 'Ноябрь', label: 'Ноябрь' },
-    { value: 'Декабрь', label: 'Декабрь' },
-  ]
+    { value: 'Декабрь', label: 'Декабрь' }
+  ];
 
   // for News
   const [visibleNewsCount, setVisibleNewsCount] = useState(7);
@@ -60,99 +59,113 @@ export const NewsPage: React.FC = () => {
       id: 1,
       imageUrl: img1,
       date: '2024-09-15 19:00',
-      title: '30 экспертов из 20 стран мира обсудили проблемы, тенденции, вызовы и новые возможности в сфере образования на ближайшие годы на III Международной конференции Global Impact Conference 2022 (GIC 2022)',
-      link: 'http://winrussia.com/',
+      title:
+        '30 экспертов из 20 стран мира обсудили проблемы, тенденции, вызовы и новые возможности в сфере образования на ближайшие годы на III Международной конференции Global Impact Conference 2022 (GIC 2022)',
+      link: 'http://winrussia.com/'
     },
     {
       id: 2,
       imageUrl: img2,
       date: '2024-09-15 19:00',
-      title: 'Объединение женщин атомной отрасли присоединилось сразу к нескольким акциям, приуроченным к Дню знаний!',
-      link: 'http://winrussia.com/',
+      title:
+        'Объединение женщин атомной отрасли присоединилось сразу к нескольким акциям, приуроченным к Дню знаний!',
+      link: 'http://winrussia.com/'
     },
     {
       id: 3,
       imageUrl: img3,
       date: '2024-09-15 19:00',
-      title: 'Молодежный день НМЭК-2023: Открытый диалог женщин-лидеров экологических инициатив',
-      link: 'http://winrussia.com/',
+      title:
+        'Молодежный день НМЭК-2023: Открытый диалог женщин-лидеров экологических инициатив',
+      link: 'http://winrussia.com/'
     },
     {
       id: 4,
       imageUrl: img4,
       date: '2024-09-15 19:00',
-      title: 'Женщины-технологические лидеры разных стран обсудили новые возможности для глобального сотрудничества',
-      link: 'http://winrussia.com/',
+      title:
+        'Женщины-технологические лидеры разных стран обсудили новые возможности для глобального сотрудничества',
+      link: 'http://winrussia.com/'
     },
     {
       id: 5,
       imageUrl: img5,
       date: '2024-09-15 19:00',
-      title: 'Объединение женщин атомной отрасли на полях АТОМЭКСПО 2022 объединило экспертов из 16 стран',
-      link: 'http://winrussia.com/',
+      title:
+        'Объединение женщин атомной отрасли на полях АТОМЭКСПО 2022 объединило экспертов из 16 стран',
+      link: 'http://winrussia.com/'
     },
     {
       id: 6,
       imageUrl: img6,
       date: '2024-09-15 19:00',
-      title: 'Стань частью команды №1! Выбирай и поддержи Росатом в рейтинге лучших работодателей страны!',
-      link: 'http://winrussia.com/',
+      title:
+        'Стань частью команды №1! Выбирай и поддержи Росатом в рейтинге лучших работодателей страны!',
+      link: 'http://winrussia.com/'
     },
     {
       id: 7,
       imageUrl: img7,
       date: '2024-09-15 19:00',
-      title: 'Деловая программа Объединения женщин атомной отрасли на Восточном экономическом форуме началась с диалога по вопросам международного сотрудничества в новых условиях',
-      link: 'http://winrussia.com/',
+      title:
+        'Деловая программа Объединения женщин атомной отрасли на Восточном экономическом форуме началась с диалога по вопросам международного сотрудничества в новых условиях',
+      link: 'http://winrussia.com/'
     },
     {
       id: 8,
       imageUrl: img1,
       date: '2024-09-15 19:00',
-      title: '30 экспертов из 20 стран мира обсудили проблемы, тенденции, вызовы и новые возможности в сфере образования на ближайшие годы на III Международной конференции Global Impact Conference 2022 (GIC 2022)',
-      link: 'http://winrussia.com/',
+      title:
+        '30 экспертов из 20 стран мира обсудили проблемы, тенденции, вызовы и новые возможности в сфере образования на ближайшие годы на III Международной конференции Global Impact Conference 2022 (GIC 2022)',
+      link: 'http://winrussia.com/'
     },
     {
       id: 9,
       imageUrl: img2,
       date: '2024-09-15 19:00',
-      title: 'Объединение женщин атомной отрасли присоединилось сразу к нескольким акциям, приуроченным к Дню знаний!',
-      link: 'http://winrussia.com/',
+      title:
+        'Объединение женщин атомной отрасли присоединилось сразу к нескольким акциям, приуроченным к Дню знаний!',
+      link: 'http://winrussia.com/'
     },
     {
       id: 10,
       imageUrl: img3,
       date: '2024-09-15 19:00',
-      title: 'Молодежный день НМЭК-2023: Открытый диалог женщин-лидеров экологических инициатив',
-      link: 'http://winrussia.com/',
+      title:
+        'Молодежный день НМЭК-2023: Открытый диалог женщин-лидеров экологических инициатив',
+      link: 'http://winrussia.com/'
     },
     {
       id: 11,
       imageUrl: img4,
       date: '2024-09-15 19:00',
-      title: 'Женщины-технологические лидеры разных стран обсудили новые возможности для глобального сотрудничества',
-      link: 'http://winrussia.com/',
+      title:
+        'Женщины-технологические лидеры разных стран обсудили новые возможности для глобального сотрудничества',
+      link: 'http://winrussia.com/'
     },
     {
       id: 12,
       imageUrl: img5,
       date: '2024-09-15 19:00',
-      title: 'Объединение женщин атомной отрасли на полях АТОМЭКСПО 2022 объединило экспертов из 16 стран',
-      link: 'http://winrussia.com/',
+      title:
+        'Объединение женщин атомной отрасли на полях АТОМЭКСПО 2022 объединило экспертов из 16 стран',
+      link: 'http://winrussia.com/'
     },
     {
       id: 13,
       imageUrl: img6,
       date: '2024-09-15 19:00',
-      title: 'Стань частью команды №1! Выбирай и поддержи Росатом в рейтинге лучших работодателей страны!',
-      link: 'http://winrussia.com/',
+      title:
+        'Стань частью команды №1! Выбирай и поддержи Росатом в рейтинге лучших работодателей страны!',
+      link: 'http://winrussia.com/'
     },
     {
       id: 14,
       imageUrl: img7,
       date: '2024-09-15 19:00',
-      title: 'Деловая программа Объединения женщин атомной отрасли на Восточном экономическом форуме началась с диалога по вопросам международного сотрудничества в новых условиях',
-      link: 'http://winrussia.com/',
+      title:
+        'Деловая программа Объединения женщин атомной отрасли на Восточном экономическом форуме началась с диалога по вопросам международного сотрудничества в новых условиях',
+      link: 'http://winrussia.com/'
     }
   ]);
 
@@ -175,14 +188,14 @@ export const NewsPage: React.FC = () => {
         <div className={styles.selectBoxForm}>
           <SelectBox
             className={styles.selectBoxFirstNews}
-            variant='violet'
+            variant="violet"
             dataList={dataListYears}
             value={valueFirst}
             setValue={setYear}
           />
           <SelectBox
             className={styles.selectBoxSecondNews}
-            variant='violet'
+            variant="violet"
             dataList={dataListMonths}
             value={valueSecond}
             setValue={setMonth}
@@ -192,13 +205,13 @@ export const NewsPage: React.FC = () => {
           <InputSearch
             value={searchQuery}
             handleInputChange={setSearchQuery}
-            handleForm={() => { }}
+            handleForm={() => {}}
           />
         </div>
       </div>
       <div className={styles.newsList}>
         {newsList.slice(0, visibleNewsCount).map(news => (
-          < News
+          <News
             key={news.id}
             imageUrl={news.imageUrl}
             date={new Date(news.date)}
@@ -216,9 +229,7 @@ export const NewsPage: React.FC = () => {
         }
         setActivePage={setActivePage}
         setItemsPerPage={setItemsPerPage}
-        totalPages={Math.ceil(
-          newsList.length / itemsPerPage
-        )}
+        totalPages={Math.ceil(newsList.length / itemsPerPage)}
       />
     </div>
   );
