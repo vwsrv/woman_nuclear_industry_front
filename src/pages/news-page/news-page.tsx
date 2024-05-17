@@ -58,7 +58,7 @@ export const NewsPage: React.FC = () => {
 
   // for News
   //const [visibleNewsCount, setVisibleNewsCount] = useState(7);
-  
+
   const [newsList, setNewsList] = useState([
     {
       id: 1,
@@ -185,7 +185,6 @@ export const NewsPage: React.FC = () => {
     setPageData(currentPageData);
   }, [activePage, itemsPerPage, newsList]);
 
-
   return (
     <div className={styles.news}>
       <Breadcrumb
@@ -222,7 +221,7 @@ export const NewsPage: React.FC = () => {
         </div>
       </div>
       <div className={styles.newsList}>
-      {pageData.map(news => (
+        {pageData.map(news => (
           <News
             key={news.id}
             imageUrl={news.imageUrl}
