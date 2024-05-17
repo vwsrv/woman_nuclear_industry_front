@@ -1,6 +1,5 @@
 'use client';
 
-import { NewsPage } from '@/pages/news-page';
 import { Button } from '@/shared/ui/button';
 
 import React from 'react';

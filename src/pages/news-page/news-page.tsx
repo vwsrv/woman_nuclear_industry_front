@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { newsPageProps, itemType } from './types';
 import { Breadcrumb } from '@/shared/ui/breadcrumb';
 import { News } from '@/shared/ui/news';
@@ -30,6 +30,11 @@ export const NewsPage: React.FC = () => {
   const [month, setMonth] = useState('Сентябрь');
   const [searchQuery, setSearchQuery] = useState('');
 
+  // for Pagination
+  const [activePage, setActivePage] = useState<number>(1);
+  const [itemsPerPage, setItemsPerPage] = useState<9 | 18 | 30>(9);
+  const [currentCategory, setCurrentCategory] = useState<number>(0);
+
   const dataListYears = [
     { value: '2013', label: '2013' },
     { value: '2014', label: '2014' },
@@ -52,8 +57,8 @@ export const NewsPage: React.FC = () => {
   ];
 
   // for News
-  const [visibleNewsCount, setVisibleNewsCount] = useState(7);
-
+  //const [visibleNewsCount, setVisibleNewsCount] = useState(7);
+  
   const [newsList, setNewsList] = useState([
     {
       id: 1,
@@ -169,10 +174,17 @@ export const NewsPage: React.FC = () => {
     }
   ]);
 
-  // for Pagination
-  const [activePage, setActivePage] = useState<number>(1);
-  const [itemsPerPage, setItemsPerPage] = useState<9 | 18 | 30>(9);
-  const [currentCategory, setCurrentCategory] = useState<number>(0);
+  const [pageData, setPageData] = useState(newsList.slice(0, 9));
+
+  useEffect(() => {
+    const start = (activePage - 1) * itemsPerPage;
+    const end = (activePage - 1) * itemsPerPage + itemsPerPage;
+    console.log(start);
+    console.log(itemsPerPage);
+    const currentPageData = newsList.slice(start, end);
+    setPageData(currentPageData);
+  }, [activePage, itemsPerPage, newsList]);
+
 
   return (
     <div className={styles.news}>
@@ -210,7 +222,7 @@ export const NewsPage: React.FC = () => {
         </div>
       </div>
       <div className={styles.newsList}>
-        {newsList.slice(0, visibleNewsCount).map(news => (
+      {pageData.map(news => (
           <News
             key={news.id}
             imageUrl={news.imageUrl}
