@@ -201,14 +201,14 @@ export const NewsPage: React.FC = () => {
             className={styles.selectBoxFirstNews}
             variant="violet"
             dataList={dataListYears}
-            value={valueFirst}
+            value={year}
             setValue={setYear}
           />
           <SelectBox
             className={styles.selectBoxSecondNews}
             variant="violet"
             dataList={dataListMonths}
-            value={valueSecond}
+            value={month}
             setValue={setMonth}
           />
         </div>
