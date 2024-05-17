@@ -10,8 +10,6 @@ import { Button } from '@/shared/ui/button';
 import { IFeedbackFormProps } from './types';
 import { Controller, useFormContext } from 'react-hook-form';
 
-import { Textarea } from '@/shared/ui/textarea';
-
 // TODO: Add a real functional capcha instead of checkbox-example
 // TODO: Add a real link to personal data processing agreement
 
@@ -46,7 +44,7 @@ export const FeedbackForm: FC<IFeedbackFormProps> = ({
 
   const filteredInputs = isLoggedIn
     ? inputs.filter(input =>
-        ['questionTheme', 'questionReason'].includes(input.name)
+        ['questionTheme', 'questionMessage'].includes(input.name)
       )
     : inputs;
 
