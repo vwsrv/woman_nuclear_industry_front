@@ -7,7 +7,7 @@ import cn from 'classnames';
 
 export const ProfileMenu: React.FC<typeProfileMenuProps> = props => {
   const { menuItems } = props;
-  const location = window.location.pathname;
+  const [location, setLocation] = React.useState(window.location.pathname);
 
   return (
     <ul className={cn(classes.ProfileMenu)}>
@@ -19,6 +19,7 @@ export const ProfileMenu: React.FC<typeProfileMenuProps> = props => {
               className={cn(classes.ProfileMenu__link, {
                 [classes.ProfileMenu__link_active]: location === item.link
               })}
+              style={{color: item.color}}
             >
               {item.title}
             </Link>
