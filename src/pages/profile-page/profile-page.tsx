@@ -35,9 +35,7 @@ export const ProfilePage: React.FC = () => {
       <section className={cn(classes['profile-page__content'])}>
         <div className={cn(classes['profile-page__wrapper'])}>
           <h2 className={cn(classes['profile-page__title'])}>Мой профиль</h2>
-          <button
-            className={cn(classes['profile-page__edit-button'])}
-          >
+          <button className={cn(classes['profile-page__edit-button'])}>
             Редактировать
           </button>
         </div>
@@ -69,9 +67,7 @@ export const ProfilePage: React.FC = () => {
             </p>
           </div>
           <div className={cn(classes['profile-page__info-card'])}>
-            <h3 className={cn(classes['profile-page__info-title'])}>
-              Фамилия
-            </h3>
+            <h3 className={cn(classes['profile-page__info-title'])}>Фамилия</h3>
             <p className={cn(classes['profile-page__info-field'])}>
               {profileData.surname}
             </p>
@@ -85,9 +81,7 @@ export const ProfilePage: React.FC = () => {
             </p>
           </div>
           <div className={cn(classes['profile-page__info-card'])}>
-            <h3 className={cn(classes['profile-page__info-title'])}>
-              Телефон
-            </h3>
+            <h3 className={cn(classes['profile-page__info-title'])}>Телефон</h3>
             <p className={cn(classes['profile-page__info-field'])}>
               {profileData.tel}
             </p>
