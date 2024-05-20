@@ -1,8 +1,8 @@
 import React from 'react';
-import '../src/app/styles/contentLayout.css';
+import classes from './styles.module.scss';
 
 const ContentLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
-  return <main>{children}</main>;
+  return <main className={classes.main}>{children}</main>;
 };
 
 export default ContentLayout;
