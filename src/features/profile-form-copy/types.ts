@@ -1,15 +1,22 @@
-import { DetailedHTMLProps, HTMLAttributes } from 'react';
-import { inputTypes } from '@/utils/validation/types';
+import {
+  DetailedHTMLProps,
+  HTMLAttributes,
+  Dispatch,
+  SetStateAction
+} from 'react';
+import { inputTypesProfileForm } from '@/utils/validation/forms-options/profile-form/types';
 
 export interface typeProfileFormPropsCopy
   extends DetailedHTMLProps<HTMLAttributes<HTMLFormElement>, HTMLFormElement> {
-  inputs: inputTypes[];
+  inputs: inputTypesProfileForm[];
   deleteAvatar: () => void;
   previewAvatar: string | undefined;
-  setPreviewAvatar: React.Dispatch<React.SetStateAction<string | undefined>>;
+  setPreviewAvatar: Dispatch<SetStateAction<string | undefined>>;
+  setFileUpload: Dispatch<SetStateAction<File | undefined>>;
   // changeAvatar: (e: any) => void;
   // currentUser: object;
   onSubmit: (
     e?: React.BaseSyntheticEvent<object, any, any> | undefined
   ) => Promise<void>;
+  // enctype?: string;
 }

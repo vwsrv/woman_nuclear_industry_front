@@ -9,7 +9,7 @@ import { ProfileFormCopy } from '@/features/profile-form-copy';
 import React, { useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 // import { signupInputs } from '@/utils/validation';
-import { profileInputs } from '@/utils/validation';
+import { profileInputs } from '@/utils/validation/forms-options/profile-form';
 // import DefaultAvatar from '@/shared/images/for-profile/womanPhoto.png';
 // import DefaultAvatar2 from '@/shared/images/for-profile/woman.png';
 
@@ -25,13 +25,18 @@ export const TestPage: React.FC = () => {
     // specialization: '',
     // degree: '',
     // education: '',
-    photo: undefined
-    // photo: '', // Для ProfileFormCopy
+    // photo: undefined
+    photo: '' // Для ProfileFormCopy
   };
 
   // Временное сохранение данных при отправке формы
   const [currentUser, setCurrentUser] = useState(userDB);
   const [previewAvatar, setPreviewAvatar] = useState<string | undefined>();
+
+  // "fileUpload" используется т.к. если записывать файл фото через setValue
+  // после отправки формы перестает работать isDirty - React Hook Form не видит
+  // меняются ли значения в массиве.
+  const [fileUpload, setFileUpload] = useState<File | undefined>();
 
   // Задаем defaultValues. Стало
   const methods = useForm({
@@ -43,47 +48,57 @@ export const TestPage: React.FC = () => {
     handleSubmit,
     reset,
     formState,
-    formState: { defaultValues, dirtyFields, isDirty },
+    // formState: { defaultValues, dirtyFields, isDirty },
     setValue
   } = methods;
 
   const onSumit = (data: any) => {
-    console.log('onSumit', { ...data });
+    // (data: any, e: any)
+    // Отправка фото как файла:
+    if (fileUpload) {
+      data.photo = fileUpload;
+    }
+
+    console.log('onSumitCopy', { ...data });
     setCurrentUser(data);
 
-    // В доке сказано: Рекомендуется выполнить сброс в useEffect, поскольку порядок выполнения имеет значение:
+    // Для отправки фото в base64, нужно его загрузить и преобразовать:
+    // if (fileUpload) {
+    //     const reader = new FileReader();
+    //     reader.onload = () => {
+    //       data.photo = reader.result as string;
+
+    //       console.log('onSumitCopy', { ...data });
+
+    //       // Перед тем как это делать нужно добавить читалку base64.
+    //       // Сейчас выпадает в ошибку, как мне кажется, потому что страница не может прочесть из
+    //       // строки photo то что в ней зашифровано.
+    //       // setCurrentUser(data);
+    //     };
+    //     reader.readAsDataURL(fileUpload);
+    // }
+
+    // Сброс (reset) выполнять в useEffect, т.к. порядок выполнения имеет значение:
     // https://react-hook-form.com/docs/useform/reset
-    // ---
-    // В форме сохраняются данные и сбрасывается состояние формы (isDirty), но перестает работать
-    // вывод ошибок (isValid отрабатывает правильно, но ошибки в полях не выводятся).
-    // reset(data, { keepDirtyValues: true });
   };
 
   const handleDeleteAvatar = () => {
     setPreviewAvatar(undefined);
-    setValue('photo', undefined, { shouldDirty: true });
-    // setValue('photo', '', { shouldDirty: true }); // Для ProfileFormCopy
+    // setValue('photo', undefined, { shouldDirty: true });
+    setValue('photo', '', { shouldDirty: true }); // Для ProfileFormCopy
+    setFileUpload(undefined);
   };
-
-  // console.log("dirtyFields", dirtyFields);
-  console.log('isDirty', isDirty);
-  // console.log("formState", formState);
 
   // Сброс состояния формы, но в этом случае не запоминаются введенные данные - их придется получать заново.
   React.useEffect(() => {
     if (formState.isSubmitSuccessful) {
       reset(currentUser);
-      // Данные формы перезаписываются из useState (или их можно/нужно повторно получить с сервера?)
-      // + сбрасываются состояния формы (isDirty и dirtyFields).
-      // reset(currentUser, { keepDirtyValues: false });
-      // Сбрасывает состояние ошибок, и isDirty
-      // reset(undefined, { keepDirtyValues: false });
     }
   }, [formState, reset, currentUser]);
 
   return (
     <div style={{ padding: '30px' }}>
-      <FormProvider {...methods}>
+      {/* <FormProvider {...methods}>
         <ProfileForm
           inputs={profileInputs}
           // currentUser={currentUser}
@@ -93,63 +108,20 @@ export const TestPage: React.FC = () => {
           onSubmit={handleSubmit(onSumit)}
           className="profile-form"
         />
-      </FormProvider>
+      </FormProvider> */}
 
-      {/* <FormProvider {...methods}>
+      <FormProvider {...methods}>
         <ProfileFormCopy
           inputs={profileInputs}
           // currentUser={currentUser}
           deleteAvatar={handleDeleteAvatar}
           previewAvatar={previewAvatar}
           setPreviewAvatar={setPreviewAvatar}
+          setFileUpload={setFileUpload}
           onSubmit={handleSubmit(onSumit)}
           className="profile-form"
         />
-      </FormProvider> */}
+      </FormProvider>
     </div>
   );
 };
-
-// -------------------------
-// const methods = useForm({
-//   defaultValues: Object.fromEntries(
-//     // signupInputs.map(input => [input.name, input.defaultValue])
-//     profileInputs.map(input => [input.name, input.defaultValue])
-//   ),
-//   mode: 'onBlur'
-// });
-// console.log('profileInputs', profileInputs);
-
-// const methods = useForm({
-// defaultValues: Object.fromEntries(
-//   profileInputs.map(function (input) {
-//     const valueFromDB = currentUser[input.name as keyof typeof currentUser];
-//     return [input.name, valueFromDB];
-//   })
-// ),
-//   mode: 'onBlur'
-// });
-// console.log('profileInputs', profileInputs);
-
-// const pathname = usePathname();
-// const [ consent, setConsent] = useState(false);
-// const toggleConsent = ():void => setConsent(!consent);
-
-// ==============
-// // Добавляет в инпуты данные о пользоватле из БД
-// const currentUserInputs = profileInputs.map(function (input) {
-//   if (currentUser) {
-//     input.defaultValue = currentUser[input.name as keyof typeof currentUser];
-//   }
-//   return input;
-// });
-
-// Задаем defaultValues. Было
-// const methods = useForm({
-//   defaultValues: Object.fromEntries(
-//     profileInputs.map(input => [input.name, input.defaultValue])
-//     // currentUserInputs.map(input => [input.name, input.defaultValue])
-//   ),
-//   mode: 'onBlur'
-// });
-// ==============

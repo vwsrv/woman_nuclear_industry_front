@@ -13,8 +13,10 @@ interface typeInputProps
   label?: string;
   name: string;
   type?: 'file' | string;
-  onChange: (e: any) => void;
-  // setPreviewAvatar: React.Dispatch<React.SetStateAction<string | undefined>>
+  // onChange: (e: any) => void;
+  // handleUploadedFile: (e: any) => void;
+  handleUploadedFile: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  setPreviewAvatar: React.Dispatch<React.SetStateAction<string | undefined>>;
   // setImg: React.Dispatch<React.SetStateAction<string | null>>;
   // handleFile: (file: File) => void;
 

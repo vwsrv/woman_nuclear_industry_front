@@ -12,6 +12,7 @@ import { typeProfileFormPropsCopy } from '@/features/profile-form-copy/types';
 import { Input } from '../../shared/ui/input';
 import { InputFile } from '@/shared/ui/inputFile';
 import { Button } from '../../shared/ui/button';
+import { Popup } from '../../shared/ui/popup';
 import DefaultAvatar from '@/shared/images/for-profile/womanPhoto.png';
 
 export const ProfileFormCopy: FC<typeProfileFormPropsCopy> = props => {
@@ -20,6 +21,7 @@ export const ProfileFormCopy: FC<typeProfileFormPropsCopy> = props => {
     deleteAvatar,
     previewAvatar,
     setPreviewAvatar,
+    setFileUpload,
     // currentUser,
     onSubmit,
     className,
@@ -56,30 +58,49 @@ export const ProfileFormCopy: FC<typeProfileFormPropsCopy> = props => {
   const inputsSecondary = inputs.slice(8);
 
   // const value = watch('photo');
+  // console.log('value', value);
 
-  const handleFile = (file: File) => {
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        setPreviewAvatar(reader.result as string);
-        // setValue(inputPhoto.name, reader.result as string, { shouldDirty: true });
-      };
-      reader.readAsDataURL(file);
+  // const handleFile = (file: File) => {
+  //   if (file) {
+  //     const reader = new FileReader();
+  //     reader.onload = () => {
+  //       setPreviewAvatar(reader.result as string);
+  //       setValue(inputPhoto.name, reader.result as string, { shouldDirty: true });
+  //       // console.log('reader.result as string', reader.result as string)
+  //       // console.log('inputPhoto.name', inputPhoto.name)
 
-      // reader.onerror = () => {
-      //   console.log('Error reading file:', reader.error);
-      // };
-    }
-  };
+  //     };
+  //     reader.readAsDataURL(file);
+
+  //     // reader.onerror = () => {
+  //     //   console.log('Error reading file:', reader.error);
+  //     // };
+  //   }
+  // };
+
+  // const handleUploadedFile = (e: ChangeEvent<HTMLInputElement>) => {
+  //   if (e.target.files && e.target.files[0]) {
+  //     const file = e.target.files[0];
+  //     // const urlImage = URL.createObjectURL(file);
+  //     // setPreviewAvatar(urlImage);
+
+  //     // setValue(inputPhoto.name, file, { shouldDirty: true });
+  //     handleFile(file);
+  //   }
+  // };
+
+  // ----------------------------
 
   const handleUploadedFile = (e: ChangeEvent<HTMLInputElement>) => {
+    // const handleUploadedFile = (e: any) => {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
-      // const urlImage = URL.createObjectURL(file);
-      // setPreviewAvatar(urlImage);
+      const urlImage = URL.createObjectURL(file);
+      setPreviewAvatar(urlImage);
 
-      // setValue(inputPhoto.name, file, { shouldDirty: true });
-      handleFile(file);
+      setFileUpload(file);
+      setValue(inputPhoto.name, file.lastModified, { shouldDirty: true });
+      handleСlosePopup();
     }
   };
 
@@ -102,18 +123,31 @@ export const ProfileFormCopy: FC<typeProfileFormPropsCopy> = props => {
   // onDrop - получит список файлов, которые мы "уронили" на компонент.
   const handleDrop = (event: React.DragEvent<HTMLElement>) => {
     event.preventDefault();
-    const droppedFile = event.dataTransfer.files[0];
     setDrop(false);
 
-    // setValue(inputPhoto.name, droppedFile, { shouldDirty: true });
-    handleFile(droppedFile);
+    const droppedFile = event.dataTransfer.files[0];
+    const urlImage = URL.createObjectURL(droppedFile);
+    setPreviewAvatar(urlImage);
+
+    setFileUpload(droppedFile);
+    setValue(inputPhoto.name, droppedFile.lastModified, { shouldDirty: true });
+    handleСlosePopup();
   };
 
   // ----------------------------
+  const [isOpenDetails, setOpenDetails] = useState<boolean>(false);
+  const handleСlosePopup = () => {
+    setOpenDetails(false);
+  };
 
   return (
     <form className={cn(className, classes.profileForm)} onSubmit={onSubmit}>
-      <div>
+      <Popup
+        isOpen={isOpenDetails}
+        onClose={handleСlosePopup}
+        isCloseByOverlay={true}
+        title=""
+      >
         <Controller
           key={inputPhoto.name}
           name={inputPhoto.name}
@@ -125,22 +159,17 @@ export const ProfileFormCopy: FC<typeProfileFormPropsCopy> = props => {
               // name={field.name}
               label={inputPhoto.label}
               type={inputPhoto.type}
-              // onChange={input.handleChange ? input.handleChange : undefined}
-              // onChange={input?.handleChange} // То же самое, но короче
-              onChange={handleUploadedFile}
               drop={drop}
+              handleUploadedFile={handleUploadedFile}
               handleDrop={handleDrop}
               dragOver={onDragOver}
               dragLeave={onDragLeave}
+              setPreviewAvatar={setPreviewAvatar}
               // className={cn(className)}
             />
           )}
         />
-      </div>
-
-      <br />
-      <hr />
-      <br />
+      </Popup>
 
       <div className={cn(classes.userInfo)}>
         <div className={cn(classes.imageContainer)}>
@@ -167,6 +196,7 @@ export const ProfileFormCopy: FC<typeProfileFormPropsCopy> = props => {
               type="button"
               name="addAvatar"
               onClick={() => {
+                setOpenDetails(true);
                 console.log('onClick: Add avatar');
               }}
             />

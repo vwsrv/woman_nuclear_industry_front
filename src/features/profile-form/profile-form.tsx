@@ -130,13 +130,18 @@ export const ProfileForm: FC<typeProfileFormProps> = props => {
 
   const handleFile = (file: File) => {
     if (file) {
+      // const urlImage = URL.createObjectURL(file);
+      // setPreviewAvatar(urlImage);
+      // setValue(inputPhoto.name, file, { shouldDirty: true });
+
       const reader = new FileReader();
       reader.onload = () => {
         setPreviewAvatar(reader.result as string);
+        setValue(inputPhoto.name, reader.result as string, {
+          shouldDirty: true
+        });
       };
       reader.readAsDataURL(file);
-
-      // setValue(inputPhoto.name, reader.result, { shouldDirty: true });
 
       reader.onerror = () => {
         console.log('Error reading file:', reader.error);
@@ -149,8 +154,7 @@ export const ProfileForm: FC<typeProfileFormProps> = props => {
       const file = e.target.files[0];
       // const urlImage = URL.createObjectURL(file);
       // setPreviewAvatar(urlImage);
-
-      setValue(inputPhoto.name, file, { shouldDirty: true });
+      // setValue(inputPhoto.name, file, { shouldDirty: true });
 
       handleFile(file);
     }
@@ -184,6 +188,8 @@ export const ProfileForm: FC<typeProfileFormProps> = props => {
 
   // ----------------------------
 
+  console.log('inputPhoto', inputPhoto);
+
   return (
     <form className={cn(className, classes.profileForm)} onSubmit={onSubmit}>
       <div>
@@ -193,19 +199,6 @@ export const ProfileForm: FC<typeProfileFormProps> = props => {
           control={control}
           rules={inputPhoto.options}
           render={({ field }) => (
-            // <InputFile
-            //   {...field}
-            //   // name={field.name}
-            //   // onChange={input.handleChange ? input.handleChange : undefined}
-            //   // onChange={input?.handleChange} // То же самое, но короче
-            //   label={inputPhoto.label}
-            //   type={inputPhoto.type}
-            //   setPreview={setPreview}
-            //   onChange={handleUploadedFile}
-            //   // handleFile={handleFile}
-            //   // className={cn(className)}
-            // />
-
             <label
               className={cn(classes.form__item_upload, {
                 [classes.drop]: drop
@@ -225,8 +218,11 @@ export const ProfileForm: FC<typeProfileFormProps> = props => {
                   {...field}
                   name={field.name}
                   type="file"
-                  value={value?.fileName}
-                  // value={value}
+                  // value={inputPhoto.defaultValue}
+                  // value={value ? value : ''}
+                  value={value?.fileName} // работает
+                  // value={ undefined}
+                  // value={ value || undefined}
                   className={cn(classes.inputFile)}
                   // onChange={(e) => handleFileChange(e)}
                   // onChange={(e) => {

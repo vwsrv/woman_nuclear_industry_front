@@ -14,9 +14,11 @@ import {
   DEGREE_MESSAGE,
   EDUCATION_MESSAGE
 } from '../../error-messages';
-import { inputTypes } from '../../types';
+// import { inputTypes } from '../../types';
+// import { inputTypesProfileForm } from '@/utils/validation/forms-options/profile-form/types';
+import { inputTypesProfileForm } from './types';
 
-export const profileInputs: inputTypes[] = [
+export const profileInputs: inputTypesProfileForm[] = [
   {
     name: 'photo',
     type: 'file',

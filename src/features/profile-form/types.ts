@@ -1,9 +1,9 @@
 import { DetailedHTMLProps, HTMLAttributes } from 'react';
-import { inputTypes } from '@/utils/validation/types';
+import { inputTypesProfileForm } from '@/utils/validation/forms-options/profile-form/types';
 
 export interface typeProfileFormProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLFormElement>, HTMLFormElement> {
-  inputs: inputTypes[];
+  inputs: inputTypesProfileForm[];
   deleteAvatar: () => void;
   previewAvatar: string | undefined;
   setPreviewAvatar: React.Dispatch<React.SetStateAction<string | undefined>>;
