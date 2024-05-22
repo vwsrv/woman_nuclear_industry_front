@@ -1,29 +1,19 @@
 .form__item_upload {
-  background-color: #fdd;
+  // background-color: #fdd;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  // position: relative;
   padding: 20px;
-  // border-radius: 10px;
-  // border: 2px dashed #555;
   cursor: pointer;
 
   width: 360px;
-  // height: 318px;
+  height: 318px;
   transition:
     background-color 0.2s ease-in-out,
     border 0.2s ease-in-out;
 
-  // &:not(:disabled):hover {
-  //   background-color: #eee;
-  //   border-color: #111;
-  // }
-
   &.drop {
-    // background-color: #0f0;
     background-color: #eee;
   }
 }
@@ -36,25 +26,19 @@
   align-items: center;
   overflow: hidden;
   width: 186px;
-  // height: 150px;
-  // background-color: #f99;
   position: relative;
   z-index: 10;
 }
 
 .dropTitle {
-  // color: #444;
   font-size: 16px;
   line-height: 1.75;
   text-align: center;
-  // font-weight: 400;
   font-family: var(--font-inter);
   padding-bottom: 22px;
-  // transition: color .2s ease-in-out;
 }
 
 .dropStrip {
-  // font-size: 16px;
   color: var(--grey-dark-color);
   position: relative;
   display: inline-block;
@@ -90,8 +74,6 @@
   text-align: center;
   color: var(--white-color);
   background-color: var(--blue-color);
-  // min-width: 136px;
-  // min-height: 44px;
   border-color: transparent;
   border-radius: 8px;
   padding: 8px 30px;

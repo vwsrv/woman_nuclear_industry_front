@@ -3,7 +3,6 @@
 // import { Button } from '@/shared/ui/button';
 // import { SignupForm } from '@/features/signup-form';
 import { ProfileForm } from '@/features/profile-form';
-import { ProfileFormCopy } from '@/features/profile-form-copy';
 
 // import { usePathname } from 'next/navigation';
 import React, { useState } from 'react';
@@ -22,38 +21,30 @@ export const TestPage: React.FC = () => {
     phone: '+7 (999) 888 - 77 - 11',
     date: '1980-09-10',
     bio: 'Москва 125424, г. Москва, Волоколамское шоссе, д. 108, оф. 19',
-    // specialization: '',
-    // degree: '',
-    // education: '',
-    // photo: undefined
-    photo: '' // Для ProfileFormCopy
+    specialization: '',
+    degree: '',
+    education: '',
+    photo: ''
   };
 
   // Временное сохранение данных при отправке формы
   const [currentUser, setCurrentUser] = useState(userDB);
   const [previewAvatar, setPreviewAvatar] = useState<string | undefined>();
 
-  // "fileUpload" используется т.к. если записывать файл фото через setValue
-  // после отправки формы перестает работать isDirty - React Hook Form не видит
-  // меняются ли значения в массиве.
+  // "fileUpload" используется для временного хранения добавленного в форму файла
+  // т.к. если записывать файл фото через setValue после отправки формы перестает
+  // работать isDirty - React Hook Form не видит меняются ли значения в массиве.
   const [fileUpload, setFileUpload] = useState<File | undefined>();
 
-  // Задаем defaultValues. Стало
+  // Задаем defaultValues
   const methods = useForm({
     defaultValues: currentUser,
     mode: 'onBlur'
   });
 
-  const {
-    handleSubmit,
-    reset,
-    formState,
-    // formState: { defaultValues, dirtyFields, isDirty },
-    setValue
-  } = methods;
+  const { handleSubmit, reset, formState, setValue } = methods;
 
   const onSumit = (data: any) => {
-    // (data: any, e: any)
     // Отправка фото как файла:
     if (fileUpload) {
       data.photo = fileUpload;
@@ -70,9 +61,9 @@ export const TestPage: React.FC = () => {
 
     //       console.log('onSumitCopy', { ...data });
 
-    //       // Перед тем как это делать нужно добавить читалку base64.
-    //       // Сейчас выпадает в ошибку, как мне кажется, потому что страница не может прочесть из
-    //       // строки photo то что в ней зашифровано.
+    //       // Перед тем как расскомментировать нужно добавить читалку base64.
+    //       // Сейчас выпадает в ошибку, как мне кажется, потому что страница
+    //       // не может прочесть из строки photo то что в ней зашифровано.
     //       // setCurrentUser(data);
     //     };
     //     reader.readAsDataURL(fileUpload);
@@ -84,8 +75,7 @@ export const TestPage: React.FC = () => {
 
   const handleDeleteAvatar = () => {
     setPreviewAvatar(undefined);
-    // setValue('photo', undefined, { shouldDirty: true });
-    setValue('photo', '', { shouldDirty: true }); // Для ProfileFormCopy
+    setValue('photo', '', { shouldDirty: true });
     setFileUpload(undefined);
   };
 
@@ -97,31 +87,16 @@ export const TestPage: React.FC = () => {
   }, [formState, reset, currentUser]);
 
   return (
-    <div style={{ padding: '30px' }}>
-      {/* <FormProvider {...methods}>
-        <ProfileForm
-          inputs={profileInputs}
-          // currentUser={currentUser}
-          deleteAvatar={handleDeleteAvatar}
-          previewAvatar={previewAvatar}
-          setPreviewAvatar={setPreviewAvatar}
-          onSubmit={handleSubmit(onSumit)}
-          className="profile-form"
-        />
-      </FormProvider> */}
-
-      <FormProvider {...methods}>
-        <ProfileFormCopy
-          inputs={profileInputs}
-          // currentUser={currentUser}
-          deleteAvatar={handleDeleteAvatar}
-          previewAvatar={previewAvatar}
-          setPreviewAvatar={setPreviewAvatar}
-          setFileUpload={setFileUpload}
-          onSubmit={handleSubmit(onSumit)}
-          className="profile-form"
-        />
-      </FormProvider>
-    </div>
+    <FormProvider {...methods}>
+      <ProfileForm
+        inputs={profileInputs}
+        deleteAvatar={handleDeleteAvatar}
+        previewAvatar={previewAvatar}
+        setPreviewAvatar={setPreviewAvatar}
+        setFileUpload={setFileUpload}
+        onSubmit={handleSubmit(onSumit)}
+        className="profile-form"
+      />
+    </FormProvider>
   );
 };
