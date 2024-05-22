@@ -42,6 +42,7 @@ export const Popup: React.FC<PopupOptions> = props => {
             className={cn(
               classes.popup,
               { [classes.active]: isOpen },
+              className,
               classes[variant]
             )}
           >
