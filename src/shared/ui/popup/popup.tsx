@@ -14,6 +14,7 @@ export const Popup: React.FC<PopupOptions> = props => {
     title,
     children,
     actions,
+    variant = 'default',
     className,
     ...otherProps
   } = props;
@@ -39,9 +40,11 @@ export const Popup: React.FC<PopupOptions> = props => {
         >
           <div className={cn(classes.popup, { [classes.active]: isOpen })}>
             <div className={cn(classes.popupContainer)}>
-              <div className={cn(classes.popupHeading)}>
-                <h2 className="bold">{title}</h2>
-              </div>
+              {title && (
+                <div className={cn(classes.popupHeading)}>
+                  <h2 className="bold">{title}</h2>
+                </div>
+              )}
               <button
                 className={cn(classes.popupButton)}
                 aria-label="Закрыть"

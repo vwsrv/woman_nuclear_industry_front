@@ -13,8 +13,6 @@ const InputFile: ForwardRefExoticComponent<InputProps> = forwardRef<
     name,
     type = 'file',
     className,
-    // required,
-    // disabled,
     onChange,
     drop,
     handleUploadedFile,

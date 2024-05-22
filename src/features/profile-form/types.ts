@@ -13,10 +13,7 @@ export interface typeProfileFormProps
   previewAvatar: string | undefined;
   setPreviewAvatar: Dispatch<SetStateAction<string | undefined>>;
   setFileUpload: Dispatch<SetStateAction<File | undefined>>;
-  // changeAvatar: (e: any) => void;
-  // currentUser: object;
   onSubmit: (
     e?: React.BaseSyntheticEvent<object, any, any> | undefined
   ) => Promise<void>;
-  // enctype?: string;
 }

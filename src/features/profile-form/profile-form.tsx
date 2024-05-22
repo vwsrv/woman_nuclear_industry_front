@@ -103,7 +103,8 @@ export const ProfileForm: FC<typeProfileFormProps> = props => {
           isOpen={isOpenDetails}
           onClose={handleСlosePopup}
           isCloseByOverlay={true}
-          title=""
+          // title=''
+          variant="dialog"
         >
           <Controller
             key={inputPhoto.name}

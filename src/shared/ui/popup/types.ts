@@ -9,7 +9,8 @@ export interface PopupOptions
   isOpen: boolean;
   onClose: () => void;
   isCloseByOverlay: boolean;
-  title: string;
+  title?: string | undefined;
   children: ReactNode;
   actions?: ReactNode[];
+  variant?: 'default' | 'dialog';
 }
