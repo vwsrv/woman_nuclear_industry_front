@@ -14,8 +14,6 @@ import {
   DEGREE_MESSAGE,
   EDUCATION_MESSAGE
 } from '../../error-messages';
-// import { inputTypes } from '../../types';
-// import { inputTypesProfileForm } from '@/utils/validation/forms-options/profile-form/types';
 import { inputTypesProfileForm } from './types';
 
 export const profileInputs: inputTypesProfileForm[] = [
@@ -32,7 +30,7 @@ export const profileInputs: inputTypesProfileForm[] = [
     defaultValue: '',
     options: {
       pattern: {
-        value: /^[a-zA-Zа-яА-Я\s]{2,50}$/, // Разрешены пробелы
+        value: /^[a-zA-Zа-яА-Я\s\-]{2,50}$/, // Разрешены пробелы и тире
         message: FIRSTNAME_MESSAGE
       },
       minLength: {
@@ -56,7 +54,7 @@ export const profileInputs: inputTypesProfileForm[] = [
     defaultValue: '',
     options: {
       pattern: {
-        value: /^[a-zA-Zа-яА-Я\s]{2,50}$/, // Разрешены пробелы
+        value: /^[a-zA-Zа-яА-Я\s\-]{2,50}$/, // Разрешены пробелы и тире
         message: PATRONYMIC_MESSAGE
       },
       minLength: {
@@ -80,7 +78,7 @@ export const profileInputs: inputTypesProfileForm[] = [
     defaultValue: '',
     options: {
       pattern: {
-        value: /^[a-zA-Zа-яА-Я\s]{2,50}$/, // Разрешены пробелы
+        value: /^[a-zA-Zа-яА-Я\s\-]{2,50}$/, // Разрешены пробелы и тире
         message: LASTNAME_MESSAGE
       },
       minLength: {

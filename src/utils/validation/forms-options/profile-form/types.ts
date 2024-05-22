@@ -5,7 +5,6 @@ export interface inputTypesProfileForm {
   type: string;
   label: string;
   defaultValue: string;
-  // defaultValue?: string | undefined;
   handleChange?: ChangeEventHandler<HTMLInputElement>;
   options?: {
     min?: {

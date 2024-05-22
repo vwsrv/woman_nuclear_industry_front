@@ -1,16 +1,10 @@
 'use client';
 
-// import { Button } from '@/shared/ui/button';
-// import { SignupForm } from '@/features/signup-form';
 import { ProfileForm } from '@/features/profile-form';
 
-// import { usePathname } from 'next/navigation';
 import React, { useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
-// import { signupInputs } from '@/utils/validation';
 import { profileInputs } from '@/utils/validation/forms-options/profile-form';
-// import DefaultAvatar from '@/shared/images/for-profile/womanPhoto.png';
-// import DefaultAvatar2 from '@/shared/images/for-profile/woman.png';
 
 export const TestPage: React.FC = () => {
   const userDB = {
@@ -33,7 +27,7 @@ export const TestPage: React.FC = () => {
 
   // "fileUpload" используется для временного хранения добавленного в форму файла
   // т.к. если записывать файл фото через setValue после отправки формы перестает
-  // работать isDirty - React Hook Form не видит меняются ли значения в массиве.
+  // работать isDirty - React Hook Form не видит изменений в массиве.
   const [fileUpload, setFileUpload] = useState<File | undefined>();
 
   // Задаем defaultValues
@@ -79,7 +73,8 @@ export const TestPage: React.FC = () => {
     setFileUpload(undefined);
   };
 
-  // Сброс состояния формы, но в этом случае не запоминаются введенные данные - их придется получать заново.
+  // Сброс состояния формы. При сбросе введенные ранее данные не запоминаются и
+  // их нужно заново получать из userDB или currentUser.
   React.useEffect(() => {
     if (formState.isSubmitSuccessful) {
       reset(currentUser);

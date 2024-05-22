@@ -41,6 +41,16 @@
     transition: transform 0.3s ease;
   }
 
+  &.uploadImage {
+    width: 362px;
+    height: 318px;
+
+    .popupContainer {
+      padding: 0px;
+      height: 100%;
+    }
+  }
+
   .popupContainer {
     position: relative;
     padding: 48px 30px 80px;

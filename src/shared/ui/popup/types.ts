@@ -12,5 +12,5 @@ export interface PopupOptions
   title?: string | undefined;
   children: ReactNode;
   actions?: ReactNode[];
-  variant?: 'default' | 'dialog';
+  variant?: 'default' | 'uploadImage';
 }

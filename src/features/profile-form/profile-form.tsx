@@ -67,23 +67,23 @@ export const ProfileForm: FC<typeProfileFormProps> = props => {
   };
 
   // Cброс класса "drop", когда курсор с файлом покидает область элемента.
-  const onDragLeave = (event: React.DragEvent<HTMLElement>) => {
-    event.preventDefault();
+  const onDragLeave = (e: React.DragEvent<HTMLElement>) => {
+    e.preventDefault();
     setDrop(false);
   };
 
   // Добавляет класс "drop", когда курсор с файлом попадает в область элемента.
-  const onDragOver = (event: React.DragEvent<HTMLElement>) => {
-    event.preventDefault();
+  const onDragOver = (e: React.DragEvent<HTMLElement>) => {
+    e.preventDefault();
     setDrop(true);
   };
 
   // onDrop - получит список файлов, которые мы "уронили" на компонент.
-  const handleDrop = (event: React.DragEvent<HTMLElement>) => {
-    event.preventDefault();
+  const handleDrop = (e: React.DragEvent<HTMLElement>) => {
+    e.preventDefault();
     setDrop(false);
 
-    const droppedFile = event.dataTransfer.files[0];
+    const droppedFile = e.dataTransfer.files[0];
     const urlImage = URL.createObjectURL(droppedFile);
     setPreviewAvatar(urlImage);
 
@@ -96,6 +96,9 @@ export const ProfileForm: FC<typeProfileFormProps> = props => {
     setOpenDetails(false);
   };
 
+  // Нужно добавить проверку есть ли фото в defaultValues.photo и в каком оно формате,
+  // и уже по результатам проверки готовить и выводить аватарку вместо DefaultAvatar.
+
   return (
     <form className={cn(className, classes.profileForm)} onSubmit={onSubmit}>
       {isOpenDetails && (
@@ -104,13 +107,13 @@ export const ProfileForm: FC<typeProfileFormProps> = props => {
           onClose={handleСlosePopup}
           isCloseByOverlay={true}
           // title=''
-          variant="dialog"
+          variant="uploadImage"
         >
           <Controller
             key={inputPhoto.name}
             name={inputPhoto.name}
             control={control}
-            rules={inputPhoto.options}
+            // rules={inputPhoto.options}
             render={({ field }) => (
               <InputFile
                 {...field}
@@ -155,7 +158,6 @@ export const ProfileForm: FC<typeProfileFormProps> = props => {
               name="addAvatar"
               onClick={() => {
                 setOpenDetails(true);
-                // console.log('onClick: Add avatar');
               }}
             />
             <button
@@ -164,7 +166,6 @@ export const ProfileForm: FC<typeProfileFormProps> = props => {
               name="deleteAvatar"
               onClick={() => {
                 deleteAvatar();
-                // console.log('onClick: Delete avatar');
               }}
             />
           </div>
@@ -190,8 +191,7 @@ export const ProfileForm: FC<typeProfileFormProps> = props => {
                 <div className={cn(className, classes.item)}>
                   <Input
                     {...field}
-                    // onChange={input.handleChange ? input.handleChange : undefined}
-                    onChange={input?.handleChange} // То же самое, но короче
+                    onChange={input?.handleChange}
                     label={input.label}
                     type={input.type}
                     required={input?.options?.required?.value}
