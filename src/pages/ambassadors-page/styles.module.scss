@@ -1,0 +1,78 @@
+.ambassadorsPage {
+  margin: 0;
+  padding: 4px 0 303px 0;
+}
+
+.ambassadorsCategories {
+  margin: 32px 0 21px 0;
+  padding: 0;
+  display: flex;
+  gap: 30px;
+}
+
+.ambassadorsCategory {
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  color: var(--black-color);
+  font-size: 24px;
+  line-height: 40px;
+  font-weight: 400;
+  font-family: var(--font-montserrat);
+
+  &.selected {
+    font-weight: 700;
+  }
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  &.selected:hover {
+    text-decoration: none;
+    cursor: default;
+  }
+}
+
+.ambassadorsDescription {
+  margin-bottom: 20px;
+  padding: 0;
+  max-width: 923px;
+  font-family: var(--font-inter);
+  font-size: 16px;
+  line-height: 1.75;
+  font-weight: 400;
+  color: var(--black-color);
+}
+
+.ambassadorsLinks {
+  margin-bottom: 20px;
+  padding: 0;
+  display: flex;
+  gap: 30px;
+}
+
+.ambassadorsLink {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-inter);
+  font-size: 20px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--violet-color);
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: var(--violet-hover);
+  }
+}
+
+.ambassadorsCardsGrid {
+  margin: 12px 0 40px 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px 30px;
+}

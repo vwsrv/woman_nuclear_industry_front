@@ -36,7 +36,7 @@ export const SignupForm: React.FC<signupFromProps> = ({
         </Link>
         <Link
           className={cn(className, classes.signupFormAuthLink, {
-            [classes.active]: pathname === '/'
+            [classes.active]: pathname === '/signin'
           })}
           href="/signin"
         >
@@ -45,10 +45,10 @@ export const SignupForm: React.FC<signupFromProps> = ({
       </div>
       <div className={cn(className, classes.signupFormExternalWrapper)}>
         <div className={cn(className, classes.signupFormExternalButton)}>
-          Google
+          Yandex ID
         </div>
         <div className={cn(className, classes.signupFormExternalButton)}>
-          VK
+          VK ID
         </div>
       </div>
       <div className={cn(className, classes.signupFormSeparator)}>
