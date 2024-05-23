@@ -5,8 +5,9 @@ import { About } from '@/shared/ui/about';
 import { Mission } from '@/shared/ui/mission';
 import { Projects } from '@/shared/ui/projects';
 import { Partners } from '@/shared/ui/partners';
-// TODO: компонент карты добавить из ZHE-78
+import map from '@/shared/images/for-first-page/map.svg';
 import styles from './index.module.scss';
+import { TerritoryAssociation } from '@/shared/ui/territory-association';
 
 export const FirstPage: React.FC = () => {
   const [aboutTitle, setAboutTitle] = useState('Мы объединяем женщин —');
@@ -127,6 +128,14 @@ export const FirstPage: React.FC = () => {
         projectsSupportText={projectsProjectsSupportText}
       />
       <Partners logos={partnersLogos} linkUrl={partnersLink} />
+      <TerritoryAssociation
+        title={'Территория объединения'}
+        subtitle={
+          'Международный совет по поддержке и развитию женщин в промышленности и технологиях'
+        }
+        image={map}
+        regions={[]}
+      />
     </div>
   );
 };
