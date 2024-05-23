@@ -9,6 +9,9 @@
   min-width: 136px;
   min-height: 44px;
   transition: 0.3s;
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 8px 30px;
 
   &:not(:disabled):active {
     transform: translateY(1px);
