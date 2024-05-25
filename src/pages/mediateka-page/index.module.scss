@@ -4,6 +4,10 @@
   flex-direction: column;
   margin: 0 auto;
 
+  &__heading {
+    margin-top: 32px;
+  }
+
   &__block {
     display: flex;
     flex-direction: column;
