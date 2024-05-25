@@ -57,7 +57,7 @@ export const QustionForm: React.FC<qustionFormProps> = props => {
           !consent || Object.keys(errors).length > 0 || !checkValuesAllFields
         }
       >
-        Зарегистрироваться
+        Отправить
       </Button>
     </form>
   );
