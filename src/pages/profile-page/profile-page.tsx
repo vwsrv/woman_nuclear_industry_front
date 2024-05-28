@@ -6,6 +6,8 @@ import { ProfileMenu } from '@/shared/ui/profile-menu/profile-menu';
 import React from 'react';
 import Image from 'next/image';
 import avatar from '../../shared/images/for-profile-page/avatar.jpg';
+import ProfileFieldList from './profile-field-list';
+import { ProfileFieldProps } from './types';
 
 export const ProfilePage: React.FC = () => {
   const [links, setLinks] = React.useState([
@@ -15,6 +17,8 @@ export const ProfilePage: React.FC = () => {
     { title: 'Выход', link: '/404', color: 'red' }
   ]);
   const [avatarLink, setAvatarLink] = React.useState(avatar);
+  const [mainInfoFields, setMainInfoFields] = React.useState<ProfileFieldProps[]>([]);
+  const [extraInfoFields, setExtraInfoFields] = React.useState<ProfileFieldProps[]>([]);
   const [profileData, setProfileData] = React.useState({
     name: 'Ольга',
     surname: 'Иванова',
@@ -28,6 +32,23 @@ export const ProfilePage: React.FC = () => {
     degree: '',
     education: ''
   });
+
+  React.useEffect(() => {
+    setMainInfoFields([
+      {title: 'Имя', value: 'Ольга'},
+      {title: 'Фамилия', value: 'Иванова'},
+      {title: 'Электронная почта', value: 'anabanana@gmail.com'},
+      {title: 'Телефон', value: '+99 888 555 44'},
+      {title: 'Bio', value: 'Neuroscientist'},
+      {title: 'Дата рождения', value: '11.12.1995'},
+    ]);
+
+    setExtraInfoFields([
+      {title: 'Специализация'},
+      {title: 'Ученая степень'},
+      {title: 'Образование'},
+    ])
+  }, [])
 
   return (
     <div className={cn(classes['profile-page'])}>
@@ -59,47 +80,8 @@ export const ProfilePage: React.FC = () => {
         <h2 className={cn(classes['profile-page__title'])}>
           Персональная информация
         </h2>
-        <div className={cn(classes['profile-page__grid-wrapper'])}>
-          <div className={cn(classes['profile-page__info-card'])}>
-            <h3 className={cn(classes['profile-page__info-title'])}>Имя</h3>
-            <p className={cn(classes['profile-page__info-field'])}>
-              {profileData.name}
-            </p>
-          </div>
-          <div className={cn(classes['profile-page__info-card'])}>
-            <h3 className={cn(classes['profile-page__info-title'])}>Фамилия</h3>
-            <p className={cn(classes['profile-page__info-field'])}>
-              {profileData.surname}
-            </p>
-          </div>
-          <div className={cn(classes['profile-page__info-card'])}>
-            <h3 className={cn(classes['profile-page__info-title'])}>
-              Электронная почта
-            </h3>
-            <p className={cn(classes['profile-page__info-field'])}>
-              {profileData.email}
-            </p>
-          </div>
-          <div className={cn(classes['profile-page__info-card'])}>
-            <h3 className={cn(classes['profile-page__info-title'])}>Телефон</h3>
-            <p className={cn(classes['profile-page__info-field'])}>
-              {profileData.tel}
-            </p>
-          </div>
-          <div className={cn(classes['profile-page__info-card'])}>
-            <h3 className={cn(classes['profile-page__info-title'])}>Bio</h3>
-            <p className={cn(classes['profile-page__info-field'])}>
-              {profileData.bio}
-            </p>
-          </div>
-          <div className={cn(classes['profile-page__info-card'])}>
-            <h3 className={cn(classes['profile-page__info-title'])}>
-              Дата рождения
-            </h3>
-            <p className={cn(classes['profile-page__info-field'])}>
-              {profileData.birthDay}
-            </p>
-          </div>
+        <div className={cn(classes['profile-page__grid-wrapper'],)}>
+          <ProfileFieldList fields={mainInfoFields}/>
         </div>
         <h2 className={cn(classes['profile-page__title'])}>
           Добавьте информацию о себе
@@ -110,30 +92,7 @@ export const ProfilePage: React.FC = () => {
             classes['profile-page__grid-wrapper_extra-info']
           )}
         >
-          <div className={cn(classes['profile-page__info-card'])}>
-            <h3 className={cn(classes['profile-page__info-title'])}>
-              Специализация
-            </h3>
-            <p className={cn(classes['profile-page__info-field'])}>
-              {profileData.specialization}
-            </p>
-          </div>
-          <div className={cn(classes['profile-page__info-card'])}>
-            <h3 className={cn(classes['profile-page__info-title'])}>
-              Ученая степень
-            </h3>
-            <p className={cn(classes['profile-page__info-field'])}>
-              {profileData.degree}
-            </p>
-          </div>
-          <div className={cn(classes['profile-page__info-card'])}>
-            <h3 className={cn(classes['profile-page__info-title'])}>
-              Образование
-            </h3>
-            <p className={cn(classes['profile-page__info-field'])}>
-              {profileData.education}
-            </p>
-          </div>
+          <ProfileFieldList fields={extraInfoFields}/>
         </div>
       </section>
     </div>
