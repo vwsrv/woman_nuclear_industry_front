@@ -1,0 +1,8 @@
+.qustionform {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  &__submitButton {
+    margin-left: auto;
+  }
+}

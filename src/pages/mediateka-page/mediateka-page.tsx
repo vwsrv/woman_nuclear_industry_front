@@ -5,8 +5,16 @@ import styles from './index.module.scss';
 import { Button } from '@/shared/ui/button';
 import cn from 'classnames';
 import { Pagination } from '@/shared/ui/pagination';
+import { Breadcrumb } from '@/shared/ui/breadcrumb';
 
 export const MediatekaPage: React.FC = () => {
+  const [breadcrumbLinks, setBreadcrumbLinks] = useState<
+    { title: string; link: string }[]
+  >([
+    { title: 'Главная', link: '/' },
+    { title: 'Медиатека', link: '/mediateka' }
+  ]);
+
   const [isLivesShown, setIsLivesShown] = useState(false);
   // Состояние для отслеживания количества отображаемых элементов
   const [visibleLivesCount, setVisibleLivesCount] = useState(3);
@@ -530,7 +538,8 @@ export const MediatekaPage: React.FC = () => {
 
   return (
     <div className={styles.mediateka}>
-      <h2>Медиатека</h2>
+      <Breadcrumb links={breadcrumbLinks} />
+      <h2 className={styles.mediateka__heading}>Медиатека</h2>
       <div className={styles.mediateka__block}>
         <h3 className={styles.mediateka__blockTitle}>Прямые трансляции</h3>
         <div className={styles.mediateka__videosContainer}>

@@ -1,0 +1,24 @@
+.contacts {
+  display: flex;
+  flex-direction: column;
+
+  &__heading {
+    margin-top: 32px;
+  }
+
+  &__paragraph {
+    max-width: 923px;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 30px;
+    margin: 24px 0;
+  }
+
+  &__questionAndMapContainer {
+    display: grid;
+    grid-template-columns: 1.2fr 2fr;
+    grid-template-rows: 678px;
+    overflow: hidden;
+    gap: 30px;
+  }
+}

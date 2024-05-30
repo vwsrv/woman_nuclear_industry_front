@@ -1,0 +1,56 @@
+// от 570 новости в колонну, див с инпутом тоже
+
+.news {
+  max-width: 892px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.newsTitle {
+}
+
+.searchForm {
+  display: flex;
+  flex-direction: row;
+  margin: 32px 0;
+  width: 100%;
+}
+
+.selectBoxFirstNews {
+  width: 125px;
+}
+
+.selectBoxSecondNews {
+  width: 161px;
+}
+
+.inputNews {
+  width: calc(100% - 302px);
+}
+
+.selectBoxForm {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  margin-right: 32px;
+}
+
+.newsList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+@media screen and (max-width: 570px) {
+  .searchForm {
+    flex-direction: column;
+  }
+  .inputNews {
+    margin-top: 16px;
+    width: 100%;
+  }
+}

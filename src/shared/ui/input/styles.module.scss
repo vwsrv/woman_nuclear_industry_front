@@ -6,6 +6,8 @@
   align-items: flex-start;
   border-radius: 8px;
   box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.1) inset;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: border 0.3s ease;
 
   &.active .label,
   &:focus-within .label {
@@ -16,14 +18,11 @@
   &.error {
     border: 1px solid rgba(255, 78, 78, 1);
   }
-
-  // &:focus-within .input {
-  //   color: var(--black-color);
-  // }
 }
 
 .input {
   width: calc(100% - 20px);
+  font-family: var(--font-inter);
   font-size: 16px;
   line-height: 1.75;
   font-weight: 400;
@@ -54,7 +53,7 @@
   position: absolute;
   left: 0;
   top: 0;
-  padding: 18px 0 0 16px;
+  padding: 18px 0 0 16px; // !!!
   transition: 0.3s;
   font-size: 16px;
   line-height: 1.75;
@@ -76,6 +75,7 @@
 }
 
 .errorText {
+  display: block;
   margin: 0;
   padding: 0 10px;
   width: calc(100% - 20px);
@@ -85,7 +85,7 @@
   font-family: var(--font-inter);
   font-weight: 400;
   font-size: 12px;
-  line-height: 28px;
+  line-height: 2.33;
   transition: height 0.3s ease;
 
   &.error {

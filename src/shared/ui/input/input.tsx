@@ -49,8 +49,8 @@ const Input: ForwardRefExoticComponent<InputProps> = forwardRef<
         value={value}
         onChange={
           onChange
-            ? e => setValue(name, onChange(e))
-            : e => setValue(name, e.target.value)
+            ? e => setValue(name, onChange(e), { shouldDirty: true })
+            : e => setValue(name, e.target.value, { shouldDirty: true })
         }
         className={cn(className, classes.input, {
           [classes.error]: error !== ''
@@ -59,13 +59,13 @@ const Input: ForwardRefExoticComponent<InputProps> = forwardRef<
         {...otherProps}
       />
 
-      <p
+      <span
         className={cn(className, classes.errorText, {
           [classes.error]: error !== ''
         })}
       >
         {typeof error === 'string' && error !== '' ? error : ''}
-      </p>
+      </span>
 
       {label !== undefined && label !== '' && (
         <span

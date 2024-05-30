@@ -14,6 +14,7 @@ export const Popup: React.FC<PopupOptions> = props => {
     title,
     children,
     actions,
+    variant = 'default',
     className,
     ...otherProps
   } = props;
@@ -41,19 +42,28 @@ export const Popup: React.FC<PopupOptions> = props => {
             className={cn(
               classes.popup,
               { [classes.active]: isOpen },
-              className
+              className,
+              classes[variant]
             )}
           >
             <div className={cn(classes.popupContainer)}>
-              <div className={cn(classes.popupHeading)}>
-                <h2 className="bold">{title}</h2>
-              </div>
-              <button
-                className={cn(classes.popupButton)}
-                aria-label="Закрыть"
-                onClick={onClose}
-              />
-              <div className={cn(classes.popupContent)}>{children}</div>
+              {title && (
+                <div className={cn(classes.popupHeading)}>
+                  <h2 className="bold">{title}</h2>
+                </div>
+              )}
+              {variant === 'uploadImage' ? (
+                <>{children}</>
+              ) : (
+                <>
+                  <button
+                    className={cn(classes.popupButton)}
+                    aria-label="Закрыть"
+                    onClick={onClose}
+                  />
+                  <div className={cn(classes.popupContent)}>{children}</div>
+                </>
+              )}
             </div>
           </div>
         </div>,

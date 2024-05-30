@@ -14,6 +14,14 @@ const PASSWORD_MESSAGE = 'Пароль должен состоять не мен
 const REQUIRED_MESSAGE = 'Поле должно быть обязательно заполнено.';
 const QUESTION_MESSAGE = 'Вопрос не может быть короче 10 символов';
 
+const BIO_MESSAGE = 'До 250 символов: только буквы, цифры и знаки препинания.';
+const SPECIALIZATION_MESSAGE =
+  'До 250 символов: только буквы, цифры и знаки препинания.';
+const DEGREE_MESSAGE =
+  'До 250 символов: только буквы, цифры и знаки препинания.';
+const EDUCATION_MESSAGE =
+  'До 250 символов: только буквы, цифры и знаки препинания.';
+
 export {
   EMAIL_MESSAGE,
   LASTNAME_MESSAGE,
@@ -26,4 +34,8 @@ export {
   PASSWORD_MESSAGE,
   REQUIRED_MESSAGE,
   QUESTION_MESSAGE
+  BIO_MESSAGE,
+  SPECIALIZATION_MESSAGE,
+  DEGREE_MESSAGE,
+  EDUCATION_MESSAGE
 };

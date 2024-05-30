@@ -1,0 +1,29 @@
+.territoryAssociation {
+  margin: 0;
+  padding-top: 60px;
+  width: 100%;
+  min-height: 882px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.territoryAssociationTitle {
+  margin: 0;
+  padding: 0;
+  color: var(--black-color);
+}
+
+.territoryAssociationSubtitle {
+  margin: 0;
+  padding-top: 12px;
+  max-width: 468px;
+  color: var(--black-color);
+}
+
+.territoryAssociationImage {
+  margin: 0;
+  padding-left: 40px;
+  width: calc(100% - 40px);
+  transform: translateY(-108px);
+}
