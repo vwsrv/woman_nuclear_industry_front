@@ -12,6 +12,7 @@ const REQUIRED_DATE_MESSAGE =
 const OLD_DATE_MESSAGE = 'Возраст не может быть больше 120 лет.';
 const PASSWORD_MESSAGE = 'Пароль должен состоять не менее чем из 8 символов.';
 const REQUIRED_MESSAGE = 'Поле должно быть обязательно заполнено.';
+const QUESTION_MESSAGE = 'Вопрос не может быть короче 10 символов';
 
 const BIO_MESSAGE = 'До 250 символов: только буквы, цифры и знаки препинания.';
 const SPECIALIZATION_MESSAGE =
@@ -32,6 +33,7 @@ export {
   REQUIRED_DATE_MESSAGE,
   PASSWORD_MESSAGE,
   REQUIRED_MESSAGE,
+  QUESTION_MESSAGE,
   BIO_MESSAGE,
   SPECIALIZATION_MESSAGE,
   DEGREE_MESSAGE,
