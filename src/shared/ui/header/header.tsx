@@ -9,6 +9,7 @@ import { headerProps } from './types';
 import { headerMenuProps } from '../header-menu/types';
 import { InputSearch } from '../inputSearch';
 import { Button } from '../button';
+import Link from 'next/link';
 
 export const Header: React.FC<headerProps & headerMenuProps> = ({
   image,
@@ -32,13 +33,15 @@ export const Header: React.FC<headerProps & headerMenuProps> = ({
 
   return (
     <div className={cn(classes.header)}>
-      <Image
-        className={cn(classes.header__logo)}
-        src={image.src}
-        alt="логотип WinRussia территория смыслов"
-        width={image.width}
-        height={image.height}
-      />
+      <Link href="/">
+        <Image
+          className={cn(classes.header__logo)}
+          src={image.src}
+          alt="логотип WinRussia территория смыслов"
+          width={image.width}
+          height={image.height}
+        />
+      </Link>
       <div className={cn(classes.header__container)}>
         <div className={cn(classes.header__nav)}>
           {search && (
