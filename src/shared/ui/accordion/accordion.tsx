@@ -13,11 +13,12 @@ import minus from '@/shared/images/for-accordition/minus.svg';
 import plus from '@/shared/images/for-accordition/plus.svg';
 
 export const Accordion: React.FC<typeAccordionProps> = ({
-  props
+  contentList,
+  className
 }: typeAccordionProps) => {
   const [propsState, setPropsState] = React.useState<
     typeAccordionItemWithState[]
-  >(props.map(item => ({ ...item, isOpen: false })));
+  >(contentList.map(item => ({ ...item, isOpen: false })));
   return (
     <>
       {propsState.map(

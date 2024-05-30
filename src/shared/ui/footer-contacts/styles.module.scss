@@ -1,0 +1,23 @@
+.container {
+  max-width: 241px;
+  display: flex;
+  flex-direction: column;
+}
+
+.address {
+  color: var(--black-color);
+  font-style: normal;
+  margin: 0;
+  padding: 0 0 20px 0;
+}
+
+.email {
+  color: var(--blue-color);
+  font-style: normal;
+
+  &:hover {
+    cursor: pointer;
+    transition: all ease-in 3ms;
+    color: var(--black-color);
+  }
+}

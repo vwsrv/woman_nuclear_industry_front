@@ -1,0 +1,193 @@
+.projects {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1440px;
+  min-height: 504px;
+  padding-left: 10px;
+  box-sizing: border-box;
+
+  &::after {
+    content: '';
+    width: 232px;
+    height: 295px;
+    position: absolute;
+    left: -55px;
+    top: 200px;
+    background-image: url('../../../shared/images/for-projects/background-logo.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    transform: rotate(120deg);
+    z-index: -10;
+  }
+}
+
+.title {
+  margin-bottom: 32px;
+}
+
+.info {
+  display: flex;
+  flex-direction: row;
+  max-height: 432px;
+  box-sizing: border-box;
+}
+
+.supports {
+  display: flex;
+  flex-direction: row;
+  gap: 31px;
+}
+
+.support {
+  max-width: 432px;
+  box-shadow: 0 4 20 0 var(--shadow-color);
+  border-radius: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.awardSupport {
+  background-color: var(--footer-color);
+  padding: 28px 30px;
+}
+
+.awardSupportTitle {
+  margin-bottom: 8px;
+}
+
+.awardSupportText {
+  margin-bottom: 16px;
+}
+
+.projectsSupport {
+  padding: 128px 30px 32px 30px;
+  margin: 0 auto;
+  background-image: url('../../images/for-projects/background-img.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: var(--white-color);
+  background-size: 110% 115%;
+}
+
+.projectsSupportTitle {
+  margin-bottom: 8px;
+}
+
+.projectsSupportText {
+  margin-bottom: 16px;
+}
+
+.links {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.link {
+  margin: 0;
+  border: 0;
+  height: 44px;
+  width: 159px;
+  border-radius: 8px;
+  border-color: transparent;
+  background-color: var(--violet-color);
+  color: var(--white-color);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all ease-in 2ms;
+
+  &:hover {
+    background-color: var(--violet-hover);
+  }
+}
+
+.link:nth-child(2) {
+  width: 174px;
+}
+
+.linkText {
+  margin: 8px 30px;
+}
+
+.arrow {
+  margin-left: 30px;
+}
+
+@media screen and (max-width: 988px) {
+  .links {
+    flex-direction: column;
+  }
+
+  .projectsSupport {
+    padding-top: 88px;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .projects {
+    min-height: 806px;
+  }
+
+  .supports {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 534px) {
+  .projects {
+    min-height: 660px;
+  }
+}
+
+@media screen and (max-width: 532px) {
+  .projects {
+    min-height: 840px;
+  }
+}
+
+@media screen and (max-width: 522px) {
+  .projects {
+    min-height: 870px;
+  }
+}
+
+@media screen and (max-width: 463px) {
+  .projects {
+    min-height: 910px;
+  }
+}
+
+@media screen and (max-width: 438px) {
+  .projects {
+    min-height: 960px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .projects {
+    min-height: 910px;
+  }
+
+  .supports {
+    margin-left: 5px;
+  }
+
+  .awardSupport {
+    padding: 18px 10px;
+  }
+
+  .projectsSupport {
+    padding: 44px 10px 18px 10px;
+  }
+
+  .arrow {
+    margin-left: 0;
+    width: 36px;
+    height: 36px;
+  }
+}

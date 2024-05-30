@@ -1,6 +1,5 @@
 .button {
   width: 100%;
-  max-width: 892px;
   border: 1px solid rgba(177, 177, 177, 1);
   border-radius: 8px;
   padding: 20px 15px;
@@ -21,6 +20,7 @@
 
 .title {
   margin: 0;
+  text-align: left;
 }
 
 @mixin animate($animation, $duration, $method, $times) {

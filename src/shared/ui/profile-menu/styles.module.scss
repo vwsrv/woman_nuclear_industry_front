@@ -1,0 +1,23 @@
+.ProfileMenu {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  list-style: none;
+  gap: 32px;
+  padding: 0;
+
+  &__link {
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1.8;
+    color: #020202;
+    text-decoration: none;
+
+    &_active {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+  }
+}

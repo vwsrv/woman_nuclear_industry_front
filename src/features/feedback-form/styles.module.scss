@@ -1,0 +1,49 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 431px;
+  gap: 24px;
+  padding-left: 10px;
+
+  .input {
+    max-height: 78px;
+  }
+
+  .capchaContainer {
+    width: 335px;
+    height: 87px;
+    padding: 30px 20px;
+    box-sizing: border-box;
+    background-color: var(--grey-color);
+  }
+
+  .agreeCheckbox {
+    margin-bottom: 25px;
+  }
+
+  .button {
+    width: 145px;
+    align-self: flex-end;
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .form {
+    width: 320px;
+    align-items: center;
+    gap: 10px;
+
+    .input {
+      width: 100%;
+    }
+
+    .capchaContainer {
+      width: 320px;
+    }
+
+    .button {
+      align-self: inherit;
+    }
+  }
+}
