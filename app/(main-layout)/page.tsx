@@ -1,10 +1,10 @@
 import React from 'react';
-import { ProjectsPage } from '@/pages/projects-page';
+import { FirstPage } from '@/pages/first-page';
 
 const HomePage: React.FC = () => {
   return (
     <main>
-      <ProjectsPage />
+      <FirstPage />
     </main>
   );
 };

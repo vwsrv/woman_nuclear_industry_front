@@ -16,7 +16,7 @@ const MainLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
             { title: 'Амбассадоры', link: '/ambassadors' },
             { title: 'Лауреаты', link: '/laureates' },
             { title: 'Новости', link: '/news' },
-            { title: 'Медиатека', link: '/media-library' },
+            { title: 'Медиатека', link: '/mediateka' },
             { title: 'Контакты', link: '/contacts' }
           ]}
         />
