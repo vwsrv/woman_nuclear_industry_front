@@ -31,7 +31,7 @@ export const Header: React.FC<headerProps & headerMenuProps> = ({
     onSubmitForm: handleForm
   } = search || {};
 
-  const handleLanguageChange = (lang: string) => {
+  const handleLanguageChange = (lang: 'ru' | 'en') => {
     setCurrentLanguage(lang);
   };
 

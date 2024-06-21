@@ -9,7 +9,7 @@ export interface headerProps
     onChange: () => void;
     onSubmitForm: () => void;
   };
-  language?: string;
+  language?: 'ru' | 'en';
   isLoggedIn: boolean;
   avatar?: StaticImageData;
   isCartExist?: boolean;
