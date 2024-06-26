@@ -24,7 +24,7 @@ export const SignupPage: React.FC = () => {
   const toggleIsColumnist = (): void => setIsColumnist(!isColumnist);
 
   const onSubmit = (data: any) => {
-    console.log({ ...data, consent });
+    console.log({ ...data, consent, isColumnist});
   };
 
   return (
