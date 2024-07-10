@@ -7,6 +7,8 @@ export interface signupFromProps
   pathname: string | null;
   consent: boolean;
   toggleConsent: () => void;
+  isColumnist: boolean;
+  toggleIsColumnist: () => void;
   onSubmit: (
     e?: React.BaseSyntheticEvent<object, any, any> | undefined
   ) => Promise<void>;

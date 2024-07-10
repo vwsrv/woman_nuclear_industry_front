@@ -18,11 +18,13 @@ export const SignupPage: React.FC = () => {
 
   const pathname = usePathname();
   const [consent, setConsent] = useState(false);
+  const [isColumnist, setIsColumnist] = useState(false);
 
   const toggleConsent = (): void => setConsent(!consent);
+  const toggleIsColumnist = (): void => setIsColumnist(!isColumnist);
 
   const onSubmit = (data: any) => {
-    console.log({ ...data, consent });
+    console.log({ ...data, consent, isColumnist });
   };
 
   return (
@@ -33,6 +35,8 @@ export const SignupPage: React.FC = () => {
           pathname={pathname}
           consent={consent}
           toggleConsent={toggleConsent}
+          isColumnist={isColumnist}
+          toggleIsColumnist={toggleIsColumnist}
           onSubmit={methods.handleSubmit(onSubmit)}
           className="signup-form"
         />
