@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import cn from 'classnames';
 import classes from './styles.module.scss';
@@ -23,13 +24,17 @@ export const Header: React.FC<headerProps & headerMenuProps> = ({
   isCartFilled = false,
   itemsInCart = [1, 2, 3, 4, 5]
 }) => {
-  const { currentLanguage, onChange: handleLanguageChange } = language || {};
+  const [currentLanguage, setCurrentLanguage] = useState(language);
 
   const {
     value: searchValue,
     onChange: searchOnChangeHandler,
     onSubmitForm: handleForm
   } = search || {};
+
+  const handleLanguageChange = (lang: 'ru' | 'en') => {
+    setCurrentLanguage(lang);
+  };
 
   return (
     <div className={cn(classes.header)}>
@@ -54,15 +59,16 @@ export const Header: React.FC<headerProps & headerMenuProps> = ({
           <HeaderMenu className={cn(classes.header__navMenu)} links={links} />
         </div>
         <div className={cn(classes.header__buttons)}>
-          <button
-            className={cn(classes.header__button)}
-            onClick={() =>
-              handleLanguageChange &&
-              handleLanguageChange(currentLanguage === 'ru' ? 'en' : 'ru')
-            }
-          >
-            {currentLanguage === 'ru' ? 'EN' : 'RU'}
-          </button>
+          {!!currentLanguage && (
+            <button
+              className={cn(classes.header__button)}
+              onClick={() =>
+                handleLanguageChange(currentLanguage === 'ru' ? 'en' : 'ru')
+              }
+            >
+              {currentLanguage === 'ru' ? 'EN' : 'RU'}
+            </button>
+          )}
           {isCartExist && (
             <button
               className={cn(
