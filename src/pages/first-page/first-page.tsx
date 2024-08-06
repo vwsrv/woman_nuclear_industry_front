@@ -5,7 +5,7 @@ import { About } from '@/shared/ui/about';
 import { Mission } from '@/shared/ui/mission';
 import { Projects } from '@/shared/ui/projects';
 import { Partners } from '@/shared/ui/partners';
-import map from '@/shared/images/for-first-page/map.svg';
+import map from '@/shared/images/for-first-page/map.png';
 import styles from './index.module.scss';
 import { TerritoryAssociation } from '@/shared/ui/territory-association';
 
@@ -134,7 +134,36 @@ export const FirstPage: React.FC = () => {
           'Международный совет по поддержке и развитию женщин в промышленности и технологиях'
         }
         image={map}
-        regions={[]}
+        regions={[
+          {
+            regionName: 'Республика Карелия',
+            coordinats: { lat: 38, lng: 19 }
+          },
+          {
+            regionName: 'Region 2',
+            coordinats: { lat: 29, lng: 15 }
+          },
+          {
+            regionName: 'Region 3',
+            coordinats: { lat: 28, lng: 21 }
+          },
+          {
+            regionName: 'Region 4',
+            coordinats: { lat: 28, lng: 24.5 }
+          },
+          {
+            regionName: 'Region 5',
+            coordinats: { lat: 30, lng: 28 }
+          },
+          {
+            regionName: 'Region 6',
+            coordinats: { lat: 22, lng: 24 }
+          },
+          {
+            regionName: 'Region 7',
+            coordinats: { lat: 16.5 , lng: 35.5 }
+          },
+        ]}
       />
     </div>
   );
