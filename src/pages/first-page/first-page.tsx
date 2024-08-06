@@ -161,8 +161,8 @@ export const FirstPage: React.FC = () => {
           },
           {
             regionName: 'Region 7',
-            coordinats: { lat: 16.5 , lng: 35.5 }
-          },
+            coordinats: { lat: 16.5, lng: 35.5 }
+          }
         ]}
       />
     </div>
