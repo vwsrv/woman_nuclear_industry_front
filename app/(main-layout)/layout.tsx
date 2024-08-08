@@ -2,7 +2,7 @@ import cn from 'classnames';
 import classes from './styles.module.scss';
 import { Header } from '@/shared/ui/header/header';
 import logo from '@/shared/images/for-header/Logo 1.png';
-import { Footer } from '@/shared/ui/footer';
+import { Footer } from '@/features/footer';
 
 const MainLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
   return (
@@ -35,10 +35,7 @@ const MainLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
         }}
         items={[
           [
-            { title: 'Партнеры', link: '/partners' },
-            { title: 'Объединение', link: '/association' },
             { title: 'Территория присутствия', link: '/territory-presence' },
-            { title: 'Мероприятия', link: '/events' },
             { title: 'Новости', link: '/news' },
             { title: 'Проекты', link: '/projects' },
             { title: 'Контакты', link: '/contacts' }
@@ -47,7 +44,6 @@ const MainLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
             { title: 'О сообществе', link: '/about' },
             { title: 'Команда', link: '/team' },
             { title: 'Амбассадоры', link: '/ambassadors' },
-            { title: 'Международный совет', link: '/international-council' },
             { title: 'Вопрос - ответ', link: '/question-answer' }
           ]
         ]}
