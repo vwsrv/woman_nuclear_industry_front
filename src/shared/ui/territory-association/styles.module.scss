@@ -2,10 +2,9 @@
   margin: 0;
   padding-top: 60px;
   width: 100%;
-  min-height: 882px;
+  min-height: calc(822px - 60px);
   display: flex;
   flex-direction: column;
-  align-content: center;
 }
 
 .territoryAssociationTitle {
@@ -21,9 +20,16 @@
   color: var(--black-color);
 }
 
-.territoryAssociationImage {
-  margin: 0;
-  padding-left: 40px;
-  width: calc(100% - 40px);
-  transform: translateY(-108px);
+.territoryAssociationCanvasContainer {
+  flex: 1;
+  position: relative;
+}
+
+.territoryAssociationCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
 }
