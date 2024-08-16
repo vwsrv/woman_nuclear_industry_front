@@ -12,12 +12,11 @@ export const TerritoryAssociation: React.FC<territoryAssociationProps> = ({
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  // Определите границы вашей карты
   const mapBounds = {
-    minLat: 10, // минимальная широта
-    maxLat: 60, // максимальная широта
-    minLng: 10, // минимальная долгота
-    maxLng: 60 // максимальная долгота
+    minLat: 10,
+    maxLat: 60,
+    minLng: 10,
+    maxLng: 60
   };
 
   useEffect(() => {
@@ -28,18 +27,15 @@ export const TerritoryAssociation: React.FC<territoryAssociationProps> = ({
         const img = new window.Image();
         img.src = image.src;
         img.onload = () => {
-          // Установка размеров буфера рисования
           canvas.width = canvas.offsetWidth;
           canvas.height = canvas.offsetHeight;
 
-          // Отрисуем карту
           ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-          // Отрисуем маркеры
+
           regions.forEach(region => {
             const markerImg = new window.Image();
             markerImg.src = marker.src;
             markerImg.onload = () => {
-              // Преобразуем координаты широты и долготы в координаты x и y на изображении
               const x =
                 ((region.coordinats.lng - mapBounds.minLng) /
                   (mapBounds.maxLng - mapBounds.minLng)) *
@@ -49,7 +45,6 @@ export const TerritoryAssociation: React.FC<territoryAssociationProps> = ({
                   (region.coordinats.lat - mapBounds.minLat) /
                     (mapBounds.maxLat - mapBounds.minLat)) *
                 canvas.height;
-              console.log(`Region: ${region.regionName}, x: ${x}, y: ${y}`);
               const markerWidth = 32;
               const markerHeight = 48;
               ctx.drawImage(
@@ -58,7 +53,7 @@ export const TerritoryAssociation: React.FC<territoryAssociationProps> = ({
                 y - markerHeight,
                 markerWidth,
                 markerHeight
-              ); // Размеры маркера можно изменить
+              );
             };
           });
         };
