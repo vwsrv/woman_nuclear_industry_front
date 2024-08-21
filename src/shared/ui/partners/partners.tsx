@@ -34,9 +34,6 @@ export const Partners: React.FC<typePartnersProps> = props => {
           Международный совет по поддержке и развитию женщин в промышленности и
           технологиях
         </p>
-        <Link className={cn(className, classes.link)} href={linkUrl}>
-          <p className={cn(className, classes.link_text)}>Узнать больше</p>
-        </Link>
       </div>
     </div>
   );

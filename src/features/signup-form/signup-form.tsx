@@ -12,6 +12,8 @@ export const SignupForm: React.FC<signupFromProps> = ({
   pathname,
   consent,
   toggleConsent,
+  isColumnist,
+  toggleIsColumnist,
   onSubmit,
   className
 }) => {
@@ -82,6 +84,9 @@ export const SignupForm: React.FC<signupFromProps> = ({
           <Link href="http://winrussia.com/include/licenses_detail.php">
             обработку персональных данных
           </Link>
+        </Checkbox>
+        <Checkbox checked={isColumnist} onCheckboxChange={toggleIsColumnist}>
+          Я хочу стать колумнистом
         </Checkbox>
       </div>
       <Button
