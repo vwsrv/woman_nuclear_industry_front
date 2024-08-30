@@ -1,14 +1,13 @@
 'use client';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { typeProfileMenuProps } from '@/shared/ui/profile-menu/types';
 import Link from 'next/link';
 import classes from './styles.module.scss';
 import cn from 'classnames';
-import { usePathname } from 'next/navigation';
 
 export const ProfileMenu: React.FC<typeProfileMenuProps> = props => {
   const { menuItems } = props;
-  const location = usePathname();
+  const location = window.location.pathname;
 
   return (
     <ul className={cn(classes.ProfileMenu)}>
@@ -20,7 +19,6 @@ export const ProfileMenu: React.FC<typeProfileMenuProps> = props => {
               className={cn(classes.ProfileMenu__link, {
                 [classes.ProfileMenu__link_active]: location === item.link
               })}
-              style={{ color: item.color }}
             >
               {item.title}
             </Link>
